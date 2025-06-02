@@ -16,7 +16,10 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-auto p-0">
-        {% include '_partial/sidebar.html.twig' %}
+        {% if show_sidebar is not defined or show_sidebar %}
+  {% include '_partial/sidebar.html.twig' %}
+{% endif %}
+
       </div>
       <div class="col ps-md-4 pt-4">
         {% block body %}{% endblock %}
