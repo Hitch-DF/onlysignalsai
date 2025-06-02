@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}OnlySignals - {{'Vos Signaux de Trading en Temps Réel'|trans}}
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+{% endblock %}
+
+{% block body %}
+	<div class="d-flex">
+		{# Main content #}
+		<main class="flex-grow-1">
+			<header class="bg-white border-bottom py-3 px-4 d-flex justify-content-between align-items-center">
+				<h1 class="h4 mb-0">OnlySignals</h1>
+				<div>
+					<a href="{{path('app_login')}}" class="btn btn-primary btn-outline-primary d-inline-flex align-items-center">
+						<i class="bi bi-person-circle me-2"></i>
+						{{'Login'|trans}} / {{'Sign Up'|trans}}
+					</a>
+
+				</div>
+			</header>
+
+			<div class="container py-4">
+				<div class="d-flex justify-content-between align-items-center mb-4">
+					<h2 class="h5">{{'Signals Table'|trans}}</h2>
+					<div class="d-flex gap-2">
+						<a href="{{ path('simulate_signal') }}" class="btn btn-outline-secondary d-none d-sm-inline-flex">
+							<i class="bi bi-plus-square me-2"></i>
+							{{'Simulate Signal'|trans}}
+						</a>
+						<button class="btn btn-primary">
+							<i class="bi bi-arrow-repeat me-2"></i>
+							{{'Refresh'|trans}}
+						</button>
+					</div>
+				</div>
+
+				<div class="row g-3 mb-4">
+					{% include "signal/index.html.twig" %}
+				</div>
+
+			</div>
+
+			<footer class="text-center py-4 border-top">
+				&copy;
+				{{ "now"|date("Y") }}
+				OnlySignals.
+				{{'All rights reserved'|trans}}.
+			</footer>
+		</main>
+	</div>
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+{% endblock %}

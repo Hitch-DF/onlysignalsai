@@ -1,0 +1,9 @@
+
+/.env.local
+/vendor/
+/var/
+/node_modules/
+/public/build/
+.vscode
+/.vscode
+/.env

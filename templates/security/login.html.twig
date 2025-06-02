@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{'Authentification'|trans }} - OnlySignals{% endblock %}
+
+{% block body %}
+<div class="min-vh-100 d-flex flex-column bg-light">
+
+  <main class="flex-grow-1 d-flex justify-content-center align-items-center px-3">
+    <div class="card shadow w-100" style="max-width: 400px;">
+      <div class="card-header text-center bg-white border-bottom-0">
+        <h1 class="h4 fw-bold mb-1">{{'Bienvenue'|trans}} !</h1>
+        <p class="text-muted small mb-0">{{'Connectez-vous pour accéder à vos signaux'|trans}}.</p>
+      </div>
+
+      <div class="card-body">
+        {% if error %}
+          <div class="alert alert-danger small">
+            {{ error.messageKey|trans(error.messageData, 'security') }}
+          </div>
+        {% endif %}
+
+        {% if app.user %}
+          <div class="alert alert-success small">
+            Connecté en tant que {{ app.user.userIdentifier }}.
+            <a href="{{ path('app_logout') }}" class="text-decoration-underline">{{'Déconnexion'|trans}}</a>
+          </div>
+        {% endif %}
+
+        <form method="post">
+          <div class="mb-3">
+            <label for="username" class="form-label">{{'Adresse e-mail'|trans}}</label>
+            <input
+              type="email"
+              id="username"
+              name="_username"
+              value="{{ last_username }}"
+              required
+              autofocus
+              autocomplete="email"
+              placeholder="exemple@domaine.com"
+              class="form-control"
+            >
+          </div>
+
+          <div class="mb-3">
+            <label for="password" class="form-label">{{'Mot de passe'|trans}}</label>
+            <input
+              type="password"
+              id="password"
+              name="_password"
+              required
+              autocomplete="current-password"
+              placeholder="••••••••"
+              class="form-control"
+            >
+          </div>
+
+          <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+          <div class="d-grid">
+            <button type="submit" class="btn btn-primary">
+              {{'Se connecter'|trans}}
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div class="card-footer text-center bg-white border-top-0">
+        <p class="small text-muted mb-0">
+          {{'Pas encore de compte'|trans}} ?
+          <a href="{{ path('app_register') }}" class="text-decoration-underline fw-semibold">{{'Créer un compte'|trans}}</a>
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="text-center py-4 text-muted small border-top">
+    © {{ "now"|date("Y") }} OnlySignals. {{'Tous droits réservés'|trans}}.
+  </footer>
+</div>
+{% endblock %}

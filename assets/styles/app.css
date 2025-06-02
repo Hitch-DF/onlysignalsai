@@ -1,0 +1,78 @@
+:root {
+    --custom-btn-bg: hsl(262, 83%, 58%);
+    /* violet comme #7c3aed */
+    --custom-btn-foreground: hsl(0, 0%, 100%);
+    --custom-btn-hover-bg: hsl(262, 83%, 50%);
+    --custom-btn-active-bg: hsl(262, 83%, 44%);
+    --custom-btn-focus-shadow: 126, 58, 242;
+    --bs-nav-pills-link-active-bg: hsl(var(--sidebar-accent));
+    --bs-nav-pills-link-active-color: hsl(var(--sidebar-accent-foreground));
+    --sidebar-accent: 252 82% 61%;
+    --sidebar-accent-foreground: 0 0% 100%;
+}
+
+.btn-primary {
+    --bs-btn-color: var(--custom-btn-foreground);
+    --bs-btn-bg: var(--custom-btn-bg);
+    --bs-btn-border-color: var(--custom-btn-bg);
+    --bs-btn-hover-color: var(--custom-btn-foreground);
+    --bs-btn-hover-bg: var(--custom-btn-hover-bg);
+    --bs-btn-hover-border-color: var(--custom-btn-hover-bg);
+    --bs-btn-focus-shadow-rgb: var(--custom-btn-focus-shadow);
+    --bs-btn-active-color: var(--custom-btn-foreground);
+    --bs-btn-active-bg: var(--custom-btn-active-bg);
+    --bs-btn-active-border-color: var(--custom-btn-active-bg);
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: var(--custom-btn-foreground);
+    --bs-btn-disabled-bg: var(--custom-btn-bg);
+    --bs-btn-disabled-border-color: var(--custom-btn-bg);
+
+    transition: background-color 300ms cubic-bezier(.4, 0, .2, 1),
+        border-color 300ms cubic-bezier(.4, 0, .2, 1),
+        color 300ms cubic-bezier(.4, 0, .2, 1);
+}
+
+
+.btn-primary:hover {
+    filter: brightness(1.1);
+}
+
+a {
+    transition: color 300ms cubic-bezier(.4, 0, .2, 1);
+}
+
+a {
+    color: hsl(262, 83%, 58%);
+    text-decoration: none;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+    background-color: hsl(var(--sidebar-accent));
+    color: hsl(var(--sidebar-accent-foreground));
+}
+
+.nav-link.disabled, .nav-link:disabled{
+    color: hsl(var(--sidebar-accent-foreground));
+}
+
+.sidebar{
+    background-color: hsl(222.2 84% 4.9%);
+}
+
+.btn-outline-secondary:hover{
+    --bs-btn-color: var(--custom-btn-foreground);
+    --bs-btn-bg: var(--custom-btn-bg);
+    --bs-btn-border-color: var(--custom-btn-bg);
+    --bs-btn-hover-color: var(--custom-btn-foreground);
+    --bs-btn-hover-bg: var(--custom-btn-hover-bg);
+    --bs-btn-hover-border-color: var(--custom-btn-hover-bg);
+    --bs-btn-focus-shadow-rgb: var(--custom-btn-focus-shadow);
+    --bs-btn-active-color: var(--custom-btn-foreground);
+    --bs-btn-active-bg: var(--custom-btn-active-bg);
+    --bs-btn-active-border-color: var(--custom-btn-active-bg);
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: var(--custom-btn-foreground);
+    --bs-btn-disabled-bg: var(--custom-btn-bg);
+    --bs-btn-disabled-border-color: var(--custom-btn-bg);
+}

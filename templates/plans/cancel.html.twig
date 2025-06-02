@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+  <div class="container text-center my-5">
+    <h1 class="display-4 mb-4">{{ "Paiement pour l'abonnement abandonné"|trans }}</h1>
+    <a href="{{ path('subscription_plans') }}" class="btn btn-primary">
+      {{ "Retour à la liste des abonnements"|trans }}
+    </a>
+  </div>
+{% endblock %}

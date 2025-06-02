@@ -1,0 +1,42 @@
+{% extends 'email/base.html.twig' %}
+
+{% block content %}
+	<h1>{{ 'Bonjour'|trans }}
+		{{ firstName }},</h1>
+
+	<p>
+		{{'Nous vous remercions pour votre confiance et avons le plaisir de vous confirmer votre souscription à l’abonnement'|trans}}
+		<strong>{{ planName }}</strong>.
+	</p>
+
+	<p>{{'Voici un récapitulatif de votre abonnement'|trans}}
+		:</p>
+	<ul>
+		<li>
+			<strong>{{'Nom de l’abonnement'|trans }}
+				:</strong>
+			{{ planName }}</li>
+		<li>
+			<strong>{{'Date de début'|trans }}
+				:</strong>
+			{{ startDate }}</li>
+		<li>
+			<strong>{{'Durée'|trans }}
+				/ {{ 'Renouvellement'|trans }} :</strong>
+			{{ renewal|capitalize|trans }}</li>
+		<li>
+			<strong>{{'Montant'|trans }}
+				:</strong>
+			{{ amount }}
+			TTC / {{ 'période'|trans }}</li>
+	</ul>
+
+	<p>
+		{{'Si vous avez des questions ou besoin d’assistance, notre équipe reste à votre écoute à l’adresse suivante'|trans}}
+		:
+		<a href="mailto:{{ mailer_sender_email }}">{{ mailer_sender_email }}</a>
+	</p>
+
+	<p>{{ 'Encore merci et bienvenue parmi nos abonnés'|trans }}
+		!</p>
+{% endblock %}

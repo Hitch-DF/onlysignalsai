@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+{% block title %}
+	{{ 'profile'|trans }}
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		{% for message in app.flashes('success') %}
+			<div class="alert alert-success">
+				{{ message }}
+			</div>
+		{% endfor %}
+		<div class="col-md-12">
+			<p>Dernière connexion le :
+				{{ lastConnection|date('d/m/Y') }}</p>
+		</div>
+        {% if details is not empty %}
+			<div class="col-12">
+				<p>Votre abonnement</p>
+				<p>{{ details.price }}{{ details.currency == 'eur' ? '€' : details.currency }}
+					par
+					{{ details.interval|trans }}</p>
+			</div>
+		{% endif %}
+		{{ form_start(form) }}
+		{{ form_errors(form) }}
+
+		<div class="row">
+			<div class="col-md-6">
+                {{ form_row(form.username) }}
+                {{ form_row(form.plainPassword) }}
+			</div>
+			<div class="col-md-6">
+				{{ form_row(form.email) }}
+				{{ form_row(form.phone) }}
+			</div>
+		</div>
+        <div class="d-grid mt-3">
+            <button type="submit" class="btn btn-primary">{{'Enregistrer'|trans}}</button>
+        </div>
+
+		{{ form_end(form) }}
+	</div>
+{% endblock %}
