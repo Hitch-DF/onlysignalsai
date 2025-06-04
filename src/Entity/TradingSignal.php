@@ -32,6 +32,9 @@ class TradingSignal
     #[ORM\Column(type: 'string', length: 20)]
     private string $category;
 
+    #[ORM\Column(nullable: true)]
+    private ?bool $status = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -113,5 +116,17 @@ class TradingSignal
             return $interval->format('%i minute(s) ago');
         }
         return 'Just now';
+    }
+
+    public function isStatus(): ?bool
+    {
+        return $this->status;
+    }
+
+    public function setStatus(?bool $status): static
+    {
+        $this->status = $status;
+
+        return $this;
     }
 }

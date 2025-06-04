@@ -14,10 +14,7 @@ final class HomeController extends AbstractController
     public function __construct(
         private TradingSignalRepository $tradingSignalRepository,
         private SubscriptionRepository $subscriptionRepository
-        )
-    {
-        
-    }
+    ) {}
 
     #[Route('/', name: 'app_home')]
     public function index(): Response
@@ -26,17 +23,36 @@ final class HomeController extends AbstractController
 
         $hasActive = false;
         $signals = [];
+        $assets = [];
+        $categories = [];
 
         if ($user) {
             $hasActive = $this->subscriptionRepository->userHasActiveSubscription($user);
             if ($hasActive) {
                 $signals = $this->tradingSignalRepository->findAll();
+
+                // Assets uniques
+                $assets = array_unique(array_map(fn($s) => $s->getSymbol(), $signals));
+                sort($assets);
+
+                // Catégories uniques
+                $categories = array_unique(array_map(fn($s) => $s->getCategory(), $signals));
+                sort($categories);
             }
         }
+
+        $signalsHistory = $this->tradingSignalRepository->findBy(
+            ['status' => true],
+            ['createdAt' => 'DESC'],
+            6
+        );
 
         return $this->render('home/index.html.twig', [
             'signals' => $signals,
             'hasActive' => $hasActive,
+            'assets' => $assets,
+            'categories' => $categories,
+            'signalsHistory' => $signalsHistory,
         ]);
     }
 }

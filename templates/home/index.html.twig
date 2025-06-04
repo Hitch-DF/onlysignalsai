@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}OnlySignals - {{'Vos Signaux de Trading en Temps Réel'|trans}}
+{% block title %}OnlySignals -
+	{{'Vos Signaux de Trading en Temps Réel'|trans}}
 {% endblock %}
 
 {% block stylesheets %}
@@ -9,18 +10,62 @@
 
 {% block body %}
 	<div class="d-flex">
-		{# Main content #}
 		<main class="flex-grow-1">
 			<header class="bg-white border-bottom py-3 px-4 d-flex justify-content-between align-items-center">
 				<h1 class="h4 mb-0">OnlySignals</h1>
 				<div>
 					<a href="{{path('app_login')}}" class="btn btn-primary btn-outline-primary d-inline-flex align-items-center">
 						<i class="bi bi-person-circle me-2"></i>
-						{{'Login'|trans}} / {{'Sign Up'|trans}}
+						{{'Login'|trans}}
+						/
+						{{'Sign Up'|trans}}
 					</a>
 
 				</div>
 			</header>
+
+			{% include '_partial/connected_ai.html.twig' %}
+			
+			{% if signalsHistory is empty %}
+				<div class="alert alert-info">No active signals found.</div>
+			{% else %}
+				<div class="row">
+					{% for signal in signalsHistory %}
+						<div class="col-md-4 mb-4">
+							<div class="card h-100 shadow-sm">
+								<div class="card-body">
+									<h5 class="card-title fw-semibold">{{ signal.symbol }}</h5>
+									<p class="card-text">
+										<strong>Price:</strong>
+										${{ signal.price|number_format(2, '.', ',') }}<br>
+										<strong>Type:</strong>
+										{% if signal.signalType == 'Buy' %}
+											<span class="badge bg-success">Buy</span>
+										{% else %}
+											<span class="badge bg-danger">Sell</span>
+										{% endif %}<br>
+										<strong>Category:</strong>
+										{{ signal.category }}<br>
+										<strong>Date:</strong>
+										{{ signal.createdAt|date('Y-m-d H:i') }}<br>
+										<strong>Signal Age:</strong>
+										{{ signal.signalAge }}
+									</p>
+								</div>
+								<div class="card-footer bg-white border-0">
+									<a href="https://www.tradingview.com/chart/?symbol={{ signal.symbol }}" target="_blank" class="btn btn-outline-primary btn-sm">
+										View on Chart
+									</a>
+								</div>
+							</div>
+						</div>
+						{% if loop.index is divisible by(3) %}
+						</div>
+						<div class="row">
+						{% endif %}
+					{% endfor %}
+				</div>
+			{% endif %}
 
 			<div class="container py-4">
 				<div class="d-flex justify-content-between align-items-center mb-4">

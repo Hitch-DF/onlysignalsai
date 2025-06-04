@@ -11,10 +11,7 @@ use Symfony\Component\Routing\Attribute\Route;
 final class TradingSignalController extends AbstractController
 {
 
-    public function __construct(private EntityManagerInterface $entityManager)
-    {
-        
-    }
+    public function __construct(private EntityManagerInterface $entityManager) {}
 
     #[Route('/simulate-signal', name: 'simulate_signal')]
     public function simulate(): Response
@@ -29,7 +26,8 @@ final class TradingSignalController extends AbstractController
             ->setPrice(mt_rand(30000, 70000) + mt_rand(0, 99) / 100)
             ->setCreatedAt(new \DateTime())
             ->setSignalType($types[array_rand($types)])
-            ->setCategory($categories[array_rand($categories)]);
+            ->setCategory($categories[array_rand($categories)])
+            ->setStatus((bool) random_int(0, 1));
 
         $this->entityManager->persist($signal);
         $this->entityManager->flush();

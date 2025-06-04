@@ -12,8 +12,52 @@
         </div>
     {% endif %}
 
+    {% if hasActive %}
+        <div class="mb-3 d-flex flex-wrap gap-3 align-items-end">
+            <div>
+                <label class="form-label">{{ 'All Assets'|trans }}</label>
+                <select class="form-select column-filter" data-column="0">
+                    <option value="">{{ 'All Assets'|trans }}</option>
+                    {% for asset in assets %}
+                        <option value="{{ asset }}">{{ asset }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div>
+                <label class="form-label">{{ 'All Types'|trans }}</label>
+                <select class="form-select column-filter" data-column="4">
+                    <option value="">{{ 'All Types'|trans }}</option>
+                    <option value="Buy">{{ 'Buy'|trans }}</option>
+                    <option value="Sell">{{ 'Sell'|trans }}</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="form-label">{{ 'All Categories'|trans }}</label>
+                <select class="form-select column-filter" data-column="5">
+                    <option value="">{{ 'All Categories'|trans }}</option>
+                    {% for cat in categories %}
+                        <option value="{{ cat }}">{{ cat }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div>
+                <label class="form-label">{{ 'Pick a date range'|trans }}</label>
+                <input type="text" id="date-range" class="form-control" placeholder="{{ 'Pick a date range'|trans }}">
+            </div>
+
+            <div>
+                <button id="reset-filters" class="btn btn-outline-secondary mt-2">
+                    {{ 'Reset Filters'|trans }}
+                </button>
+            </div>
+        </div>
+    {% endif %}
+
     <div class="table-responsive shadow-sm rounded border {{ not hasActive ? 'opacity-25' : '' }}">
-        <table class="table table-hover table-bordered align-middle mb-0">
+        <table id="signals-table" class="table table-hover table-bordered align-middle mb-0">
             <thead class="table-light">
                 <tr>
                     <th>{{ 'Asset'|trans }}</th>
@@ -30,7 +74,7 @@
                     <tr>
                         <td class="fw-semibold">{{ signal.symbol }}</td>
                         <td>${{ signal.price|number_format(2, '.', ',') }}</td>
-                        <td>{{ signal.createdAt|date('n/j/Y, g:i:s A') }}</td>
+                        <td>{{ signal.createdAt|date('Y-m-d') }}</td>
                         <td>{{ signal.signalAge }}</td>
                         <td>
                             {% if signal.signalType == 'Buy' %}

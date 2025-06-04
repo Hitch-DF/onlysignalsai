@@ -16,21 +16,36 @@ document.addEventListener('DOMContentLoaded', function () {
         lengthChange: false
     });
 
-    $('#signals-table thead tr:eq(1) th').each(function (i) {
-        const input = $(this).find('input, select');
-        if (input.length) {
-            input.on('keyup change', function () {
-                if (table.column(i).search() !== this.value) {
-                    table.column(i).search(this.value).draw();
-                }
-            });
-        }
+    // Colonnes dynamiques (assets, types, categories)
+    document.querySelectorAll('.column-filter').forEach(el => {
+        el.addEventListener('change', () => {
+            const col = el.getAttribute('data-column');
+            const val = el.value;
+            table.column(col).search(val).draw();
+        });
     });
 
-    const sidebar = document.getElementById("sidebar");
-        const toggleBtn = document.getElementById("toggleSidebar");
+    // Filtre date range
+    const dateInput = document.getElementById('date-range');
+    dateInput.addEventListener('change', function () {
+        table.draw();
+    });
 
-        toggleBtn.addEventListener("click", () => {
-            sidebar.classList.toggle("collapsed");
-        });
+    // Reset filters
+    document.getElementById('reset-filters').addEventListener('click', () => {
+        document.querySelectorAll('.column-filter').forEach(el => el.value = '');
+        dateInput.value = '';
+        table.search('').columns().search('').draw();
+    });
+
+    // Custom filter for date range
+    $.fn.dataTable.ext.search.push(function (settings, data) {
+        const range = dateInput.value;
+        if (!range.includes(' - ')) return true;
+
+        const [start, end] = range.split(' - ').map(s => new Date(s));
+        const date = new Date(data[2]);
+
+        return date >= start && date <= end;
+    });
 });
