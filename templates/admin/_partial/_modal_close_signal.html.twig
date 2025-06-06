@@ -2,6 +2,7 @@
 	<div class="modal-dialog modal-dialog-centered">
 		<div class="modal-content bg-card border border-secondary">
 			{{ form_start(form) }}
+			{% form_theme form 'bootstrap_5_layout.html.twig' %}
 			<div class="modal-header">
 				<h5 class="modal-title" id="closeModalLabel-{{ signal.id }}">
 					<i class="bi bi-x-circle me-2"></i>

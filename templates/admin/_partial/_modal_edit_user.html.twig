@@ -2,6 +2,7 @@
 	<div class="modal-dialog modal-dialog-centered">
 		<div class="modal-content bg-card border border-secondary">
 			{{ form_start(form) }}
+            {% form_theme form 'bootstrap_5_layout.html.twig' %}
 				<div class="modal-header">
 					<h5 class="modal-title" id="editUserModalLabel-{{ user.id }}">
 						<i class="bi bi-gear-fill me-2"></i> Gérer l'utilisateur : {{ user.username }}
@@ -12,8 +13,8 @@
 					{{ form_row(form.email) }}
 					{{ form_row(form.phone) }}
 					{{ form_row(form.username) }}
-					{{ form_row(form.enabled) }}
 					{{ form_row(form.stripeCustomerId) }}
+					{{ form_row(form.enabled) }}
 				</div>
 				<div class="modal-footer border-0">
 					<button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Annuler</button>

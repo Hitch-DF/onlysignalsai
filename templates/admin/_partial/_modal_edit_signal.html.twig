@@ -12,6 +12,7 @@
 					action: path('app_admin_trading_signal_edit', { id: signal.id }),
 					attr: { enctype: 'multipart/form-data' }
 				}) }}
+				{% form_theme form 'bootstrap_5_layout.html.twig' %}
 				<div class="row g-3">
 					{% for field in form %}
 						<div class="col-md-6">{{ form_row(field) }}</div>
