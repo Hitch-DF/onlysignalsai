@@ -1,0 +1,28 @@
+<div class="modal fade" id="closeModal-{{ signal.id }}" tabindex="-1" aria-labelledby="closeModalLabel-{{ signal.id }}" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content bg-card border border-secondary">
+			{{ form_start(form) }}
+			<div class="modal-header">
+				<h5 class="modal-title" id="closeModalLabel-{{ signal.id }}">
+					<i class="bi bi-x-circle me-2"></i>
+					Clôturer le Signal : {{ signal.symbol }}
+				</h5>
+				<button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fermer"></button>
+			</div>
+			<div class="modal-body">
+				<p class="text-muted">Veuillez renseigner les informations de clôture pour ce signal.</p>
+
+				{{ form_row(form.exitPrice) }}
+				{{ form_row(form.pips) }}
+				{{ form_row(form.result) }}
+				{{ form_row(form.closedAt) }}
+				{{ form_row(form.screenshot) }}
+			</div>
+			<div class="modal-footer border-0">
+				<button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Annuler</button>
+				<button type="submit" class="btn btn-primary">Confirmer</button>
+			</div>
+			{{ form_end(form) }}
+		</div>
+	</div>
+</div>

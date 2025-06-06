@@ -17,7 +17,7 @@ final class TradingSignalHistoryController extends AbstractController
     public function index(): Response
     {
         $signals = $this->tradingSignalRepository->findBy(
-            ['status' => true],
+            ['status' => false],
             ['createdAt' => 'DESC']
         );
 

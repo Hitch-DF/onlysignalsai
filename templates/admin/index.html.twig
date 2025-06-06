@@ -1,20 +1,44 @@
+{# templates/admin/index.html.twig #}
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AdminController!{% endblock %}
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+	<main class="container my-5">
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+		{% include 'admin/_partial/_modal_form_signal.html.twig' with { form: signalForm } %}
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/home/rjelu/onlysignalsai/src/Controller/AdminController.php</code></li>
-        <li>Your template at <code>/home/rjelu/onlysignalsai/templates/admin/index.html.twig</code></li>
-    </ul>
-</div>
+		{% include 'admin/_partial/_table_signaux_actifs.html.twig' with { signals: signals } %}
+
+		{% include 'admin/_partial/_table_signaux_historiques.html.twig' with { signals: signalsHistory, editForms: editForms } %}
+
+		{% include 'admin/_partial/_table_users.html.twig' with { users: users } %}
+
+		{% for signal in signalsHistory %}
+			{% include 'admin/_partial/_modal_edit_signal.html.twig' with { form: editForms[signal.id], signal: signal } %}
+			{% include 'admin/_partial/_modal_delete_signal.html.twig' with { signal: signal } %}
+		{% endfor %}
+
+		{% for signal in signals %}
+			{% include 'admin/_partial/_modal_close_signal.html.twig' with {
+				signal: signal,
+				form: closeForms[signal.id]
+    		} %}
+
+		{% endfor %}
+		{% for user in users %}
+			{% include 'admin/_partial/_modal_edit_user.html.twig' with {
+		user: user,
+		form: userForms[user.id]
+	} only %}
+		{% endfor %}
+
+
+	</main>
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
 {% endblock %}

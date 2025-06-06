@@ -29,7 +29,10 @@ final class HomeController extends AbstractController
         if ($user) {
             $hasActive = $this->subscriptionRepository->userHasActiveSubscription($user);
             if ($hasActive) {
-                $signals = $this->tradingSignalRepository->findAll();
+                $signals = $this->tradingSignalRepository->findBy(
+                    ['status' => true],
+                    ['createdAt' => 'DESC'],
+                );
 
                 // Assets uniques
                 $assets = array_unique(array_map(fn($s) => $s->getSymbol(), $signals));
@@ -42,9 +45,8 @@ final class HomeController extends AbstractController
         }
 
         $signalsHistory = $this->tradingSignalRepository->findBy(
-            ['status' => true],
+            ['status' => false],
             ['createdAt' => 'DESC'],
-            6
         );
 
         return $this->render('home/index.html.twig', [

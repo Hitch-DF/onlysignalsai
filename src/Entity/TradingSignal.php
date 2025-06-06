@@ -20,9 +20,6 @@ class TradingSignal
     #[ORM\Column(type: 'string', length: 20)]
     private string $symbol;
 
-    #[ORM\Column(type: 'float')]
-    private float $price;
-
     #[ORM\Column(type: 'datetime')]
     private \DateTimeInterface $createdAt;
 
@@ -34,6 +31,27 @@ class TradingSignal
 
     #[ORM\Column(nullable: true)]
     private ?bool $status = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?float $entryPrice = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?float $exitPrice = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?\DateTime $closedAt = null;
+
+    #[ORM\Column(length: 10, nullable: true)]
+    private ?string $timeFrame = null;
+
+    #[ORM\Column(length: 15, nullable: true)]
+    private ?string $result = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $screenshot = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?float $pips = null;
 
     public function getId(): ?int
     {
@@ -48,17 +66,6 @@ class TradingSignal
     public function setSymbol(string $symbol): self
     {
         $this->symbol = $symbol;
-        return $this;
-    }
-
-    public function getPrice(): float
-    {
-        return $this->price;
-    }
-
-    public function setPrice(float $price): self
-    {
-        $this->price = $price;
         return $this;
     }
 
@@ -126,6 +133,90 @@ class TradingSignal
     public function setStatus(?bool $status): static
     {
         $this->status = $status;
+
+        return $this;
+    }
+
+    public function getEntryPrice(): ?float
+    {
+        return $this->entryPrice;
+    }
+
+    public function setEntryPrice(?float $entryPrice): static
+    {
+        $this->entryPrice = $entryPrice;
+
+        return $this;
+    }
+
+    public function getExitPrice(): ?float
+    {
+        return $this->exitPrice;
+    }
+
+    public function setExitPrice(?float $exitPrice): static
+    {
+        $this->exitPrice = $exitPrice;
+
+        return $this;
+    }
+
+    public function getClosedAt(): ?\DateTime
+    {
+        return $this->closedAt;
+    }
+
+    public function setClosedAt(?\DateTime $closedAt): static
+    {
+        $this->closedAt = $closedAt;
+
+        return $this;
+    }
+
+    public function getTimeFrame(): ?string
+    {
+        return $this->timeFrame;
+    }
+
+    public function setTimeFrame(?string $timeFrame): static
+    {
+        $this->timeFrame = $timeFrame;
+
+        return $this;
+    }
+
+    public function getResult(): ?string
+    {
+        return $this->result;
+    }
+
+    public function setResult(?string $result): static
+    {
+        $this->result = $result;
+
+        return $this;
+    }
+
+    public function getScreenshot(): ?string
+    {
+        return $this->screenshot;
+    }
+
+    public function setScreenshot(?string $screenshot): static
+    {
+        $this->screenshot = $screenshot;
+
+        return $this;
+    }
+
+    public function getPips(): ?float
+    {
+        return $this->pips;
+    }
+
+    public function setPips(?float $pips): static
+    {
+        $this->pips = $pips;
 
         return $this;
     }

@@ -59,7 +59,7 @@
                     {% for signal in signalsHistory %}
                         <tr>
                             <td class="fw-semibold">{{ signal.symbol }}</td>
-                            <td>${{ signal.price|number_format(2, '.', ',') }}</td>
+                            <td>{{ signal.price|number_format(2, '.', ',') }}</td>
                             <td>{{ signal.createdAt|date('Y-m-d H:i:s') }}</td>
                             <td>{{ signal.signalAge }}</td>
                             <td>

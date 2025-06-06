@@ -1,0 +1,25 @@
+<div class="modal fade" id="deleteModal-{{ signal.id }}" tabindex="-1" aria-labelledby="deleteModalLabel-{{ signal.id }}" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content bg-card border border-danger-subtle">
+			<div class="modal-header border-0">
+				<h5 class="modal-title text-danger" id="deleteModalLabel-{{ signal.id }}">
+					<i class="bi bi-exclamation-triangle-fill me-2"></i> Confirmer la Suppression
+				</h5>
+				<button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fermer"></button>
+			</div>
+			<div class="modal-body">
+				<p>Voulez-vous vraiment supprimer le signal <strong>{{ signal.symbol }}</strong> (ID: {{ signal.id }}) ?<br>
+				<span class="text-muted">Cette action est irréversible.</span></p>
+			</div>
+			<div class="modal-footer border-0 d-flex justify-content-between">
+				<button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Annuler</button>
+				<form method="post" action="{{ path('app_admin_trading_signal_delete', { id: signal.id }) }}">
+					<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ signal.id) }}">
+					<button type="submit" class="btn btn-danger">
+						<i class="bi bi-trash3 me-1"></i> Supprimer
+					</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

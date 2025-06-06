@@ -1,0 +1,28 @@
+<div class="modal fade" id="editModal-{{ signal.id }}" tabindex="-1" aria-labelledby="editModalLabel-{{ signal.id }}" aria-hidden="true">
+	<div class="modal-dialog modal-lg modal-dialog-centered">
+		<div class="modal-content bg-card text-light border-0">
+			<div class="modal-header border-0">
+				<h5 class="modal-title" id="editModalLabel-{{ signal.id }}">
+					<i class="bi bi-pencil-square me-2"></i> Modifier le signal ({{ signal.symbol }})
+				</h5>
+				<button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fermer"></button>
+			</div>
+			<div class="modal-body">
+				{{ form_start(form, {
+					action: path('app_admin_trading_signal_edit', { id: signal.id }),
+					attr: { enctype: 'multipart/form-data' }
+				}) }}
+				<div class="row g-3">
+					{% for field in form %}
+						<div class="col-md-6">{{ form_row(field) }}</div>
+					{% endfor %}
+				</div>
+				<div class="mt-4 d-flex justify-content-end gap-2">
+					<button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Annuler</button>
+					<button type="submit" class="btn btn-primary">Enregistrer</button>
+				</div>
+				{{ form_end(form, { render_rest: false }) }}
+			</div>
+		</div>
+	</div>
+</div>

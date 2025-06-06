@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New TradingSignal{% endblock %}
+
+{% block body %}
+    <h1>Create new TradingSignal</h1>
+
+    {{ include('admin/trading_signal/_form.html.twig') }}
+
+    <a href="{{ path('app_admin_trading_signal_index') }}">back to list</a>
+{% endblock %}

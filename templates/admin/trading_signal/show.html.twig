@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TradingSignal{% endblock %}
+
+{% block body %}
+    <h1>TradingSignal</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ trading_signal.id }}</td>
+            </tr>
+            <tr>
+                <th>Symbol</th>
+                <td>{{ trading_signal.symbol }}</td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td>{{ trading_signal.price }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ trading_signal.createdAt ? trading_signal.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>SignalType</th>
+                <td>{{ trading_signal.signalType }}</td>
+            </tr>
+            <tr>
+                <th>Category</th>
+                <td>{{ trading_signal.category }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ trading_signal.status ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_trading_signal_index') }}">back to list</a>
+
+    <a href="{{ path('app_admin_trading_signal_edit', {'id': trading_signal.id}) }}">edit</a>
+
+    {{ include('admin/trading_signal/_delete_form.html.twig') }}
+{% endblock %}

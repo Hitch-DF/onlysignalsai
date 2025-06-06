@@ -51,7 +51,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?bool $enabled = true;
 
-    
+
     #[ORM\Column]
     private array $roles = ['ROLE_USER'];
 
@@ -73,9 +73,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 50)]
     private ?string $username = null;
 
+    #[ORM\Column]
+    private ?\DateTime $createdAt = null;
+
 
     public function __construct()
     {
+        $this->createdAt = new \DateTime();
         $this->subscriptions = new ArrayCollection();
         $this->loginHistories = new ArrayCollection();
     }
@@ -170,7 +174,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
 
-     public function getRoles(): array
+    public function getRoles(): array
     {
         $roles = $this->roles;
         $roles[] = 'ROLE_USER';
@@ -284,4 +288,26 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    public function getActiveSubscription(): ?Subscription
+    {
+        $now = new \DateTime();
+        foreach ($this->subscriptions as $subscription) {
+            if ($subscription->getStart() <= $now && $subscription->getEnd() >= $now) {
+                return $subscription;
+            }
+        }
+        return null;
+    }
+
+    public function getCreatedAt(): ?\DateTime
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTime $createdAt): static
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
 }

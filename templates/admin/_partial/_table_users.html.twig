@@ -1,0 +1,57 @@
+<div class="card bg-card text-light shadow-sm border-0">
+	<div class="card-header bg-dark text-center py-4">
+		<i class="bi bi-people text-info fs-2 mb-3 d-block"></i>
+		<h2 class="h4 mb-0">Gestion des Utilisateurs</h2>
+	</div>
+	<div class="card-body">
+		<div class="table-responsive">
+			<table id="users-table" class="table table-dark table-bordered table-hover align-middle mb-0">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Email</th>
+						<th>Abonnement</th>
+						<th>Plan</th>
+						<th>Fin</th>
+						<th>Inscrit</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for user in users %}
+						<tr>
+							<td>{{ user.id }}</td>
+							<td>{{ user.email }}</td>
+							<td>
+								{% if user.hasActiveSubscription() %}
+									<span class="badge bg-success">Abonné</span>
+								{% else %}
+									<span class="badge bg-secondary">Non abonné</span>
+								{% endif %}
+							</td>
+							<td>{{ user.hasActiveSubscription ? user.getActiveSubscription().getPrice() : '' }}</td>
+							<td>
+								{% if user.getActiveSubscription() %}
+									{{ user.getActiveSubscription().getEnd()|date('d/m/Y') }}
+								{% else %}
+									<span class="text-muted">N/A</span>
+								{% endif %}
+							</td>
+							<td>{{ user.createdAt|date('d/m/Y') }}</td>
+							<td class="text-end">
+								<button class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#editUserModal-{{ user.id }}">
+									<i class="bi bi-gear-fill me-1"></i>
+									Gérer
+								</button>
+							</td>
+						</tr>
+					{% else %}
+						<tr>
+							<td colspan="7" class="text-center text-muted">Aucun utilisateur trouvé</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

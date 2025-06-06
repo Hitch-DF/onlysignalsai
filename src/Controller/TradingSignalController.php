@@ -18,15 +18,17 @@ final class TradingSignalController extends AbstractController
     {
         $assets = ['BTCUSDT', 'ETHUSDT', 'SOLUSDT'];
         $categories = ['Crypto', 'Forex'];
+        $timeFrame = ['H1', 'M15', 'M30'];
         $types = TradingSignal::ALLOWED_TYPES;
 
         $signal = new TradingSignal();
         $signal
             ->setSymbol($assets[array_rand($assets)])
-            ->setPrice(mt_rand(30000, 70000) + mt_rand(0, 99) / 100)
+            ->setEntryPrice(mt_rand(30000, 70000) + mt_rand(0, 99) / 100)
             ->setCreatedAt(new \DateTime())
             ->setSignalType($types[array_rand($types)])
             ->setCategory($categories[array_rand($categories)])
+            ->setTimeFrame($timeFrame[array_rand($timeFrame)])
             ->setStatus((bool) random_int(0, 1));
 
         $this->entityManager->persist($signal);

@@ -1,0 +1,21 @@
+user:
+  form:
+    email: Adresse e-mail
+    phone: Téléphone
+    locale: Langue
+    enabled: Actif
+    roles: Rôles
+    stripe_customer_id: Identifiant Stripe
+    username: Nom d'utilisateur
+
+  role:
+    admin: Administrateur
+    user: Utilisateur
+
+actions:
+  edit: Editer
+  create: Créer
+  delete: Supprimer
+  management: Gestion
+  update: Mettre à jour
+  actions: Retourner à la liste

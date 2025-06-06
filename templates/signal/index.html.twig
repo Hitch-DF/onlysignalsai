@@ -1,18 +1,4 @@
 <div class="container my-5 position-relative">
-
-    {% if not hasActive %}
-        <div class="position-fixed top-0 start-0 end-0 bottom-0 bg-dark bg-opacity-75 text-white d-flex flex-column justify-content-center align-items-center px-3" style="z-index: 1050;">
-            <div class="text-center mb-4">
-                <i class="bi bi-lock-fill fs-1 mb-3"></i>
-                <p class="lead">{{ 'Vous devez être abonné pour voir les signaux'|trans }}.</p>
-            </div>
-            <div>
-                <a href="{{ path('subscription_plans') }}" class="btn btn-primary">{{ 'Voir les offres'|trans }}</a>
-            </div>
-        </div>
-    {% endif %}
-
-    {% if hasActive %}
         <div class="mb-3 d-flex flex-wrap gap-3 align-items-end">
             <div>
                 <label class="form-label">{{ 'All Assets'|trans }}</label>
@@ -54,9 +40,8 @@
                 </button>
             </div>
         </div>
-    {% endif %}
 
-    <div class="table-responsive shadow-sm rounded border {{ not hasActive ? 'opacity-25' : '' }}">
+    <div class="table-responsive shadow-sm rounded border">
         <table id="signals-table" class="table table-hover table-bordered align-middle mb-0">
             <thead class="table-light">
                 <tr>
@@ -70,10 +55,10 @@
                 </tr>
             </thead>
             <tbody>
-                {% for signal in signals %}
+                {% for signal in signalsHistory %}
                     <tr>
                         <td class="fw-semibold">{{ signal.symbol }}</td>
-                        <td>${{ signal.price|number_format(2, '.', ',') }}</td>
+                        <td>${{ signal.entryPrice|number_format(2, '.', ',') }}</td>
                         <td>{{ signal.createdAt|date('Y-m-d') }}</td>
                         <td>{{ signal.signalAge }}</td>
                         <td>
@@ -101,10 +86,6 @@
                                 <i class="bi bi-box-arrow-up-right ms-1"></i>
                             </a>
                         </td>
-                    </tr>
-                {% else %}
-                    <tr>
-                        <td colspan="7" class="text-center text-muted">{{ 'No signals found'|trans }}.</td>
                     </tr>
                 {% endfor %}
             </tbody>
