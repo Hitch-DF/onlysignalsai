@@ -31,10 +31,7 @@ final class HomeController extends AbstractController
             $hasActive = $user->hasSignalAccess();
 
             if ($hasActive) {
-                $signals = $this->tradingSignalRepository->findBy(
-                    ['status' => true],
-                    ['createdAt' => 'DESC'],
-                );
+                $signals = $this->tradingSignalRepository->findActiveSignals();
 
                 // Assets uniques
                 $assets = array_unique(array_map(fn($s) => $s->getSymbol(), $signals));
@@ -46,10 +43,7 @@ final class HomeController extends AbstractController
             }
         }
 
-        $signalsHistory = $this->tradingSignalRepository->findBy(
-            ['status' => false],
-            ['createdAt' => 'DESC'],
-        );
+        $signalsHistory = $this->tradingSignalRepository->findHistoricalSignals();
 
         $assetsHistory = array_unique(array_map(fn($s) => $s->getSymbol(), $signalsHistory));
         sort($assetsHistory);
@@ -57,11 +51,7 @@ final class HomeController extends AbstractController
         $categoriesHistory = array_unique(array_map(fn($s) => $s->getCategory(), $signalsHistory));
         sort($categoriesHistory);
 
-        $fakeSignal = $this->tradingSignalRepository->findBy(
-            ['fake' => true],
-            ['createdAt' => 'DESC'],
-            3
-        );
+        $fakeSignal = $this->tradingSignalRepository->findFakeSignals();
 
         return $this->render('home/index.html.twig', [
             'signals' => $signals,

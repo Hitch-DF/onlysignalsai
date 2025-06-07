@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		statusText.textContent = "Connecté";
 		statusText.classList.remove("text-danger");
 		statusText.classList.add("text-success");
-	}, 3000);
+	}, 2000);
 
 	const $signalsHistoryTable = $('#signals-table-history');
 
