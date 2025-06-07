@@ -20,9 +20,11 @@
 					</select>
 				</form>
 
-				<a href="{{ path('app_login') }}" class="btn btn-primary d-inline-flex align-items-center">
-					<i class="bi bi-person-circle me-2"></i>
-					{{ 'Login'|trans }} / {{ 'Sign Up'|trans }}
+				<a href="{{ path('app_login') }}" class="btn btn-secondary d-inline-flex align-items-center">
+					{{ 'Login'|trans }}
+				</a>
+				<a href="{{ path('app_register') }}" class="btn btn-primary d-inline-flex align-items-center">
+					{{ 'Sign Up'|trans }}
 				</a>
 			</div>
 		</header>
