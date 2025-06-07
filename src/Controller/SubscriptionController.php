@@ -2,9 +2,13 @@
 
 namespace App\Controller;
 
+use App\Entity\LifetimeAccess;
+use App\Entity\Subscription;
+use App\Repository\LifetimeAccessRepository;
 use App\Repository\SubscriptionRepository;
 use App\Service\StripeService;
 use App\Service\TemplateService;
+use Doctrine\ORM\EntityManagerInterface;
 use Exception;
 use InvalidArgumentException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -19,7 +23,9 @@ class SubscriptionController extends AbstractController
     public function __construct(
         private StripeService $stripe,
         private SubscriptionRepository $subscriptionRepository,
-        private LoggerInterface $logger
+        private LoggerInterface $logger,
+        private EntityManagerInterface $entityManager,
+        private LifetimeAccessRepository $lifetimeAccessRepository
     ) {}
 
     /**
@@ -31,8 +37,8 @@ class SubscriptionController extends AbstractController
     public function showPlans(): Response
     {
         $plans = $this->stripe->getActivePlans();
-
-        if ($user = $this->getUser()) {
+        $user = $this->getUser();
+        if ($user) {
             $subData = $this->stripe->getUserActiveSubscriptionData($user);
             $subscriptionPriceIds = $subData['priceIds'];
             $subscriptionEndDates = $subData['endDates'];
@@ -41,10 +47,13 @@ class SubscriptionController extends AbstractController
             $subscriptionEndDates = [];
         }
 
+        $isLifetime = $this->lifetimeAccessRepository->findOneBy(['user' => $user]);
+
         return $this->render('plans/index.html.twig', [
             'plans'                => $plans,
             'subscriptionPriceIds' => $subscriptionPriceIds,
             'subscriptionEndDates' => $subscriptionEndDates,
+            'isLifetime' => $isLifetime
         ]);
     }
 
@@ -190,5 +199,15 @@ class SubscriptionController extends AbstractController
             $this->logger->error("Erreur session lifetime : " . $e->getMessage());
             return $this->json(['error' => 'Erreur lors de la création de la session.'], 500);
         }
+    }
+
+    #[Route('/cancel-subscription/{id}', name: 'cancel_subscription')]
+    public function cancelSub(Subscription $subscription): Response
+    {
+        $this->stripe->scheduleCancellation($subscription->getStripeSubscriptionId());
+
+        $this->addFlash('success', 'Abonnement annulé avec succès.');
+
+        return $this->redirectToRoute('app_dashboard');
     }
 }

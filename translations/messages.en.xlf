@@ -669,6 +669,18 @@
         <source>Ouvrir dans un onglet</source>
         <target>Open in a tab</target>
       </trans-unit>
+      <trans-unit id="XkF7vJb" resname="A vie">
+        <source>A vie</source>
+        <target>For life</target>
+      </trans-unit>
+      <trans-unit id="7FX7uD3" resname="Vous avez déjà accès à vie à ce plan.">
+        <source>Vous avez déjà accès à vie à ce plan.</source>
+        <target>You already have lifetime access to this plan.</target>
+      </trans-unit>
+      <trans-unit id="bpsnTvJ" resname="Acheter à vie, votre abonnement sera automatiquement annulé et vous ne serez plus débité">
+        <source>Acheter à vie, votre abonnement sera automatiquement annulé et vous ne serez plus débité</source>
+        <target>Buy for life, your subscription will be automatically canceled and you will no longer be charged</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

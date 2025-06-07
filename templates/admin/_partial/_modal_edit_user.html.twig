@@ -2,24 +2,40 @@
 	<div class="modal-dialog modal-dialog-centered">
 		<div class="modal-content bg-card border border-secondary">
 			{{ form_start(form) }}
-            {% form_theme form 'bootstrap_5_layout.html.twig' %}
-				<div class="modal-header">
-					<h5 class="modal-title" id="editUserModalLabel-{{ user.id }}">
-						<i class="bi bi-gear-fill me-2"></i> {{"Gérer l'utilisateur"|trans}} : {{ user.username }}
-					</h5>
-					<button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fermer"></button>
-				</div>
-				<div class="modal-body">
-					{{ form_row(form.email) }}
-					{{ form_row(form.phone) }}
-					{{ form_row(form.username) }}
-					{{ form_row(form.stripeCustomerId) }}
-					{{ form_row(form.enabled) }}
-				</div>
-				<div class="modal-footer border-0">
-					<button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">{{"Annuler"|trans}}</button>
-					<button type="submit" class="btn btn-primary">{{"Enregistrer"|trans}}</button>
-				</div>
+			{% form_theme form 'bootstrap_5_layout.html.twig' %}
+			<div class="modal-header">
+				<h5 class="modal-title" id="editUserModalLabel-{{ user.id }}">
+					<i class="bi bi-gear-fill me-2"></i> {{"Gérer l'utilisateur"|trans}} : {{ user.username }}
+				</h5>
+				<button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fermer"></button>
+			</div>
+			<div class="modal-body">
+				{{ form_row(form.email) }}
+				{{ form_row(form.phone) }}
+				{{ form_row(form.username) }}
+				{{ form_row(form.stripeCustomerId) }}
+				{{ form_row(form.enabled) }}
+
+				{# Bouton d'annulation de l'abonnement si actif #}
+				{% set activeSubscription = user.activeSubscription %}
+
+				{% if activeSubscription and activeSubscription.stripeSubscriptionId %}
+					<hr class="my-4">
+					<div class="alert alert-warning text-dark">
+						<i class="bi bi-exclamation-triangle-fill me-2"></i>
+						{{ "Cet utilisateur a un abonnement actif."|trans }}
+					</div>
+					<a href="{{ path('cancel_subscription', { id: activeSubscription.id }) }}"
+					   class="btn btn-outline-danger w-100"
+					   onclick="return confirm('{{ 'Confirmer l’annulation de l’abonnement ?'|trans }}')">
+						<i class="bi bi-x-circle me-1"></i> {{ "Annuler l’abonnement Stripe"|trans }}
+					</a>
+				{% endif %}
+			</div>
+			<div class="modal-footer border-0">
+				<button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">{{"Annuler"|trans}}</button>
+				<button type="submit" class="btn btn-primary">{{"Enregistrer"|trans}}</button>
+			</div>
 			{{ form_end(form) }}
 		</div>
 	</div>

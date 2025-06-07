@@ -525,11 +525,35 @@ class StripeService
         $access = new LifetimeAccess();
         $access->setUser($user);
         $access->setStripePaymentIntentId($paymentIntentId);
-        $access->setGrantedAt(new \DateTime('now')); 
+        $access->setGrantedAt(new \DateTime('now'));
 
         $this->entityManager->persist($access);
+
+        $subscription = $this->subscriptionRepository->findOneBy(['user' => $user, 'active' => true]);
+
+        if ($subscription && $subscription->getStripeSubscriptionId()) {
+            try {
+                $this->scheduleCancellation($subscription->getStripeSubscriptionId());
+                $this->logger->info("📆 Annulation planifiée pour l'abonnement #{$subscription->getId()}");
+            } catch (\Exception $e) {
+                $this->logger->error("❌ Erreur lors de l'annulation de l'abonnement : " . $e->getMessage());
+            }
+        }
+
         $this->entityManager->flush();
 
         $this->logger->info("✅ Accès à vie accordé à l'utilisateur #{$user->getId()}");
+    }
+
+
+    public function scheduleCancellation(string $subscriptionId): void
+    {
+        try {
+            $this->client->subscriptions->update($subscriptionId, [
+                'cancel_at_period_end' => true,
+            ]);
+        } catch (\Exception $e) {
+            throw new \RuntimeException("Échec de la planification de l'annulation : " . $e->getMessage());
+        }
     }
 }

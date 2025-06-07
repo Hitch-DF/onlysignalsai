@@ -677,6 +677,18 @@
         <source>Ouvrir dans un onglet</source>
         <target>Ouvrir dans un onglet</target>
       </trans-unit>
+      <trans-unit id="XkF7vJb" resname="A vie">
+        <source>A vie</source>
+        <target>A vie</target>
+      </trans-unit>
+      <trans-unit id="7FX7uD3" resname="Vous avez déjà accès à vie à ce plan.">
+        <source>Vous avez déjà accès à vie à ce plan.</source>
+        <target>Vous avez déjà accès à vie à ce plan.</target>
+      </trans-unit>
+      <trans-unit id="bpsnTvJ" resname="Acheter à vie, votre abonnement sera automatiquement annulé et vous ne serez plus débité">
+        <source>Acheter à vie, votre abonnement sera automatiquement annulé et vous ne serez plus débité</source>
+        <target>Acheter à vie, votre abonnement sera automatiquement annulé et vous ne serez plus débité</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
