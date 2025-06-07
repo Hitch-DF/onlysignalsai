@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+{% form_theme resetForm 'bootstrap_5_layout.html.twig' %}
+{% block title %}{{ 'Réinitialisez votre mot de passe'|trans }}{% endblock %}
+
+{% block body %}
+<div class="min-vh-100 d-flex flex-column bg-card text-light">
+  <main class="flex-grow-1 d-flex justify-content-center align-items-center px-3 py-5">
+    <div class="card shadow-sm border border-secondary bg-card text-light w-100" style="max-width: 420px;">
+      <div class="card-header text-center bg-transparent border-bottom border-secondary">
+        <h1 class="h4 fw-bold mb-2">{{ 'Nouveau mot de passe'|trans }}</h1>
+        <p class="text-muted small mb-0">{{ "Choisissez un nouveau mot de passe pour accéder à votre compte."|trans }}</p>
+      </div>
+
+      <div class="card-body">
+        {{ form_start(resetForm) }}
+          {{ form_errors(resetForm) }}
+          {{ form_row(resetForm.plainPassword) }}
+          <div class="d-grid mt-3">
+            <button type="submit" class="btn btn-primary w-100">
+              {{ 'Réinitialiser le mot de passe'|trans }}
+            </button>
+          </div>
+        {{ form_end(resetForm) }}
+      </div>
+    </div>
+  </main>
+</div>
+{% endblock %}

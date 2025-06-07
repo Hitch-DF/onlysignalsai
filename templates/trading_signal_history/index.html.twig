@@ -4,7 +4,10 @@
 
 {% block body %}
 <div class="container my-5">
-    <h1 class="mb-4">Latest Active Signals</h1>
+    <div class="text-center mb-5">
+        <h2 id="historical-signals-heading" class="h3 fw-bold text-light">{{ 'Historical Performance'|trans }}</h2>
+        <p class="text-muted">{{ 'Review past signals and their outcomes. Filter by asset, type, or date'|trans }}.</p>
+    </div>
 
     {% if signalsHistory is empty %}
         <div class="alert alert-info">No active signals found.</div>
@@ -42,60 +45,56 @@
         </div>
 
         <!-- Signal Table -->
-        <div class="table-responsive shadow-sm rounded border">
-            <table id="signals-table" class="table table-hover table-bordered align-middle mb-0">
-                <thead class="table-light">
+         <div class="table-responsive shadow-sm rounded border">
+        <table id="signals-table" class="table table-hover table-bordered align-middle mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th>{{ 'Asset'|trans }}</th>
+                    <th>{{ 'Price'|trans }}</th>
+                    <th>{{ 'Date'|trans }}</th>
+                    <th>{{ 'Signal Age'|trans }}</th>
+                    <th>{{ 'Signal Type'|trans }}</th>
+                    <th>{{ 'Category'|trans }}</th>
+                    <th>{{ 'Chart'|trans }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for signal in signalsHistory %}
                     <tr>
-                        <th>{{ 'Asset'|trans }}</th>
-                        <th>{{ 'Price'|trans }}</th>
-                        <th>{{ 'Date'|trans }}</th>
-                        <th>{{ 'Signal Age'|trans }}</th>
-                        <th>{{ 'Signal Type'|trans }}</th>
-                        <th>{{ 'Category'|trans }}</th>
-                        <th>{{ 'Chart'|trans }}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for signal in signalsHistory %}
-                        <tr>
-                            <td class="fw-semibold">{{ signal.symbol }}</td>
-                            <td>{{ signal.price|number_format(2, '.', ',') }}</td>
-                            <td>{{ signal.createdAt|date('Y-m-d H:i:s') }}</td>
-                            <td>{{ signal.signalAge }}</td>
-                            <td>
-                                {% if signal.signalType == 'Buy' %}
-                                    <span class="d-inline-flex align-items-center rounded-pill border border-success bg-success bg-opacity-10 text-success fw-semibold px-3 py-1 text-nowrap small">
-                                        <i class="bi bi-graph-up-arrow me-1"></i>
-                                        {{ 'Buy'|trans }}
-                                    </span>
-                                {% else %}
-                                    <span class="d-inline-flex align-items-center rounded-pill border border-danger bg-danger bg-opacity-10 text-danger fw-semibold px-3 py-1 text-nowrap small">
-                                        <i class="bi bi-graph-down-arrow me-1"></i>
-                                        {{ 'Sell'|trans }}
-                                    </span>
-                                {% endif %}
-                            </td>
-                            <td>
-                                <span class="badge rounded-pill bg-secondary text-light d-inline-flex align-items-center gap-1 px-3 py-1">
-                                    <i class="bi bi-tag-fill small"></i>
-                                    {{ signal.category }}
+                        <td class="fw-semibold">{{ signal.symbol }}</td>
+                        <td>${{ signal.entryPrice|number_format(2, '.', ',') }}</td>
+                        <td>{{ signal.createdAt|date('Y-m-d') }}</td>
+                        <td>{{ signal.signalAge }}</td>
+                        <td>
+                            {% if signal.signalType == 'Buy' %}
+                                <span class="d-inline-flex align-items-center rounded-pill border border-success bg-success bg-opacity-10 text-success fw-semibold px-3 py-1 text-nowrap small">
+                                    <i class="bi bi-graph-up-arrow me-1"></i>
+                                    {{ 'Buy'|trans }}
                                 </span>
-                            </td>
-                            <td>
-                                <a href="https://www.tradingview.com/chart/?symbol={{ signal.symbol }}" target="_blank" class="btn btn-outline-secondary btn-sm">
-                                    {{ 'View'|trans }}
-                                    <i class="bi bi-box-arrow-up-right ms-1"></i>
-                                </a>
-                            </td>
-                        </tr>
-                    {% else %}
-                        <tr>
-                            <td colspan="7" class="text-center text-muted">{{ 'No signals found'|trans }}.</td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
+                            {% else %}
+                                <span class="d-inline-flex align-items-center rounded-pill border border-danger bg-danger bg-opacity-10 text-danger fw-semibold px-3 py-1 text-nowrap small">
+                                    <i class="bi bi-graph-down-arrow me-1"></i>
+                                    {{ 'Sell'|trans }}
+                                </span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            <span class="badge rounded-pill bg-secondary text-light d-inline-flex align-items-center gap-1 px-3 py-1">
+                                <i class="bi bi-tag-fill small"></i>
+                                {{ signal.category }}
+                            </span>
+                        </td>
+                        <td>
+                            <a href="https://www.tradingview.com/chart/?symbol={{ signal.symbol }}" target="_blank" class="btn btn-outline-secondary btn-sm">
+                                {{ 'View'|trans }}
+                                <i class="bi bi-box-arrow-up-right ms-1"></i>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
     {% endif %}
 </div>
 {% endblock %}

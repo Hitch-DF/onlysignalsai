@@ -1,8 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}OnlySignals -
-	{{ 'Vos Signaux de Trading en Temps Réel'|trans }}
-{% endblock %}
+{% block title %}OnlySignals - {{ 'Vos Signaux de Trading en Temps Réel'|trans }}{% endblock %}
 
 {% block stylesheets %}
 	{{ parent() }}
@@ -15,85 +13,95 @@
 				<h1 class="h4 mb-0 text-light">OnlySignals</h1>
 				<a href="{{ path('app_login') }}" class="btn btn-primary d-inline-flex align-items-center">
 					<i class="bi bi-person-circle me-2"></i>
-					{{ 'Login'|trans }}
-					/
-					{{ 'Sign Up'|trans }}
+					{{ 'Login'|trans }} / {{ 'Sign Up'|trans }}
 				</a>
 			</header>
 
 			{% include '_partial/connected_ai.html.twig' %}
 
 			{% if signals is empty %}
-				<div class="">
-					<div class="text-center mb-4">
-						<i class="bi bi-lock-fill fs-1 mb-3"></i>
-						<p class="lead">{{ 'Vous devez être abonné pour voir les signaux actifs'|trans }}.</p>
-					</div>
-					<div class="text-center">
-						<a href="{{ path('subscription_plans') }}" class="btn btn-primary">{{ 'Voir les offres'|trans }}</a>
-					</div>
+				<div class="container py-5 text-center">
+					<i class="bi bi-lock-fill fs-1 mb-3 text-muted"></i>
+					<p class="lead text-muted">{{ 'Vous devez être abonné pour voir les signaux actifs'|trans }}.</p>
+					<a href="{{ path('subscription_plans') }}" class="btn btn-primary">{{ 'Voir les offres'|trans }}</a>
 				</div>
 			{% else %}
 				<div class="row m-0 py-3">
 					{% for signal in signals %}
 						<div class="col-md-4 mb-4">
-							<div class="card bg-card h-100 shadow-sm">
-								<div class="card-body">
-									<h5 class="card-title fw-semibold">{{ signal.symbol }}</h5>
-									<p class="card-text small">
-										<strong>Price:</strong>
-										${{ signal.entryPrice|number_format(2, '.', ',') }}<br>
-										<strong>Type:</strong>
-										<span class="badge {{ signal.signalType == 'Buy' ? 'bg-success' : 'bg-danger' }}">{{ signal.signalType }}</span><br>
-										<strong>Category:</strong>
-										{{ signal.category }}<br>
-										<strong>Date:</strong>
-										{{ signal.createdAt|date('Y-m-d H:i') }}<br>
-										<strong>Signal Age:</strong>
-										{{ signal.signalAge }}
-									</p>
+							<div class="card border bg-card text-light shadow-sm h-100 hover-shadow transition">
+								<div class="card-body pb-2">
+									<div class="d-flex justify-content-between align-items-center mb-2">
+										<h5 class="fw-bold mb-0">{{ signal.symbol }}</h5>
+										<div class="badge rounded-pill text-white px-2 py-1 {{ signal.signalType == 'Buy' ? 'bg-success' : 'bg-danger' }}">
+											<i class="bi {{ signal.signalType == 'Buy' ? 'bi-graph-up-arrow' : 'bi-graph-down-arrow' }} me-1"></i>
+											{{ signal.signalType }}
+										</div>
+									</div>
+									<div class="text-muted small mb-3">
+										<i class="bi bi-clock me-1"></i>
+										{{ signal.createdAt|date('d/m/Y H:i') }} • {{ signal.timeFrame|default('N/A') }}
+									</div>
+									<ul class="list-unstyled small mb-0">
+										<li class="d-flex justify-content-between">
+											<span class="text-muted">Entry Price:</span>
+											<span class="fw-semibold">${{ signal.entryPrice|number_format(2, '.', ',') }}</span>
+										</li>
+										{% if signal.exitPrice is not null %}
+											<li class="d-flex justify-content-between">
+												<span class="text-muted">Exit Price:</span>
+												<span class="fw-semibold">${{ signal.exitPrice|number_format(2, '.', ',') }}</span>
+											</li>
+										{% endif %}
+										{% if signal.pips is not null %}
+											<li class="d-flex justify-content-between">
+												<span class="text-muted">Pips:</span>
+												<span class="fw-semibold">{{ signal.pips }}</span>
+											</li>
+										{% endif %}
+										<li class="d-flex justify-content-between">
+											<span class="text-muted">Category:</span>
+											<span class="badge bg-secondary text-light">{{ signal.category }}</span>
+										</li>
+									</ul>
 								</div>
-								<div class="card-footer text-center">
-									<a href="https://www.tradingview.com/chart/?symbol={{ signal.symbol }}" target="_blank" class="btn btn-outline-secondary btn-sm">
-										<i class="bi bi-graph-up"></i>
-										View on Chart
+								<div class="card-footer border-0 pt-0 bg-transparent">
+									<a href="https://www.tradingview.com/chart/?symbol={{ signal.symbol }}" target="_blank"
+										class="btn btn-outline-secondary btn-sm w-100 d-flex align-items-center justify-content-center gap-2">
+										<i class="bi bi-bar-chart-line"></i> View Chart
 									</a>
 								</div>
 							</div>
 						</div>
-						{% if loop.index is divisible by(3) %}
-						</div>
-						<div class="row m-0 py-3">
-						{% endif %}
+						{% if loop.index is divisible by(3) %}</div><div class="row m-0 py-3">{% endif %}
 					{% endfor %}
 				</div>
 			{% endif %}
 
 			<div class="container py-4">
-				<div class="d-flex justify-content-between align-items-center mb-4">
-					<h2 class="h5 text-light">{{ 'Signals Table'|trans }}</h2>
-					<div class="d-flex gap-2">
-						<a href="{{ path('simulate_signal') }}" class="btn btn-outline-secondary d-none d-sm-inline-flex">
-							<i class="bi bi-plus-square me-2"></i>
-							{{ 'Simulate Signal'|trans }}
-						</a>
-						<button class="btn btn-primary">
-							<i class="bi bi-arrow-repeat me-2"></i>
-							{{ 'Refresh'|trans }}
-						</button>
-					</div>
-				</div>
-
 				<div class="row g-3 mb-4">
-					{% include "signal/index.html.twig" %}
+					<div class="text-center mb-5">
+						<h2 id="historical-signals-heading" class="h3 fw-bold text-light">{{ 'Historical Performance'|trans }}</h2>
+						<p class="text-muted">{{ 'Review past signals and their outcomes. Filter by asset, type, or date'|trans }}.</p>
+					</div>
+					<div class="d-flex justify-content-between align-items-center mb-4">
+						<div class="d-flex gap-2">
+							<a href="{{ path('simulate_signal') }}" class="btn btn-outline-secondary d-none d-sm-inline-flex">
+								<i class="bi bi-plus-square me-2"></i>
+								{{ 'Simulate Signal'|trans }}
+							</a>
+							<button class="btn btn-primary">
+								<i class="bi bi-arrow-repeat me-2"></i>
+								{{ 'Refresh'|trans }}
+							</button>
+						</div>
+					</div>
+					{% include "signal/history.html.twig" %}
 				</div>
 			</div>
 
 			<footer class="text-center py-4 border-top text-light">
-				&copy;
-				{{ "now"|date("Y") }}
-				OnlySignals.
-				{{ 'All rights reserved'|trans }}.
+				&copy; {{ "now"|date("Y") }} OnlySignals. {{ 'All rights reserved'|trans }}.
 			</footer>
 		</main>
 	</div>

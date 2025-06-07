@@ -1,34 +1,34 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{'Authentification'|trans }} - OnlySignals{% endblock %}
+{% block title %}{{ 'Authentification'|trans }} - OnlySignals{% endblock %}
 
 {% block body %}
-<div class="min-vh-100 d-flex flex-column bg-light">
+<div class="min-vh-100 d-flex flex-column bg-card text-light">
 
-  <main class="flex-grow-1 d-flex justify-content-center align-items-center px-3">
-    <div class="card shadow w-100" style="max-width: 400px;">
-      <div class="card-header text-center bg-white border-bottom-0">
-        <h1 class="h4 fw-bold mb-1">{{'Bienvenue'|trans}} !</h1>
-        <p class="text-muted small mb-0">{{'Connectez-vous pour accéder à vos signaux'|trans}}.</p>
+  <main class="flex-grow-1 d-flex justify-content-center align-items-center px-3 py-5">
+    <div class="card shadow-sm border border-secondary bg-card text-light w-100" style="max-width: 420px;">
+      <div class="card-header text-center border-bottom border-secondary bg-transparent">
+        <h1 class="h4 fw-bold mb-1">{{ 'Bienvenue'|trans }} !</h1>
+        <p class="text-muted small mb-0">{{ 'Connectez-vous pour accéder à vos signaux'|trans }}.</p>
       </div>
 
       <div class="card-body">
         {% if error %}
-          <div class="alert alert-danger small">
+          <div class="alert alert-danger small border border-danger-subtle bg-danger bg-opacity-10 text-light">
             {{ error.messageKey|trans(error.messageData, 'security') }}
           </div>
         {% endif %}
 
         {% if app.user %}
-          <div class="alert alert-success small">
-            Connecté en tant que {{ app.user.userIdentifier }}.
-            <a href="{{ path('app_logout') }}" class="text-decoration-underline">{{'Déconnexion'|trans}}</a>
+          <div class="alert alert-success small border border-success-subtle bg-success bg-opacity-10 text-light">
+            {{ 'Connecté en tant que'|trans }} {{ app.user.userIdentifier }}.
+            <a href="{{ path('app_logout') }}" class="text-decoration-underline">{{ 'Déconnexion'|trans }}</a>
           </div>
         {% endif %}
 
         <form method="post">
           <div class="mb-3">
-            <label for="username" class="form-label">{{'Adresse e-mail'|trans}}</label>
+            <label for="username" class="form-label">{{ 'Adresse e-mail'|trans }}</label>
             <input
               type="email"
               id="username"
@@ -43,7 +43,7 @@
           </div>
 
           <div class="mb-3">
-            <label for="password" class="form-label">{{'Mot de passe'|trans}}</label>
+            <label for="password" class="form-label">{{ 'Mot de passe'|trans }}</label>
             <input
               type="password"
               id="password"
@@ -56,25 +56,26 @@
 
           <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
-          <div class="d-grid">
-            <button type="submit" class="btn btn-primary">
-              {{'Se connecter'|trans}}
+          <div class="d-grid mt-4">
+            <button type="submit" class="btn btn-primary w-100">
+              {{ 'Se connecter'|trans }}
             </button>
           </div>
         </form>
       </div>
 
-      <div class="card-footer text-center bg-white border-top-0">
+      <div class="card-footer text-center border-top border-secondary bg-transparent">
         <p class="small text-muted mb-0">
-          {{'Pas encore de compte'|trans}} ?
-          <a href="{{ path('app_register') }}" class="text-decoration-underline fw-semibold">{{'Créer un compte'|trans}}</a>
+          {{ 'Pas encore de compte'|trans }} ?
+          <a href="{{ path('app_register') }}" class="text-decoration-underline fw-semibold">{{ 'Créer un compte'|trans }}</a>
         </p>
+        <a href="{{ path('app_forgot_password_request') }}" class="text-decoration-underline fw-semibold">{{ 'Mot de passe oublié'|trans }} ?</a>
       </div>
     </div>
   </main>
 
-  <footer class="text-center py-4 text-muted small border-top">
-    © {{ "now"|date("Y") }} OnlySignals. {{'Tous droits réservés'|trans}}.
+  <footer class="text-center py-4 border-top border-secondary text-muted small">
+    © {{ "now"|date("Y") }} OnlySignals. {{ 'Tous droits réservés'|trans }}.
   </footer>
 </div>
 {% endblock %}

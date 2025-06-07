@@ -1,48 +1,48 @@
 <div class="card bg-card text-light mb-5 shadow-sm border-0">
-	<div class="card-header bg-dark text-center py-4">
-		<i class="bi bi-clock-history text-warning fs-2 mb-3 d-block"></i>
-		<h2 class="h4 mb-0">Gestion de l'historique des signaux</h2>
-	</div>
-	<div class="card-body">
-		<button class="btn btn-primary d-inline-flex align-items-center mb-3" data-bs-toggle="modal" data-bs-target="#modalAddSignal">
-			<i class="bi bi-plus-circle me-2"></i> Ajouter un Signal Historique
-		</button>
+  <div class="card-header bg-dark text-center py-4">
+    <i class="bi bi-clock-history text-warning fs-2 mb-3 d-block"></i>
+    <h2 class="h4 mb-0">Gestion de l'historique des signaux</h2>
+  </div>
+  <div class="card-body">
+    <button class="btn btn-primary d-inline-flex align-items-center mb-3" data-bs-toggle="modal" data-bs-target="#modalAddSignal">
+      <i class="bi bi-plus-circle me-2"></i> Ajouter un Signal Historique
+    </button>
 
-		<div class="table-responsive">
-			<table id="signals-table-history" class="table table-dark table-bordered table-hover align-middle mb-0">
-				<thead>
-					<tr>
-						<th>ID</th><th>Entrée</th><th>Clôture</th><th>Actif</th><th>Type</th><th>TF</th><th>Entrée</th><th>Sortie</th><th>Pips</th><th>Résultat</th><th>Screenshot</th><th>Actions</th>
-					</tr>
-				</thead>
-				<tbody>
-					{% for signal in signals %}
-						<tr>
-							<td>{{ signal.id }}</td>
-							<td>{{ signal.createdAt|date('d/m/Y H:i') }}</td>
-							<td>{{ signal.closedAt|date('d/m/Y H:i') }}</td>
-							<td>{{ signal.symbol }}</td>
-							<td><span class="badge {{ signal.signalType == 'Buy' ? 'bg-success' : 'bg-danger' }}">{{ signal.signalType }}</span></td>
-							<td>{{ signal.timeFrame }}</td>
-							<td>{{ signal.entryPrice }}</td>
-							<td>{{ signal.exitPrice }}</td>
-							<td>{{ signal.pips }}</td>
-							<td>{{ signal.result }}</td>
-							<td>{{ signal.screenshot }}</td>
-							<td class="text-end">
-								<button class="btn btn-outline-secondary btn-sm me-1" data-bs-toggle="modal" data-bs-target="#editModal-{{ signal.id }}">
-									<i class="bi bi-pencil-square"></i>
-								</button>
-								<button class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal-{{ signal.id }}">
-									<i class="bi bi-trash3"></i>
-								</button>
-							</td>
-						</tr>
-					{% else %}
-						<tr><td colspan="12" class="text-center text-muted">Aucun signal historique</td></tr>
-					{% endfor %}
-				</tbody>
-			</table>
-		</div>
-	</div>
+    <div class="table-responsive">
+      <table id="signals-table-history" class="datatable table table-dark table-bordered table-hover align-middle mb-0">
+        <thead>
+          <tr>
+            <th>ID</th><th>Entrée</th><th>Clôture</th><th>Actif</th><th>Type</th><th>TF</th><th>Entrée</th><th>Sortie</th><th>Pips</th><th>Résultat</th><th>Screenshot</th><th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for signal in signals %}
+            <tr>
+              <td>{{ signal.id }}</td>
+              <td>{{ signal.createdAt|date('d/m/Y H:i') }}</td>
+              <td>{{ signal.closedAt|date('d/m/Y H:i') }}</td>
+              <td>{{ signal.symbol }}</td>
+              <td><span class="badge {{ signal.signalType == 'Buy' ? 'bg-success' : 'bg-danger' }}">{{ signal.signalType }}</span></td>
+              <td>{{ signal.timeFrame }}</td>
+              <td>{{ signal.entryPrice }}</td>
+              <td>{{ signal.exitPrice }}</td>
+              <td>{{ signal.pips }}</td>
+              <td>{{ signal.result }}</td>
+              <td>{{ signal.screenshot }}</td>
+              <td class="text-end">
+                <button class="btn btn-outline-secondary btn-sm me-1" data-bs-toggle="modal" data-bs-target="#editModal-{{ signal.id }}">
+                  <i class="bi bi-pencil-square"></i>
+                </button>
+                <button class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal-{{ signal.id }}">
+                  <i class="bi bi-trash3"></i>
+                </button>
+              </td>
+            </tr>
+          {% else %}
+            <tr><td colspan="12" class="text-center text-muted">Aucun signal historique</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>

@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+{% form_theme requestForm 'bootstrap_5_layout.html.twig' %}
+{% block title %}{{ 'Réinitialiser votre mot de passe'|trans }}{% endblock %}
+
+{% block body %}
+<div class="min-vh-100 d-flex flex-column bg-card text-light">
+
+  <main class="flex-grow-1 d-flex justify-content-center align-items-center px-3 py-5">
+    <div class="card shadow-sm border border-secondary bg-card text-light w-100" style="max-width: 420px;">
+      <div class="card-header text-center bg-transparent border-bottom border-secondary">
+        <h1 class="h4 fw-bold mb-1">{{ 'Réinitialiser votre mot de passe'|trans }}</h1>
+        <p class="text-muted small mb-0">
+          {{ 'Entrez votre adresse email pour recevoir un lien de réinitialisation.'|trans }}
+        </p>
+      </div>
+
+      <div class="card-body">
+        {% for flash_error in app.flashes('reset_password_error') %}
+          <div class="alert alert-danger small mb-3" role="alert">
+            {{ flash_error }}
+          </div>
+        {% endfor %}
+
+        {{ form_start(requestForm) }}
+          <div class="mb-3">
+            {{ form_row(requestForm.email, {
+              attr: {
+                class: 'form-control bg-dark text-light border-secondary'
+              },
+              label_attr: {
+                class: 'form-label text-light'
+              }
+            }) }}
+            <small class="text-muted">{{ "Vous recevrez un lien par email pour réinitialiser votre mot de passe."|trans }}</small>
+          </div>
+
+          <div class="d-grid mt-3">
+            <button type="submit" class="btn btn-primary w-100">
+              {{ 'Envoyer le lien de réinitialisation'|trans }}
+            </button>
+          </div>
+        {{ form_end(requestForm) }}
+      </div>
+
+      <div class="card-footer text-center bg-transparent border-top border-secondary">
+        <p class="small text-muted mb-0">
+          <a href="{{ path('app_login') }}" class="text-decoration-underline fw-semibold">
+            {{ 'Retour à la connexion'|trans }}
+          </a>
+        </p>
+      </div>
+    </div>
+  </main>
+</div>
+{% endblock %}

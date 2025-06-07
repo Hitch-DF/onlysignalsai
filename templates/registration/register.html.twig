@@ -1,43 +1,39 @@
 {% extends 'base.html.twig' %}
 {% form_theme registrationForm 'bootstrap_5_layout.html.twig' %}
 
-{% block title %}Créer un compte - OnlySignals{% endblock %}
+{% block title %}{{"Créer un compte"|trans}} - OnlySignals{% endblock %}
 
 {% block body %}
-<div class="min-vh-100 d-flex flex-column bg-light">
-  <header class="py-4 px-4">
-    <a class="d-inline-flex align-items-center gap-2" href="{{ path('app_home') }}">
-      <img src="{{ asset('favicon.ico') }}" alt="OnlySignals Logo" height="40" />
-    </a>
-  </header>
+<div class="min-vh-100 d-flex flex-column bg-card text-light">
 
-  <main class="flex-grow-1 d-flex justify-content-center align-items-center px-3">
-    <div class="card shadow w-100" style="max-width: 400px;">
-      <div class="card-header text-center bg-white border-bottom-0">
-        <h1 class="h4 fw-bold mb-1">Bienvenue !</h1>
-        <p class="text-muted small mb-0">Créez votre compte pour accéder à OnlySignals.</p>
+  <main class="flex-grow-1 d-flex justify-content-center align-items-center px-3 py-5">
+    <div class="card shadow-sm border border-secondary bg-card text-light w-100" style="max-width: 420px;">
+      <div class="card-header text-center bg-transparent border-bottom border-secondary">
+        <h1 class="h4 fw-bold mb-1">{{ 'Bienvenue'|trans }} !</h1>
+        <p class="text-muted small mb-0">{{ 'Créez votre compte pour accéder à OnlySignals'|trans }}.</p>
       </div>
 
       <div class="card-body">
         {{ form_start(registrationForm) }}
+          {{ form_errors(registrationForm) }}
           {{ form_widget(registrationForm) }}
           <div class="d-grid mt-3">
-            <button type="submit" class="btn btn-primary">Créer un compte</button>
+            <button type="submit" class="btn btn-primary w-100">{{ 'Créer un compte'|trans }}</button>
           </div>
         {{ form_end(registrationForm) }}
       </div>
 
-      <div class="card-footer text-center bg-white border-top-0">
+      <div class="card-footer text-center bg-transparent border-top border-secondary">
         <p class="small text-muted mb-0">
-          Vous avez déjà un compte ?
-          <a href="{{ path('app_login') }}" class="text-decoration-underline fw-semibold">Se connecter</a>
+          {{ 'Vous avez déjà un compte ?'|trans }}
+          <a href="{{ path('app_login') }}" class="text-decoration-underline fw-semibold">{{ 'Se connecter'|trans }}</a>
         </p>
       </div>
     </div>
   </main>
 
-  <footer class="text-center py-4 text-muted small border-top">
-    © {{ "now"|date("Y") }} OnlySignals. Tous droits réservés.
+  <footer class="text-center py-4 text-muted small border-top border-secondary">
+    © {{ "now"|date("Y") }} OnlySignals. {{ 'Tous droits réservés'|trans }}.
   </footer>
 </div>
 {% endblock %}

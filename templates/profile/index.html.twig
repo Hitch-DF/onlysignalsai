@@ -1,45 +1,62 @@
 {% extends 'base.html.twig' %}
 {% form_theme form 'bootstrap_5_layout.html.twig' %}
+
 {% block title %}
 	{{ 'profile'|trans }}
 {% endblock %}
 
 {% block body %}
-	<div class="container">
+	<div class="container my-5">
 		{% for message in app.flashes('success') %}
-			<div class="alert alert-success">
+			<div class="alert alert-success border border-success-subtle bg-success bg-opacity-10 text-light">
 				{{ message }}
 			</div>
 		{% endfor %}
-		<div class="col-md-12">
-			<p>Dernière connexion le :
-				{{ lastConnection|date('d/m/Y') }}</p>
-		</div>
-        {% if details is not empty %}
-			<div class="col-12">
-				<p>Votre abonnement</p>
-				<p>{{ details.price }}{{ details.currency == 'eur' ? '€' : details.currency }}
-					par
-					{{ details.interval|trans }}</p>
-			</div>
-		{% endif %}
-		{{ form_start(form) }}
-		{{ form_errors(form) }}
 
-		<div class="row">
-			<div class="col-md-6">
-                {{ form_row(form.username) }}
-                {{ form_row(form.plainPassword) }}
-			</div>
-			<div class="col-md-6">
-				{{ form_row(form.email) }}
-				{{ form_row(form.phone) }}
+		<div class="card bg-card text-light border border-secondary mb-4 shadow-sm">
+			<div class="card-body">
+				<p class="mb-2">
+					<i class="bi bi-clock-history me-2"></i>
+					<strong>Dernière connexion :</strong>
+					{{ lastConnection|date('d/m/Y') }}
+				</p>
+
+				{% if details is not empty %}
+					<div class="mb-3">
+						<p class="mb-1"><strong>Votre abonnement</strong></p>
+						<p class="text-muted small mb-0">
+							{{ details.price }} {{ details.currency == 'eur' ? '€' : details.currency|upper }} / {{ details.interval|trans }}
+						</p>
+					</div>
+				{% endif %}
 			</div>
 		</div>
-        <div class="d-grid mt-3">
-            <button type="submit" class="btn btn-primary">{{'Enregistrer'|trans}}</button>
-        </div>
 
-		{{ form_end(form) }}
+		<div class="card bg-card text-light border border-secondary shadow-sm">
+			<div class="card-body">
+				{{ form_start(form) }}
+				{{ form_errors(form) }}
+
+				<div class="row">
+					<div class="col-md-6">
+						{{ form_row(form.username) }}
+						{{ form_row(form.plainPassword) }}
+					</div>
+					<div class="col-md-6">
+						{{ form_row(form.email) }}
+						{{ form_row(form.phone) }}
+					</div>
+				</div>
+
+				<div class="d-grid mt-4">
+					<button type="submit" class="btn btn-primary">
+						<i class="bi bi-save me-2"></i>
+						{{ 'Enregistrer'|trans }}
+					</button>
+				</div>
+
+				{{ form_end(form) }}
+			</div>
+		</div>
 	</div>
 {% endblock %}
