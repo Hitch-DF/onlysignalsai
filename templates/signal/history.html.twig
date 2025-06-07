@@ -27,18 +27,18 @@
       <div class="col-md-3">
         <label class="form-label text-muted">Type</label>
         <select class="form-select bg-dark text-light border-secondary column-filter" data-column="3">
-          <option value="">Tous</option>
-          <option value="Buy">Buy</option>
-          <option value="Sell">Sell</option>
+          <option value="">{{"Tous"|trans}}</option>
+          <option value="Buy">{{"Buy"|trans}}</option>
+          <option value="Sell">{{"Sell"|trans}}</option>
         </select>
       </div>
 
 		<div class="col-md-3">
-			<label class="form-label text-muted">Date d'entrée min</label>
+			<label class="form-label text-muted">{{"Date d'entrée min"|trans}}</label>
 			<input type="text" id="min-date" class="form-control bg-dark text-light border-secondary" autocomplete="off">
 		</div>
 		<div class="col-md-3">
-			<label class="form-label text-muted">Date d'entrée max</label>
+			<label class="form-label text-muted">{{"Date d'entrée max"|trans}}</label>
 			<input type="text" id="max-date" class="form-control bg-dark text-light border-secondary" autocomplete="off">
 		</div>
 
@@ -48,17 +48,17 @@
       <table id="signals-table-history" class="table table-dark table-bordered table-hover align-middle mb-0">
         <thead>
           <tr>
-            <th>Date d'entrée</th>
-            <th>Date de clôture</th>
-            <th>Actif</th>
-            <th>Type</th>
-            <th>TimeFrame</th>
-            <th>Prix d'entrée</th>
-            <th>Prix de sortie</th>
-            <th>Pips</th>
-            <th>Résultat</th>
-            <th>Screenshot</th>
-            <th>Actions</th>
+            <th>{{"Date d'entrée"|trans }}</th>
+            <th>{{"Date de clôture"|trans }}</th>
+            <th>{{"Actif"|trans }}</th>
+            <th>{{"Type"|trans }}</th>
+            <th>{{"TimeFrame"|trans }}</th>
+            <th>{{"Prix d'entrée"|trans }}</th>
+            <th>{{"Prix de sortie"|trans }}</th>
+            <th>{{"Pips"|trans }}</th>
+            <th>{{"Résultat"|trans }}</th>
+            <th>{{"Screenshot"|trans }}</th>
+            <th>{{"Actions"|trans }}</th>
           </tr>
         </thead>
         <tbody>
@@ -101,23 +101,23 @@
 				      </td>
             </tr>
           {% else %}
-            <tr><td colspan="13" class="text-center text-muted">Aucun signal historique</td></tr>
+            <tr><td colspan="13" class="text-center text-muted">{{"Aucun signal historique"|trans}}</td></tr>
           {% endfor %}
           <div class="modal fade" id="screenshotModal" tabindex="-1" aria-labelledby="screenshotModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-centered">
     <div class="modal-content bg-card border border-secondary">
       <div class="modal-header">
         <h5 class="modal-title d-flex align-items-center gap-2" id="screenshotModalLabel">
-          <i class="bi bi-image"></i> Screenshot
+          <i class="bi bi-image"></i> {{"Screenshot"|trans}}
         </h5>
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fermer"></button>
       </div>
       <div class="modal-body text-center">
         <img id="modal-screenshot-image" src="" alt="Screenshot" class="img-fluid rounded shadow d-none">
-        <p id="modal-screenshot-placeholder" class="text-muted">Chargement...</p>
+        <p id="modal-screenshot-placeholder" class="text-muted">{{"Chargement"|trans}}...</p>
       </div>
       <div class="modal-footer border-0 justify-content-end">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{"Fermer"|trans}}</button>
       </div>
     </div>
   </div>

@@ -17,13 +17,13 @@
 			<div class="card-body">
 				<p class="mb-2">
 					<i class="bi bi-clock-history me-2"></i>
-					<strong>Dernière connexion :</strong>
+					<strong>{{"Dernière connexion"|trans}} :</strong>
 					{{ lastConnection|date('d/m/Y') }}
 				</p>
 
 				{% if details is not empty %}
 					<div class="mb-3">
-						<p class="mb-1"><strong>Votre abonnement</strong></p>
+						<p class="mb-1"><strong>{{"Votre abonnement"|trans}}</strong></p>
 						<p class="text-muted small mb-0">
 							{{ details.price }} {{ details.currency == 'eur' ? '€' : details.currency|upper }} / {{ details.interval|trans }}
 						</p>

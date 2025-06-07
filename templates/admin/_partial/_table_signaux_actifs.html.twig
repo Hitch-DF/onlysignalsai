@@ -9,12 +9,12 @@
         <thead>
           <tr>
             <th>ID</th>
-            <th>Actif</th>
-            <th>Type</th>
-            <th>Timeframe</th>
-            <th>Entrée</th>
-            <th>Créé le</th>
-            <th>Actions</th>
+            <th>{{'Actif'|trans}}</th>
+            <th>{{"Type"|trans}}</th>
+            <th>{{"Timeframe"|trans}}</th>
+            <th>{{"Entrée"|trans}}</th>
+            <th>{{"Créé le"|trans}}</th>
+            <th>{{"Actions"|trans}}</th>
           </tr>
         </thead>
         <tbody>
@@ -31,13 +31,13 @@
               <td class="text-end">
                 <button class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#closeModal-{{ signal.id }}">
                   <i class="bi bi-x-circle"></i>
-                  Fermer
+                  {{"Fermer"|trans}}
                 </button>
               </td>
             </tr>
           {% else %}
             <tr>
-              <td colspan="7" class="text-center text-muted">Aucun signal actif</td>
+              <td colspan="7" class="text-center text-muted">{{"Aucun signal actif"|trans}}</td>
             </tr>
           {% endfor %}
         </tbody>

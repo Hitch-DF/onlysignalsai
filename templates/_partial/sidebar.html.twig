@@ -17,7 +17,7 @@
 		<li class="nav-item">
 			<a href="{{ path('app_trading_signal_history') }}"
 			   class="nav-link d-flex align-items-center {{ app.request.attributes.get('_route') == 'app_trading_signal_history' ? 'active' : '' }}">
-				<i class="bi bi-clock-history me-2"></i> Signal History
+				<i class="bi bi-clock-history me-2"></i> {{'Signal History'|trans}}
 			</a>
 		</li>
 
@@ -30,7 +30,7 @@
 
 		<li class="nav-item">
 			<a href="#" class="nav-link disabled d-flex align-items-center">
-				<i class="bi bi-people me-2"></i> Community Signals
+				<i class="bi bi-people me-2"></i> {{'Community Signals'|trans}}
 				<span class="badge bg-success ms-auto">Soon</span>
 			</a>
 		</li>
@@ -39,7 +39,7 @@
 		<li class="nav-item">
 			<a href="{{ path('app_profile') }}"
 			   class="nav-link d-flex align-items-center {{ app.request.attributes.get('_route') == 'app_profile' ? 'active' : '' }}">
-				<i class="bi bi-person me-2"></i> Account
+				<i class="bi bi-person me-2"></i> {{'Account'|trans}}
 			</a>
 		</li>
 		{% endif %}
@@ -47,7 +47,7 @@
 			<li class="nav-item">
 				<a href="{{ path('app_dashboard') }}"
 				   class="nav-link d-flex align-items-center {{ app.request.attributes.get('_route') starts with 'app_dashboard' ? 'active' : '' }}">
-					<i class="bi bi-speedometer2 me-2"></i> Back Office
+					<i class="bi bi-speedometer2 me-2"></i> {{'Back Office'|trans}}
 				</a>
 			</li>
 		{% endif %}

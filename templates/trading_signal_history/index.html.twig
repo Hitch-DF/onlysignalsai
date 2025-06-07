@@ -10,15 +10,15 @@
     </div>
 
     {% if signalsHistory is empty %}
-        <div class="alert alert-info">No active signals found.</div>
+        <div class="alert alert-info">{{"No active signals found"|trans}}.</div>
     {% else %}
 
         <!-- Filters -->
         <div class="row g-3 mb-4 align-items-end">
             <div class="col-md-3">
-                <label for="asset-filter" class="form-label">All Assets</label>
+                <label for="asset-filter" class="form-label">{{"All Assets"|trans}}</label>
                 <select id="asset-filter" class="form-select column-filter" data-column="0">
-                    <option value="">All</option>
+                    <option value="">{{"All"|trans}}</option>
                     {% for symbol in symbols %}
                         <option value="{{ symbol }}">{{ symbol }}</option>
                     {% endfor %}
@@ -26,21 +26,21 @@
             </div>
 
             <div class="col-md-3">
-                <label for="type-filter" class="form-label">All Types</label>
+                <label for="type-filter" class="form-label">{{"All Types"|trans}}</label>
                 <select id="type-filter" class="form-select column-filter" data-column="4">
-                    <option value="">All</option>
-                    <option value="Buy">Buy</option>
-                    <option value="Sell">Sell</option>
+                    <option value="">{{"All"|trans}}</option>
+                    <option value="Buy">{{"Buy"|trans}}</option>
+                    <option value="Sell">{{"Sell"|trans}}</option>
                 </select>
             </div>
 
             <div class="col-md-4">
-                <label for="date-range" class="form-label">Pick a date range</label>
+                <label for="date-range" class="form-label">{{"Pick a date range"|trans}}</label>
                 <input type="text" id="date-range" class="form-control" placeholder="YYYY-MM-DD - YYYY-MM-DD" autocomplete="off">
             </div>
 
             <div class="col-md-2">
-                <button id="reset-filters" class="btn btn-outline-secondary w-100">Reset Filters</button>
+                <button id="reset-filters" class="btn btn-outline-secondary w-100">{{"Reset Filters"|trans}}</button>
             </div>
         </div>
 

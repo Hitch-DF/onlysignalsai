@@ -13,12 +13,13 @@
 			<h1 class="h4 mb-0 text-light">OnlySignals</h1>
 
 			<div class="d-flex align-items-center gap-3">
-				<form method="post" action="{{ path('switch_locale') }}">
-					<select id="lang-switcher" name="locale" class="form-select form-select-sm bg-dark text-light border-secondary">
-						<option value="fr" {{ app.request.locale == 'fr' ? 'selected' : '' }}>🇫🇷 FR</option>
-						<option value="en" {{ app.request.locale == 'en' ? 'selected' : '' }}>🇬🇧 EN</option>
+				<form action="{{ path('switch_locale') }}" method="post" class="d-inline">
+					<select name="locale" onchange="this.form.submit()" class="form-select form-select-sm">
+						<option value="en" {% if app.request.locale == 'en' %}selected{% endif %}>🇬🇧 English</option>
+						<option value="fr" {% if app.request.locale == 'fr' %}selected{% endif %}>🇫🇷 Français</option>
 					</select>
 				</form>
+
 
 				<a href="{{ path('app_login') }}" class="btn btn-secondary d-inline-flex align-items-center">
 					{{ 'Login'|trans }}
@@ -58,23 +59,23 @@
 									</div>
 									<ul class="list-unstyled small mb-0">
 										<li class="d-flex justify-content-between">
-											<span class="text-muted">Entry Price:</span>
+											<span class="text-muted">{{"Entry Price"|trans}}:</span>
 											<span class="fw-semibold">${{ signal.entryPrice|number_format(2, '.', ',') }}</span>
 										</li>
 										{% if signal.exitPrice is not null %}
 											<li class="d-flex justify-content-between">
-												<span class="text-muted">Exit Price:</span>
+												<span class="text-muted">{{"Exit Price"|trans}}:</span>
 												<span class="fw-semibold">${{ signal.exitPrice|number_format(2, '.', ',') }}</span>
 											</li>
 										{% endif %}
 										{% if signal.pips is not null %}
 											<li class="d-flex justify-content-between">
-												<span class="text-muted">Pips:</span>
+												<span class="text-muted">{{"Pips"|trans}}:</span>
 												<span class="fw-semibold">{{ signal.pips }}</span>
 											</li>
 										{% endif %}
 										<li class="d-flex justify-content-between">
-											<span class="text-muted">Category:</span>
+											<span class="text-muted">{{"Category"|trans}}:</span>
 											<span class="badge bg-secondary text-light">{{ signal.category }}</span>
 										</li>
 									</ul>
@@ -82,7 +83,7 @@
 								<div class="card-footer border-0 pt-0 bg-transparent">
 									<a href="https://www.tradingview.com/chart/?symbol={{ signal.symbol }}" target="_blank"
 										class="btn btn-outline-secondary btn-sm w-100 d-flex align-items-center justify-content-center gap-2">
-										<i class="bi bi-bar-chart-line"></i> View Chart
+										<i class="bi bi-bar-chart-line"></i> {{"View Chart"|trans}}
 									</a>
 								</div>
 							</div>

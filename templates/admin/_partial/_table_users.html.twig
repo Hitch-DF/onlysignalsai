@@ -9,12 +9,12 @@
         <thead>
           <tr>
             <th>ID</th>
-            <th>Email</th>
-            <th>Abonnement</th>
-            <th>Plan</th>
-            <th>Fin</th>
-            <th>Inscrit</th>
-            <th>Actions</th>
+            <th>{{"Email"|trans}}</th>
+            <th>{{"Abonnement"|trans}}</th>
+            <th>{{"Plan"|trans}}</th>
+            <th>{{"Fin"|trans}}</th>
+            <th>{{"Inscrit"|trans}}</th>
+            <th>{{"Actions"|trans}}</th>
           </tr>
         </thead>
         <tbody>
@@ -24,9 +24,9 @@
               <td>{{ user.email }}</td>
               <td>
                 {% if user.hasActiveSubscription() %}
-                  <span class="badge bg-success">Abonné</span>
+                  <span class="badge bg-success">{{"Abonné"|trans}}</span>
                 {% else %}
-                  <span class="badge bg-secondary">Non abonné</span>
+                  <span class="badge bg-secondary">{{"Non abonné"|trans}}</span>
                 {% endif %}
               </td>
               <td>{{ user.hasActiveSubscription ? user.getActiveSubscription().getPrice() : '' }}</td>
@@ -47,7 +47,7 @@
             </tr>
           {% else %}
             <tr>
-              <td colspan="7" class="text-center text-muted">Aucun utilisateur trouvé</td>
+              <td colspan="7" class="text-center text-muted">{{"Aucun utilisateur trouvé"|trans}}</td>
             </tr>
           {% endfor %}
         </tbody>

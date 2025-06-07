@@ -1,18 +1,29 @@
 <div class="card bg-card text-light mb-5 shadow-sm border-0">
   <div class="card-header bg-dark text-center py-4">
     <i class="bi bi-clock-history text-purple fs-2 mb-3 d-block"></i>
-    <h2 class="h4 mb-0">Gestion de l'historique des signaux</h2>
+    <h2 class="h4 mb-0">{{"Gestion de l'historique des signaux"|trans}}</h2>
   </div>
   <div class="card-body">
     <button class="btn btn-primary d-inline-flex align-items-center mb-3" data-bs-toggle="modal" data-bs-target="#modalAddSignal">
-      <i class="bi bi-plus-circle me-2"></i> Ajouter un Signal Historique
+      <i class="bi bi-plus-circle me-2"></i> {{"Ajouter un Signal Historique"|trans}}
     </button>
 
     <div class="table-responsive">
       <table id="signals-table-history" class="datatable table table-dark table-bordered table-hover align-middle mb-0">
         <thead>
           <tr>
-            <th>ID</th><th>Entrée</th><th>Clôture</th><th>Actif</th><th>Type</th><th>TF</th><th>Entrée</th><th>Sortie</th><th>Pips</th><th>Résultat</th><th>Screenshot</th><th>Actions</th>
+            <th>ID</th>
+            <th>{{"Date d'entrée"|trans}}</th>
+            <th>{{"Date de clôture"|trans}}</th>
+            <th>{{"Actif"|trans}}</th>
+            <th>{{"Type"|trans}}</th>
+            <th>{{"Timeframe"|trans}}</th>
+            <th>{{"Prix d'ntrée"|trans}}</th>
+            <th>{{"Prix de sortie"|trans}}</th>
+            <th>{{"Pips"|trans}}</th>
+            <th>{{"Résultat"|trans}}</th>
+            <th>{{"Screenshot"|trans}}</th>
+            <th>{{"Actions"|trans}}</th>
           </tr>
         </thead>
         <tbody>
@@ -39,7 +50,7 @@
               </td>
             </tr>
           {% else %}
-            <tr><td colspan="12" class="text-center text-muted">Aucun signal historique</td></tr>
+            <tr><td colspan="12" class="text-center text-muted">{{"Aucun signal historique"|trans}}</td></tr>
           {% endfor %}
         </tbody>
       </table>

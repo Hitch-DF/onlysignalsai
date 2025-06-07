@@ -27,12 +27,6 @@ services:
         tags:
             - { name: kernel.event_listener, event: security.interactive_login }
 
-    App\EventSubscriber\LocaleSubscriber:
-        arguments:
-            $defaultLocale: 'en'
-        tags:
-            - { name: kernel.event_subscriber }
-
     App\Service\StripeService:
         arguments:
             $stripeSecretKey: '%stripe_secret_key%'

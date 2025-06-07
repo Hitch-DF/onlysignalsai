@@ -6,12 +6,12 @@
 			<div class="modal-header">
 				<h5 class="modal-title" id="closeModalLabel-{{ signal.id }}">
 					<i class="bi bi-x-circle me-2"></i>
-					Clôturer le Signal : {{ signal.symbol }}
+					{{'Clôturer le Signal'|trans}} : {{ signal.symbol }}
 				</h5>
 				<button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fermer"></button>
 			</div>
 			<div class="modal-body">
-				<p class="text-muted">Veuillez renseigner les informations de clôture pour ce signal.</p>
+				<p class="text-muted">{{'Veuillez renseigner les informations de clôture pour ce signal'|trans}}.</p>
 
 				{{ form_row(form.exitPrice) }}
 				{{ form_row(form.pips) }}
@@ -20,8 +20,8 @@
 				{{ form_row(form.screenshot) }}
 			</div>
 			<div class="modal-footer border-0">
-				<button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Annuler</button>
-				<button type="submit" class="btn btn-primary">Confirmer</button>
+				<button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">{{'Annuler'|trans}}</button>
+				<button type="submit" class="btn btn-primary">{{'Confirmer'|trans}}</button>
 			</div>
 			{{ form_end(form) }}
 		</div>
