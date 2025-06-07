@@ -13,6 +13,18 @@ import 'jquery-ui/ui/widgets/datepicker';
 import dt from 'datatables.net-bs5';
 
 document.addEventListener('DOMContentLoaded', () => {
+	setTimeout(() => {
+		// Remplace le loader par une icône check
+		const loaderIcon = document.getElementById("loaderIcon");
+		loaderIcon.outerHTML = `<i class="bi bi-check-circle-fill text-success"></i>`;
+
+		// Change le texte
+		const statusText = document.getElementById("statusText");
+		statusText.textContent = "Connecté";
+		statusText.classList.remove("text-danger");
+		statusText.classList.add("text-success");
+	}, 3000);
+
 	const $signalsHistoryTable = $('#signals-table-history');
 
 	let startDate = null;
