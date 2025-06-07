@@ -24,9 +24,16 @@ final readonly class UserLocaleListener
     #[AsEventListener(event: KernelEvents::REQUEST)]
     public function onKernelRequest(RequestEvent $event): void
     {
+        $request = $event->getRequest();
+
+        if ($request->attributes->has('_locale')) {
+            return;
+        }
+
         $user = $this->security->getUser();
-        if ($user && $user instanceof User) {
+        if ($user instanceof User && $user->getLocale()) {
             $this->localeSwitcher->setLocale($user->getLocale());
+            $request->setLocale($user->getLocale());
         }
     }
 }

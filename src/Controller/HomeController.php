@@ -49,12 +49,21 @@ final class HomeController extends AbstractController
             ['createdAt' => 'DESC'],
         );
 
+        $assetsHistory = array_unique(array_map(fn($s) => $s->getSymbol(), $signalsHistory));
+        sort($assetsHistory);
+
+        // Catégories uniques
+        $categoriesHistory = array_unique(array_map(fn($s) => $s->getCategory(), $signalsHistory));
+        sort($categoriesHistory);
+
         return $this->render('home/index.html.twig', [
             'signals' => $signals,
             'hasActive' => $hasActive,
             'assets' => $assets,
             'categories' => $categories,
             'signalsHistory' => $signalsHistory,
+            'assetsHistory' => $assetsHistory,
+            'categoriesHistory' => $categoriesHistory
         ]);
     }
 }

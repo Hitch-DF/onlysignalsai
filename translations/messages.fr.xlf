@@ -411,19 +411,19 @@
       </trans-unit>
       <trans-unit id="Dfhvw4B" resname="Entry Price">
         <source>Entry Price</source>
-        <target>__Entry Price</target>
+        <target>Entry Price</target>
       </trans-unit>
       <trans-unit id="xvcaxZ2" resname="Exit Price">
         <source>Exit Price</source>
-        <target>__Exit Price</target>
+        <target>Exit Price</target>
       </trans-unit>
       <trans-unit id="UeOH55u" resname="Pips">
         <source>Pips</source>
-        <target>__Pips</target>
+        <target>Pips</target>
       </trans-unit>
       <trans-unit id="Pb0Nowl" resname="View Chart">
         <source>View Chart</source>
-        <target>__View Chart</target>
+        <target>View Chart</target>
       </trans-unit>
       <trans-unit id="K4tLdXe" resname="Ajouter un Signal Historique">
         <source>Ajouter un Signal Historique</source>
@@ -499,7 +499,7 @@
       </trans-unit>
       <trans-unit id="JLotuHr" resname="Screenshot">
         <source>Screenshot</source>
-        <target>__Screenshot</target>
+        <target>Screenshot</target>
       </trans-unit>
       <trans-unit id="M95TWmf" resname="Aucun signal historique">
         <source>Aucun signal historique</source>
@@ -583,55 +583,55 @@
       </trans-unit>
       <trans-unit id="BRJuStP" resname="This link will expire in">
         <source>This link will expire in</source>
-        <target>__This link will expire in</target>
+        <target>This link will expire in</target>
       </trans-unit>
       <trans-unit id="eXi8YpH" resname="Cheers">
         <source>Cheers</source>
-        <target>__Cheers</target>
+        <target>Cheers</target>
       </trans-unit>
       <trans-unit id="ih5Curh" resname="Connected">
         <source>Connected</source>
-        <target>__Connected</target>
+        <target>Connected</target>
       </trans-unit>
       <trans-unit id="zJSeNof" resname="Signal History">
         <source>Signal History</source>
-        <target>__Signal History</target>
+        <target>Signal History</target>
       </trans-unit>
       <trans-unit id="YWr4km1" resname="Community Signals">
         <source>Community Signals</source>
-        <target>__Community Signals</target>
+        <target>Community Signals</target>
       </trans-unit>
       <trans-unit id="APxdqs0" resname="Account">
         <source>Account</source>
-        <target>__Account</target>
+        <target>Account</target>
       </trans-unit>
       <trans-unit id="jDKcTZN" resname="Back Office">
         <source>Back Office</source>
-        <target>__Back Office</target>
+        <target>Back Office</target>
       </trans-unit>
       <trans-unit id="5ZVoUEE" resname="No active signals found">
         <source>No active signals found</source>
-        <target>__No active signals found</target>
+        <target>No active signals found</target>
       </trans-unit>
       <trans-unit id="c2QVnsc" resname="All Assets">
         <source>All Assets</source>
-        <target>__All Assets</target>
+        <target>All Assets</target>
       </trans-unit>
       <trans-unit id="tHdA52O" resname="All">
         <source>All</source>
-        <target>__All</target>
+        <target>All</target>
       </trans-unit>
       <trans-unit id="20_kdQM" resname="All Types">
         <source>All Types</source>
-        <target>__All Types</target>
+        <target>All Types</target>
       </trans-unit>
       <trans-unit id="2OP2_A8" resname="Pick a date range">
         <source>Pick a date range</source>
-        <target>__Pick a date range</target>
+        <target>Pick a date range</target>
       </trans-unit>
       <trans-unit id="fU2MmYv" resname="Reset Filters">
         <source>Reset Filters</source>
-        <target>__Reset Filters</target>
+        <target>Reset Filters</target>
       </trans-unit>
       <trans-unit id="a0mQLnc" resname="Tous">
         <source>Tous</source>
@@ -647,7 +647,7 @@
       </trans-unit>
       <trans-unit id="DAUVnLd" resname="TimeFrame">
         <source>TimeFrame</source>
-        <target>__TimeFrame</target>
+        <target>TimeFrame</target>
       </trans-unit>
       <trans-unit id="_rR2aeI" resname="Prix d'entrée">
         <source>Prix d'entrée</source>

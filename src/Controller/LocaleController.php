@@ -9,14 +9,15 @@ use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Service\TemplateService;
+use Symfony\Component\Translation\LocaleSwitcher;
 
 class LocaleController extends AbstractController
 {
 
     public function __construct(
         private EntityManagerInterface $entityManager,
-        private Security               $security
+        private Security               $security,
+        private LocaleSwitcher $localeSwitcher
     ) {}
 
     /**
@@ -26,18 +27,24 @@ class LocaleController extends AbstractController
     #[Route("/switch-locale", name: "switch_locale", methods: ["POST"])]
     public function changeLocale(Request $request): RedirectResponse
     {
-        $user = $this->security->getUser();
         $newLocale = $request->request->get('locale');
-
         $validLocales = ['fr', 'en'];
         $locale = in_array($newLocale, $validLocales) ? $newLocale : 'en';
 
+        $user = $this->security->getUser();
+
+        if (!$user instanceof User) {
+            $request->getSession()->set('_locale', $locale);
+        }
         if ($user instanceof User) {
             $user->setLocale($locale);
             $this->entityManager->flush();
-        } else {
-            $request->getSession()->set('_locale', $locale);
         }
+
+
+
+        $request->setLocale($locale);
+        $this->localeSwitcher->setLocale($locale);
 
         return $this->redirect($request->headers->get('referer') ?? '/');
     }

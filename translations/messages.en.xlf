@@ -83,571 +83,571 @@
       </trans-unit>
       <trans-unit id="luHl1mo" resname="Réinitialisation de votre mot de passe">
         <source>Réinitialisation de votre mot de passe</source>
-        <target>__Réinitialisation de votre mot de passe</target>
+        <target>Resetting your password</target>
       </trans-unit>
       <trans-unit id="mAOiTIx" resname="Modifications effectuées avec succès">
         <source>Modifications effectuées avec succès</source>
-        <target>__Modifications effectuées avec succès</target>
+        <target>Changes successfully completed</target>
       </trans-unit>
       <trans-unit id="yXA5aGl" resname="Confirmation de votre souscription à l’abonnement">
         <source>Confirmation de votre souscription à l’abonnement</source>
-        <target>__Confirmation de votre souscription à l’abonnement</target>
+        <target>Confirming your subscription</target>
       </trans-unit>
       <trans-unit id="QxyHast" resname="Bonjour">
         <source>Bonjour</source>
-        <target>__Bonjour</target>
+        <target>Hello</target>
       </trans-unit>
       <trans-unit id="GQJmio1" resname="Nous vous remercions pour votre confiance et avons le plaisir de vous confirmer votre souscription à l’abonnement">
         <source>Nous vous remercions pour votre confiance et avons le plaisir de vous confirmer votre souscription à l’abonnement</source>
-        <target>__Nous vous remercions pour votre confiance et avons le plaisir de vous confirmer votre souscription à l’abonnement</target>
+        <target>Thank you for your trust and we are pleased to confirm your subscription</target>
       </trans-unit>
       <trans-unit id="tK3tcRf" resname="Voici un récapitulatif de votre abonnement">
         <source>Voici un récapitulatif de votre abonnement</source>
-        <target>__Voici un récapitulatif de votre abonnement</target>
+        <target>Here is a summary of your subscription</target>
       </trans-unit>
       <trans-unit id="0_mcfn9" resname="Nom de l’abonnement">
         <source>Nom de l’abonnement</source>
-        <target>__Nom de l’abonnement</target>
+        <target>Subscription Name</target>
       </trans-unit>
       <trans-unit id="Bow3Rz9" resname="Date de début">
         <source>Date de début</source>
-        <target>__Date de début</target>
+        <target>Start Date</target>
       </trans-unit>
       <trans-unit id="6vbbjKH" resname="Durée">
         <source>Durée</source>
-        <target>__Durée</target>
+        <target>Duration</target>
       </trans-unit>
       <trans-unit id="PElGIuO" resname="Renouvellement">
         <source>Renouvellement</source>
-        <target>__Renouvellement</target>
+        <target>Renewal</target>
       </trans-unit>
       <trans-unit id="11KzULr" resname="Montant">
         <source>Montant</source>
-        <target>__Montant</target>
+        <target>Amount</target>
       </trans-unit>
       <trans-unit id="Vrw33xw" resname="période">
         <source>période</source>
-        <target>__période</target>
+        <target>period</target>
       </trans-unit>
       <trans-unit id="o24tVbb" resname="Si vous avez des questions ou besoin d’assistance, notre équipe reste à votre écoute à l’adresse suivante">
         <source>Si vous avez des questions ou besoin d’assistance, notre équipe reste à votre écoute à l’adresse suivante</source>
-        <target>__Si vous avez des questions ou besoin d’assistance, notre équipe reste à votre écoute à l’adresse suivante</target>
+        <target>If you have any questions or need assistance, our team is available at the following address</target>
       </trans-unit>
       <trans-unit id="3rE5MPQ" resname="Encore merci et bienvenue parmi nos abonnés">
         <source>Encore merci et bienvenue parmi nos abonnés</source>
-        <target>__Encore merci et bienvenue parmi nos abonnés</target>
+        <target>Thank you again and welcome to our subscribers</target>
       </trans-unit>
       <trans-unit id="PW7Z9ra" resname="All rights reserved">
         <source>All rights reserved</source>
-        <target>__All rights reserved</target>
+        <target>All rights reserved</target>
       </trans-unit>
       <trans-unit id="1M7YXjV" resname="Vos Signaux de Trading en Temps Réel">
         <source>Vos Signaux de Trading en Temps Réel</source>
-        <target>__Vos Signaux de Trading en Temps Réel</target>
+        <target>Your Real-Time Trading Signals</target>
       </trans-unit>
       <trans-unit id="4f3WEva" resname="Login">
         <source>Login</source>
-        <target>__Login</target>
+        <target>Login</target>
       </trans-unit>
       <trans-unit id="mkx1qEp" resname="Sign Up">
         <source>Sign Up</source>
-        <target>__Sign Up</target>
+        <target>Sign Up</target>
       </trans-unit>
       <trans-unit id="s2QsEt_" resname="Vous devez être abonné pour voir les signaux actifs">
         <source>Vous devez être abonné pour voir les signaux actifs</source>
-        <target>__Vous devez être abonné pour voir les signaux actifs</target>
+        <target>You must be subscribed to see active signals</target>
       </trans-unit>
       <trans-unit id="shlyffR" resname="Voir les offres">
         <source>Voir les offres</source>
-        <target>__Voir les offres</target>
+        <target>See offers</target>
       </trans-unit>
       <trans-unit id="G5Wbx7p" resname="Simulate Signal">
         <source>Simulate Signal</source>
-        <target>__Simulate Signal</target>
+        <target>Simulate Signal</target>
       </trans-unit>
       <trans-unit id="O2MG7_d" resname="Choisissez votre offre">
         <source>Choisissez votre offre</source>
-        <target>__Choisissez votre offre</target>
+        <target>Choose your offer</target>
       </trans-unit>
       <trans-unit id="w3wJ1pO" resname="Pendant">
         <source>Pendant</source>
-        <target>__Pendant</target>
+        <target>During</target>
       </trans-unit>
       <trans-unit id="_8rSYTS" resname="L'abonnement à ce plan se termine le">
         <source>L'abonnement à ce plan se termine le</source>
-        <target>__L'abonnement à ce plan se termine le</target>
+        <target>Subscription to this plan ends on</target>
       </trans-unit>
       <trans-unit id="3.FDHU_" resname="Déjà abonné">
         <source>Déjà abonné</source>
-        <target>__Déjà abonné</target>
+        <target>Already subscribed</target>
       </trans-unit>
       <trans-unit id="408ZAT7" resname="Acheter à vie">
         <source>Acheter à vie</source>
-        <target>__Acheter à vie</target>
+        <target>Buy for life</target>
       </trans-unit>
       <trans-unit id="EIa1mvS" resname="S'abonner">
         <source>S'abonner</source>
-        <target>__S'abonner</target>
+        <target>Subscribe</target>
       </trans-unit>
       <trans-unit id="OaMaqv6" resname="Paiement pour l'abonnement abandonné">
         <source>Paiement pour l'abonnement abandonné</source>
-        <target>__Paiement pour l'abonnement abandonné</target>
+        <target>Payment for abandoned subscription</target>
       </trans-unit>
       <trans-unit id="u65qo9x" resname="Retour à la liste des abonnements">
         <source>Retour à la liste des abonnements</source>
-        <target>__Retour à la liste des abonnements</target>
+        <target>Back to the subscription listRetour à la liste des abonnements</target>
       </trans-unit>
       <trans-unit id="jO6LsFn" resname="Merci pour votre abonnement">
         <source>Merci pour votre abonnement</source>
-        <target>__Merci pour votre abonnement</target>
+        <target>Thank you for your subscription</target>
       </trans-unit>
       <trans-unit id="uTDXMLA" resname="Retour à l'accueil">
         <source>Retour à l'accueil</source>
-        <target>__Retour à l'accueil</target>
+        <target>Back to home</target>
       </trans-unit>
       <trans-unit id="kErt7IC" resname="Authentification">
         <source>Authentification</source>
-        <target>__Authentification</target>
+        <target>Authentication</target>
       </trans-unit>
       <trans-unit id="ezXhVQv" resname="Bienvenue">
         <source>Bienvenue</source>
-        <target>__Bienvenue</target>
+        <target>Welcome</target>
       </trans-unit>
       <trans-unit id="r_gJVFX" resname="Connectez-vous pour accéder à vos signaux">
         <source>Connectez-vous pour accéder à vos signaux</source>
-        <target>__Connectez-vous pour accéder à vos signaux</target>
+        <target>Log in to access your signals</target>
       </trans-unit>
       <trans-unit id="uo16Si7" resname="Connecté en tant que">
         <source>Connecté en tant que</source>
-        <target>__Connecté en tant que</target>
+        <target>Logged in as</target>
       </trans-unit>
       <trans-unit id="MXpdhar" resname="Déconnexion">
         <source>Déconnexion</source>
-        <target>__Déconnexion</target>
+        <target>Logout</target>
       </trans-unit>
       <trans-unit id="Vw8PF8s" resname="Adresse e-mail">
         <source>Adresse e-mail</source>
-        <target>__Adresse e-mail</target>
+        <target>Email address</target>
       </trans-unit>
       <trans-unit id="uhLPWhY" resname="Mot de passe">
         <source>Mot de passe</source>
-        <target>__Mot de passe</target>
+        <target>Password</target>
       </trans-unit>
       <trans-unit id="X3hZGl4" resname="Se connecter">
         <source>Se connecter</source>
-        <target>__Se connecter</target>
+        <target>Log in</target>
       </trans-unit>
       <trans-unit id="HW2b7JO" resname="Pas encore de compte">
         <source>Pas encore de compte</source>
-        <target>__Pas encore de compte</target>
+        <target>No account yet</target>
       </trans-unit>
       <trans-unit id="eOQ7Ld." resname="Créer un compte">
         <source>Créer un compte</source>
-        <target>__Créer un compte</target>
+        <target>Create an account</target>
       </trans-unit>
       <trans-unit id="GHpL1L3" resname="Mot de passe oublié">
         <source>Mot de passe oublié</source>
-        <target>__Mot de passe oublié</target>
+        <target>Forgot password</target>
       </trans-unit>
       <trans-unit id="e4A7e_l" resname="Tous droits réservés">
         <source>Tous droits réservés</source>
-        <target>__Tous droits réservés</target>
+        <target>All rights reserved</target>
       </trans-unit>
       <trans-unit id="k3qJihk" resname="profile">
         <source>profile</source>
-        <target>__profile</target>
+        <target>profile</target>
       </trans-unit>
       <trans-unit id="LkCAYak" resname="Enregistrer">
         <source>Enregistrer</source>
-        <target>__Enregistrer</target>
+        <target>Save</target>
       </trans-unit>
       <trans-unit id="J6e_Dqj" resname="Créez votre compte pour accéder à OnlySignals">
         <source>Créez votre compte pour accéder à OnlySignals</source>
-        <target>__Créez votre compte pour accéder à OnlySignals</target>
+        <target>Create your account to access OnlySignals</target>
       </trans-unit>
       <trans-unit id="EMF4pA5" resname="Vous avez déjà un compte ?">
         <source>Vous avez déjà un compte ?</source>
-        <target>__Vous avez déjà un compte ?</target>
+        <target>Already have an account?</target>
       </trans-unit>
       <trans-unit id="7PhR3Ra" resname="Réinitialiser votre mot de passe">
         <source>Réinitialiser votre mot de passe</source>
-        <target>__Réinitialiser votre mot de passe</target>
+        <target>Reset password</target>
       </trans-unit>
       <trans-unit id="zkaP_gP" resname="Entrez votre adresse email pour recevoir un lien de réinitialisation.">
         <source>Entrez votre adresse email pour recevoir un lien de réinitialisation.</source>
-        <target>__Entrez votre adresse email pour recevoir un lien de réinitialisation.</target>
+        <target>Enter your email address to receive a reset link.</target>
       </trans-unit>
       <trans-unit id=".jakMLK" resname="Vous recevrez un lien par email pour réinitialiser votre mot de passe.">
         <source>Vous recevrez un lien par email pour réinitialiser votre mot de passe.</source>
-        <target>__Vous recevrez un lien par email pour réinitialiser votre mot de passe.</target>
+        <target>You will receive a link by email to reset your password.</target>
       </trans-unit>
       <trans-unit id="6hDCgmE" resname="Envoyer le lien de réinitialisation">
         <source>Envoyer le lien de réinitialisation</source>
-        <target>__Envoyer le lien de réinitialisation</target>
+        <target>Send reset link</target>
       </trans-unit>
       <trans-unit id="QCDXShW" resname="Retour à la connexion">
         <source>Retour à la connexion</source>
-        <target>__Retour à la connexion</target>
+        <target>Back to login</target>
       </trans-unit>
       <trans-unit id="ucm2Hwr" resname="Réinitialisez votre mot de passe">
         <source>Réinitialisez votre mot de passe</source>
-        <target>__Réinitialisez votre mot de passe</target>
+        <target>Reset your password</target>
       </trans-unit>
       <trans-unit id="rVbIyJ6" resname="Nouveau mot de passe">
         <source>Nouveau mot de passe</source>
-        <target>__Nouveau mot de passe</target>
+        <target>New password</target>
       </trans-unit>
       <trans-unit id="kG5oTpF" resname="Choisissez un nouveau mot de passe pour accéder à votre compte.">
         <source>Choisissez un nouveau mot de passe pour accéder à votre compte.</source>
-        <target>__Choisissez un nouveau mot de passe pour accéder à votre compte.</target>
+        <target>Choose a new password to access your account.</target>
       </trans-unit>
       <trans-unit id="ud7nzUV" resname="Réinitialiser le mot de passe">
         <source>Réinitialiser le mot de passe</source>
-        <target>__Réinitialiser le mot de passe</target>
+        <target>Reset your password</target>
       </trans-unit>
       <trans-unit id="ABnWYV8" resname="Email de réinitialisation envoyé">
         <source>Email de réinitialisation envoyé</source>
-        <target>__Email de réinitialisation envoyé</target>
+        <target>Reset email sent</target>
       </trans-unit>
       <trans-unit id="YUfwJtj" resname="Vérifiez votre boîte mail">
         <source>Vérifiez votre boîte mail</source>
-        <target>__Vérifiez votre boîte mail</target>
+        <target>Check your mailbox</target>
       </trans-unit>
       <trans-unit id="rnAZUQq" resname="Si un compte correspondant existe, un email vient de vous être envoyé avec un lien de réinitialisation.">
         <source>Si un compte correspondant existe, un email vient de vous être envoyé avec un lien de réinitialisation.</source>
-        <target>__Si un compte correspondant existe, un email vient de vous être envoyé avec un lien de réinitialisation.</target>
+        <target>If a matching account exists, an email has just been sent to you with a reset link.</target>
       </trans-unit>
       <trans-unit id="x1eZk_s" resname="Ce lien expirera dans">
         <source>Ce lien expirera dans</source>
-        <target>__Ce lien expirera dans</target>
+        <target>This link will expire in</target>
       </trans-unit>
       <trans-unit id="fKKqVtt" resname="Si vous ne recevez pas d'email, vérifiez votre dossier spam ou">
         <source>Si vous ne recevez pas d'email, vérifiez votre dossier spam ou</source>
-        <target>__Si vous ne recevez pas d'email, vérifiez votre dossier spam ou</target>
+        <target>If you do not receive an email, check your spam folder or</target>
       </trans-unit>
       <trans-unit id="saUw0EN" resname="réessayez">
         <source>réessayez</source>
-        <target>__réessayez</target>
+        <target>try again</target>
       </trans-unit>
       <trans-unit id="S3wFdmR" resname="Abonnement">
         <source>Abonnement</source>
-        <target>__Abonnement</target>
+        <target>Subscription</target>
       </trans-unit>
       <trans-unit id="NocErjy" resname="A problem or an idea to improve our platform">
         <source>A problem or an idea to improve our platform</source>
-        <target>__A problem or an idea to improve our platform</target>
+        <target>A problem or an idea to improve our platform</target>
       </trans-unit>
       <trans-unit id="A._JmRd" resname="Contact me">
         <source>Contact me</source>
-        <target>__Contact me</target>
+        <target>Contact me</target>
       </trans-unit>
       <trans-unit id="Do.aE.v" resname="Mon profil">
         <source>Mon profil</source>
-        <target>__Mon profil</target>
+        <target>My profile</target>
       </trans-unit>
       <trans-unit id="JKl2Twv" resname="Logout">
         <source>Logout</source>
-        <target>__Logout</target>
+        <target>Logout</target>
       </trans-unit>
       <trans-unit id="XdiPJ.F" resname="Not logged in">
         <source>Not logged in</source>
-        <target>__Not logged in</target>
+        <target>Not logged in</target>
       </trans-unit>
       <trans-unit id="oy.0c8X" resname="Historical Performance">
         <source>Historical Performance</source>
-        <target>__Historical Performance</target>
+        <target>Historical Performance</target>
       </trans-unit>
       <trans-unit id="QgmC5Jz" resname="Review past signals and their outcomes. Filter by asset, type, or date">
         <source>Review past signals and their outcomes. Filter by asset, type, or date</source>
-        <target>__Review past signals and their outcomes. Filter by asset, type, or date</target>
+        <target>Review past signals and their outcomes. Filter by asset, type, or date</target>
       </trans-unit>
       <trans-unit id="OnzuCbm" resname="Asset">
         <source>Asset</source>
-        <target>__Asset</target>
+        <target>Asset</target>
       </trans-unit>
       <trans-unit id="4CMvZd0" resname="Price">
         <source>Price</source>
-        <target>__Price</target>
+        <target>Price</target>
       </trans-unit>
       <trans-unit id="1cuPpsS" resname="Date">
         <source>Date</source>
-        <target>__Date</target>
+        <target>Date</target>
       </trans-unit>
       <trans-unit id="Y0ewf6D" resname="Signal Age">
         <source>Signal Age</source>
-        <target>__Signal Age</target>
+        <target>Signal Age</target>
       </trans-unit>
       <trans-unit id="w5w1FE." resname="Signal Type">
         <source>Signal Type</source>
-        <target>__Signal Type</target>
+        <target>Signal Type</target>
       </trans-unit>
       <trans-unit id="tceoGZr" resname="Category">
         <source>Category</source>
-        <target>__Category</target>
+        <target>Category</target>
       </trans-unit>
       <trans-unit id="rVbrB5K" resname="Chart">
         <source>Chart</source>
-        <target>__Chart</target>
+        <target>Chart</target>
       </trans-unit>
       <trans-unit id="HASecZe" resname="Buy">
         <source>Buy</source>
-        <target>__Buy</target>
+        <target>Buy</target>
       </trans-unit>
       <trans-unit id="fVqrfp6" resname="Sell">
         <source>Sell</source>
-        <target>__Sell</target>
+        <target>Sell</target>
       </trans-unit>
       <trans-unit id=".EmYZIu" resname="View">
         <source>View</source>
-        <target>__View</target>
+        <target>View</target>
       </trans-unit>
       <trans-unit id="Dfhvw4B" resname="Entry Price">
         <source>Entry Price</source>
-        <target>__Entry Price</target>
+        <target>Entry Price</target>
       </trans-unit>
       <trans-unit id="xvcaxZ2" resname="Exit Price">
         <source>Exit Price</source>
-        <target>__Exit Price</target>
+        <target>Exit Price</target>
       </trans-unit>
       <trans-unit id="UeOH55u" resname="Pips">
         <source>Pips</source>
-        <target>__Pips</target>
+        <target>Pips</target>
       </trans-unit>
       <trans-unit id="Pb0Nowl" resname="View Chart">
         <source>View Chart</source>
-        <target>__View Chart</target>
+        <target>View Chart</target>
       </trans-unit>
       <trans-unit id="K4tLdXe" resname="Ajouter un Signal Historique">
         <source>Ajouter un Signal Historique</source>
-        <target>__Ajouter un Signal Historique</target>
+        <target>Add a Historical Signal</target>
       </trans-unit>
       <trans-unit id="c5It0k_" resname="Annuler">
         <source>Annuler</source>
-        <target>__Annuler</target>
+        <target>Cancel</target>
       </trans-unit>
       <trans-unit id="Fj8TjtI" resname="Ajouter">
         <source>Ajouter</source>
-        <target>__Ajouter</target>
+        <target>Add</target>
       </trans-unit>
       <trans-unit id="PBg3rTW" resname="Gérer l'utilisateur">
         <source>Gérer l'utilisateur</source>
-        <target>__Gérer l'utilisateur</target>
+        <target>Manage user</target>
       </trans-unit>
       <trans-unit id="zua0XaO" resname="Actif">
         <source>Actif</source>
-        <target>__Actif</target>
+        <target>Actif</target>
       </trans-unit>
       <trans-unit id="DL_wAnF" resname="Type">
         <source>Type</source>
-        <target>__Type</target>
+        <target>Type</target>
       </trans-unit>
       <trans-unit id="SxyawMo" resname="Timeframe">
         <source>Timeframe</source>
-        <target>__Timeframe</target>
+        <target>Timeframe</target>
       </trans-unit>
       <trans-unit id="XsQ8md3" resname="Entrée">
         <source>Entrée</source>
-        <target>__Entrée</target>
+        <target>Entrance</target>
       </trans-unit>
       <trans-unit id="Wysbmij" resname="Créé le">
         <source>Créé le</source>
-        <target>__Créé le</target>
+        <target>Create</target>
       </trans-unit>
       <trans-unit id="1_MZEgP" resname="Actions">
         <source>Actions</source>
-        <target>__Actions</target>
+        <target>Actions</target>
       </trans-unit>
       <trans-unit id="0jheip6" resname="Fermer">
         <source>Fermer</source>
-        <target>__Fermer</target>
+        <target>Close</target>
       </trans-unit>
       <trans-unit id="P0XNtIN" resname="Aucun signal actif">
         <source>Aucun signal actif</source>
-        <target>__Aucun signal actif</target>
+        <target>No active signal</target>
       </trans-unit>
       <trans-unit id="32ocSN7" resname="Gestion de l'historique des signaux">
         <source>Gestion de l'historique des signaux</source>
-        <target>__Gestion de l'historique des signaux</target>
+        <target>Management of signal history</target>
       </trans-unit>
       <trans-unit id="rqRqSNC" resname="Date d'entrée">
         <source>Date d'entrée</source>
-        <target>__Date d'entrée</target>
+        <target>Entrance date</target>
       </trans-unit>
       <trans-unit id="v8HDtkb" resname="Date de clôture">
         <source>Date de clôture</source>
-        <target>__Date de clôture</target>
+        <target>Closing date</target>
       </trans-unit>
       <trans-unit id="5On5oQA" resname="Prix d'ntrée">
         <source>Prix d'ntrée</source>
-        <target>__Prix d'ntrée</target>
+        <target>Entrance price</target>
       </trans-unit>
       <trans-unit id="mhczAU_" resname="Prix de sortie">
         <source>Prix de sortie</source>
-        <target>__Prix de sortie</target>
+        <target>Release price</target>
       </trans-unit>
       <trans-unit id="YBL4XTz" resname="Résultat">
         <source>Résultat</source>
-        <target>__Résultat</target>
+        <target>Results</target>
       </trans-unit>
       <trans-unit id="JLotuHr" resname="Screenshot">
         <source>Screenshot</source>
-        <target>__Screenshot</target>
+        <target>Screenshot</target>
       </trans-unit>
       <trans-unit id="M95TWmf" resname="Aucun signal historique">
         <source>Aucun signal historique</source>
-        <target>__Aucun signal historique</target>
+        <target>No historical signal</target>
       </trans-unit>
       <trans-unit id="JZi_tm0" resname="Email">
         <source>Email</source>
-        <target>__Email</target>
+        <target>Email</target>
       </trans-unit>
       <trans-unit id="f7rvwzW" resname="Plan">
         <source>Plan</source>
-        <target>__Plan</target>
+        <target>Plan</target>
       </trans-unit>
       <trans-unit id="O_HfpI7" resname="Fin">
         <source>Fin</source>
-        <target>__Fin</target>
+        <target>End</target>
       </trans-unit>
       <trans-unit id="jnop27X" resname="Inscrit">
         <source>Inscrit</source>
-        <target>__Inscrit</target>
+        <target>Registered</target>
       </trans-unit>
       <trans-unit id="WgXtob1" resname="Abonné">
         <source>Abonné</source>
-        <target>__Abonné</target>
+        <target>Subscriber</target>
       </trans-unit>
       <trans-unit id="tH8VLQ4" resname="Non abonné">
         <source>Non abonné</source>
-        <target>__Non abonné</target>
+        <target>Not subscribed</target>
       </trans-unit>
       <trans-unit id="9hcSiY9" resname="Aucun utilisateur trouvé">
         <source>Aucun utilisateur trouvé</source>
-        <target>__Aucun utilisateur trouvé</target>
+        <target>No users found</target>
       </trans-unit>
       <trans-unit id="a853FGL" resname="Modifier le signal">
         <source>Modifier le signal</source>
-        <target>__Modifier le signal</target>
+        <target>Modify the signal</target>
       </trans-unit>
       <trans-unit id="iS._wNT" resname="Confirmer la Suppression">
         <source>Confirmer la Suppression</source>
-        <target>__Confirmer la Suppression</target>
+        <target>Confirm Deletion</target>
       </trans-unit>
       <trans-unit id="7bbILpE" resname="Voulez-vous vraiment supprimer le signal">
         <source>Voulez-vous vraiment supprimer le signal</source>
-        <target>__Voulez-vous vraiment supprimer le signal</target>
+        <target>Do you really want to delete the signal?</target>
       </trans-unit>
       <trans-unit id="vLpI9pv" resname="Cette action est irréversible">
         <source>Cette action est irréversible</source>
-        <target>__Cette action est irréversible</target>
+        <target>This action is irreversible</target>
       </trans-unit>
       <trans-unit id="UcvUUXS" resname="Supprimer">
         <source>Supprimer</source>
-        <target>__Supprimer</target>
+        <target>Delete</target>
       </trans-unit>
       <trans-unit id="mI8cCv8" resname="Clôturer le Signal">
         <source>Clôturer le Signal</source>
-        <target>__Clôturer le Signal</target>
+        <target>Signal closure</target>
       </trans-unit>
       <trans-unit id="lBw8CQX" resname="Veuillez renseigner les informations de clôture pour ce signal">
         <source>Veuillez renseigner les informations de clôture pour ce signal</source>
-        <target>__Veuillez renseigner les informations de clôture pour ce signal</target>
+        <target>Please fill in the closing information for this signal</target>
       </trans-unit>
       <trans-unit id="lCBY25m" resname="Confirmer">
         <source>Confirmer</source>
-        <target>__Confirmer</target>
+        <target>Confirm</target>
       </trans-unit>
       <trans-unit id="BldjqHL" resname="Dernière connexion">
         <source>Dernière connexion</source>
-        <target>__Dernière connexion</target>
+        <target>Last connection</target>
       </trans-unit>
       <trans-unit id="z3wPpUl" resname="Votre abonnement">
         <source>Votre abonnement</source>
-        <target>__Votre abonnement</target>
+        <target>Your subscription</target>
       </trans-unit>
       <trans-unit id="l2uSq2e" resname="Hi">
         <source>Hi</source>
-        <target>__Hi</target>
+        <target>Hi</target>
       </trans-unit>
       <trans-unit id="ETTNQ2F" resname="To reset your password, please visit the following link">
         <source>To reset your password, please visit the following link</source>
-        <target>__To reset your password, please visit the following link</target>
+        <target>To reset your password, please visit the following link</target>
       </trans-unit>
       <trans-unit id="BRJuStP" resname="This link will expire in">
         <source>This link will expire in</source>
-        <target>__This link will expire in</target>
+        <target>_This link will expire in</target>
       </trans-unit>
       <trans-unit id="eXi8YpH" resname="Cheers">
         <source>Cheers</source>
-        <target>__Cheers</target>
+        <target>Cheers</target>
       </trans-unit>
       <trans-unit id="ih5Curh" resname="Connected">
         <source>Connected</source>
-        <target>__Connected</target>
+        <target>Connected</target>
       </trans-unit>
       <trans-unit id="zJSeNof" resname="Signal History">
         <source>Signal History</source>
-        <target>__Signal History</target>
+        <target>Signal History</target>
       </trans-unit>
       <trans-unit id="YWr4km1" resname="Community Signals">
         <source>Community Signals</source>
-        <target>__Community Signals</target>
+        <target>Community Signals</target>
       </trans-unit>
       <trans-unit id="APxdqs0" resname="Account">
         <source>Account</source>
-        <target>__Account</target>
+        <target>Account</target>
       </trans-unit>
       <trans-unit id="jDKcTZN" resname="Back Office">
         <source>Back Office</source>
-        <target>__Back Office</target>
+        <target>Back Office</target>
       </trans-unit>
       <trans-unit id="5ZVoUEE" resname="No active signals found">
         <source>No active signals found</source>
-        <target>__No active signals found</target>
+        <target>No active signals found</target>
       </trans-unit>
       <trans-unit id="c2QVnsc" resname="All Assets">
         <source>All Assets</source>
-        <target>__All Assets</target>
+        <target>All Assets</target>
       </trans-unit>
       <trans-unit id="tHdA52O" resname="All">
         <source>All</source>
-        <target>__All</target>
+        <target>All</target>
       </trans-unit>
       <trans-unit id="20_kdQM" resname="All Types">
         <source>All Types</source>
-        <target>__All Types</target>
+        <target>All Types</target>
       </trans-unit>
       <trans-unit id="2OP2_A8" resname="Pick a date range">
         <source>Pick a date range</source>
-        <target>__Pick a date range</target>
+        <target>Pick a date range</target>
       </trans-unit>
       <trans-unit id="fU2MmYv" resname="Reset Filters">
         <source>Reset Filters</source>
-        <target>__Reset Filters</target>
+        <target>Reset Filters</target>
       </trans-unit>
       <trans-unit id="a0mQLnc" resname="Tous">
         <source>Tous</source>
-        <target>__Tous</target>
+        <target>All</target>
       </trans-unit>
       <trans-unit id="xCqyaPY" resname="Date d'entrée min">
         <source>Date d'entrée min</source>
-        <target>__Date d'entrée min</target>
+        <target>Minimum entry date</target>
       </trans-unit>
       <trans-unit id="hZRwfPv" resname="Date d'entrée max">
         <source>Date d'entrée max</source>
-        <target>__Date d'entrée max</target>
+        <target>Maximum entry date</target>
       </trans-unit>
       <trans-unit id="DAUVnLd" resname="TimeFrame">
         <source>TimeFrame</source>
-        <target>__TimeFrame</target>
+        <target>TimeFrame</target>
       </trans-unit>
       <trans-unit id="_rR2aeI" resname="Prix d'entrée">
         <source>Prix d'entrée</source>
-        <target>__Prix d'entrée</target>
+        <target>Entrance price</target>
       </trans-unit>
       <trans-unit id="_yEoSy." resname="Chargement">
         <source>Chargement</source>
-        <target>__Chargement</target>
+        <target>Loading</target>
       </trans-unit>
     </body>
   </file>

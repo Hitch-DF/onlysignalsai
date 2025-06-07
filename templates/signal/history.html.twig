@@ -1,7 +1,7 @@
 <div class="card bg-card text-light mb-5 shadow-sm border-0">
   <div class="card-header bg-dark text-center py-4">
-    <h2 class="h4 mb-0">Historical Performance</h2>
-	<p class="text-muted">Review past signals and their outcomes. Filter by asset, type, or date.</p>
+    <h2 class="h4 mb-0">{{"Historical Performance"|trans}}</h2>
+	<p class="text-muted">{{"Review past signals and their outcomes. Filter by asset, type, or date"|trans}}.</p>
   </div>
 
   <div class="card-body">
@@ -9,16 +9,16 @@
     <div class="d-flex flex-wrap justify-content-between align-items-center mb-4">
 
       <button id="reset-filters" class="btn btn-outline-secondary mb-3">
-        <i class="bi bi-x-circle me-2"></i> Réinitialiser les filtres
+        <i class="bi bi-x-circle me-2"></i> {{"Réinitialiser les filtres"|trans}}
       </button>
     </div>
 
     <div class="row g-3 mb-4">
       <div class="col-md-3">
-        <label class="form-label text-muted">Actif</label>
+        <label class="form-label text-muted">{{"Actif"|trans}}</label>
         <select class="form-select bg-dark text-light border-secondary column-filter" data-column="2">
-          <option value="">Tous</option>
-          {% for asset in assets %}
+          <option value="">{{"Tous"|trans}}</option>
+          {% for asset in assetsHistory %}
             <option value="{{ asset }}">{{ asset }}</option>
           {% endfor %}
         </select>
