@@ -15,7 +15,7 @@
 			<div class="d-flex align-items-center gap-3">
 				<form action="{{ path('switch_locale') }}" method="post" class="d-inline">
 					<select name="locale" onchange="this.form.submit()" class="form-select form-select-sm">
-						<option value="en" {% if app.request.locale == 'en' %}selected{% endif %}>ENG</option>
+						<option value="en" {% if app.request.locale == 'en' %}selected{% endif %}>EN</option>
 						<option value="fr" {% if app.request.locale == 'fr' %}selected{% endif %}>FR</option>
 					</select>
 				</form>
