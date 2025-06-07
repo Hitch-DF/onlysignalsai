@@ -97,7 +97,8 @@ hr {
 // -----------------------------
 // Cards
 // -----------------------------
-.card, .bg-card {
+.card,
+.bg-card {
   background-color: $color-card;
   color: $color-text;
   border: none;
@@ -128,7 +129,8 @@ hr {
   background-color: darken($color-card, 3%);
   color: $color-text;
 
-  th, td {
+  th,
+  td {
     border-color: $color-border;
   }
 
@@ -237,7 +239,8 @@ textarea.form-control {
 input.form-control:focus,
 select.form-select:focus,
 textarea.form-control:focus {
-  color: #fff; /* <-- texte reste blanc en focus */
+  color: #fff;
+  /* <-- texte reste blanc en focus */
   background-color: #2e333b;
   border-color: #7aa0ff;
   box-shadow: 0 0 0 0.2rem rgba(122, 160, 255, 0.25);
@@ -250,14 +253,14 @@ textarea:-webkit-autofill,
 textarea:-webkit-autofill:hover,
 textarea:-webkit-autofill:focus,
 select:-webkit-autofill {
-    box-shadow: 0 0 0px 1000px #1f1f23 inset !important;
-    -webkit-text-fill-color: #e4e4e7 !important;
-    transition: background-color 5000s ease-in-out 0s;
-    border-color: #444 !important;
+  box-shadow: 0 0 0px 1000px #1f1f23 inset !important;
+  -webkit-text-fill-color: #e4e4e7 !important;
+  transition: background-color 5000s ease-in-out 0s;
+  border-color: #444 !important;
 }
 
 a {
-    color: #7c3aed;
+  color: #7c3aed;
 }
 
 .dataTables_wrapper .pagination .page-item.active .page-link,
@@ -294,47 +297,47 @@ a {
 }
 
 .btn-outline-light:hover {
-	background-color: #7c3aed !important;
-	border-color: #7c3aed !important;
-	color: #fff !important;
+  background-color: #7c3aed !important;
+  border-color: #7c3aed !important;
+  color: #fff !important;
 }
 
-.text-purple{
+.text-purple {
   color: hsl(252 82% 61%);
 }
 
 .btn-secondary {
-    --bs-btn-color: #fff;
-    --bs-btn-bg: #0d0d11;
-    --bs-btn-border-color: #2e2e3d;
-    --bs-btn-hover-color: #fff;
-    --bs-btn-hover-bg: #0d0d11;
-    --bs-btn-hover-border-color: #2e2e3d;
-    --bs-btn-focus-shadow-rgb: 130, 138, 145;
-    --bs-btn-active-color: #fff;
-    --bs-btn-active-bg: #0d0d11;
-    --bs-btn-active-border-color: #2e2e3d;
-    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-    --bs-btn-disabled-color: #fff;
-    --bs-btn-disabled-bg: #0d0d11;
-    --bs-btn-disabled-border-color: #0d0d11;
+  --bs-btn-color: #fff;
+  --bs-btn-bg: #0d0d11;
+  --bs-btn-border-color: #2e2e3d;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #0d0d11;
+  --bs-btn-hover-border-color: #2e2e3d;
+  --bs-btn-focus-shadow-rgb: 130, 138, 145;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #0d0d11;
+  --bs-btn-active-border-color: #2e2e3d;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #fff;
+  --bs-btn-disabled-bg: #0d0d11;
+  --bs-btn-disabled-border-color: #0d0d11;
 }
 
 .btn-secondary:hover {
-    --bs-btn-color: #fff;
-    --bs-btn-bg: #7c3aed;
-    --bs-btn-border-color: #7c3aed;
-    --bs-btn-hover-color: #fff;
-    --bs-btn-hover-bg: #7c3aed;
-    --bs-btn-hover-border-color: #7c3aed;
-    --bs-btn-focus-shadow-rgb: 130, 138, 145;
-    --bs-btn-active-color: #fff;
-    --bs-btn-active-bg: #7c3aed;
-    --bs-btn-active-border-color: #2e2e3d;
-    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-    --bs-btn-disabled-color: #fff;
-    --bs-btn-disabled-bg: #7c3aed;
-    --bs-btn-disabled-border-color: #7c3aed;
+  --bs-btn-color: #fff;
+  --bs-btn-bg: #7c3aed;
+  --bs-btn-border-color: #7c3aed;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #7c3aed;
+  --bs-btn-hover-border-color: #7c3aed;
+  --bs-btn-focus-shadow-rgb: 130, 138, 145;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #7c3aed;
+  --bs-btn-active-border-color: #2e2e3d;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #fff;
+  --bs-btn-disabled-bg: #7c3aed;
+  --bs-btn-disabled-border-color: #7c3aed;
 }
 
 .blur-sm {
@@ -355,11 +358,53 @@ a {
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .status-icon {
   display: flex;
   align-items: center;
   gap: 0.4rem;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    position: absolute;
+    z-index: 1050;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+
+  .sidebar.show {
+    transform: translateX(0);
+  }
+
+  .content-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1040;
+  }
+}
+
+.sidebar.collapsed {
+  width: 72px !important;
+}
+
+.sidebar.collapsed .nav-link span,
+.sidebar.collapsed .text-logo,
+.sidebar.collapsed small,
+.sidebar.collapsed .mt-auto,
+.sidebar.collapsed hr,
+.sidebar.collapsed .mb-4 {
+  display: none !important;
+}
+
+.toggle-sidebar-btn {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1100;
 }
