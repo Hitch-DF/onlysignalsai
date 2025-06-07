@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use App\Entity\LifetimeAccess;
 use App\Entity\Subscription;
 use App\Entity\User;
 use App\Repository\SubscriptionRepository;
@@ -121,10 +122,13 @@ class StripeService
         try {
             switch ($event->type) {
                 case 'checkout.session.completed':
-                    $sessionId = $event->data->object->id;
-                    $session = $this->client->checkout->sessions->retrieve($sessionId);
-                    $this->onSessionCompleted($session);
-                    $this->sendSubscriptionConfirmationEmail($session);
+                    $session = $this->client->checkout->sessions->retrieve($event->data->object->id, ['expand' => ['payment_intent']]);
+                    if ($session->mode === 'payment') {
+                        $this->onLifetimeAccessPurchase($session);
+                    } else {
+                        $this->onSessionCompleted($session);
+                        $this->sendSubscriptionConfirmationEmail($session);
+                    }
                     break;
                 case 'invoice.paid':
                     $this->onInvoicePaid($event->data->object);
@@ -463,5 +467,69 @@ class StripeService
         $this->entityManager->flush();
 
         $this->logger->info("Abonnement #{$stripeSub->id} mis à jour après événement Stripe.");
+    }
+
+    public function createLifetimeAccessSession(string $priceId, string $successUrl, string $cancelUrl, string $customerEmail): array
+    {
+        $session = $this->client->checkout->sessions->create([
+            'payment_method_types' => ['card'],
+            'mode' => 'payment',
+            'line_items' => [[
+                'price' => $priceId,
+                'quantity' => 1,
+            ]],
+            'customer_email' => $customerEmail,
+            'success_url' => $successUrl,
+            'cancel_url' => $cancelUrl,
+        ]);
+
+        return [
+            'id' => $session->id,
+            'publicKey' => $this->publicKey,
+        ];
+    }
+
+    private function onLifetimeAccessPurchase(\Stripe\Checkout\Session $session): void
+    {
+        $this->logger->info("▶️ Début onLifetimeAccessPurchase pour session {$session->id}");
+
+        $email = $session->customer_email;
+        $paymentIntentId = is_object($session->payment_intent)
+            ? $session->payment_intent->id
+            : $session->payment_intent;
+
+        $this->logger->info("📧 Email reçu : {$email}");
+        $this->logger->info("💳 PaymentIntent ID : {$paymentIntentId}");
+
+        if (!$email || !$paymentIntentId) {
+            $this->logger->error("❌ Infos manquantes : email ou payment_intent null");
+            return;
+        }
+
+        $user = $this->userRepository->findOneBy(['email' => $email]);
+        if (!$user) {
+            $this->logger->error("❌ Aucun utilisateur trouvé pour l'email : $email");
+            return;
+        }
+
+        $this->logger->info("👤 Utilisateur trouvé : ID {$user->getId()}");
+
+        $alreadyGranted = $this->entityManager->getRepository(LifetimeAccess::class)
+            ->findOneBy(['stripePaymentIntentId' => $paymentIntentId]);
+
+        if ($alreadyGranted) {
+            $this->logger->info("ℹ️ Accès à vie déjà existant pour PaymentIntent $paymentIntentId");
+            return;
+        }
+
+        $access = new LifetimeAccess();
+        $access->setUser($user);
+        $access->setStripePaymentIntentId($paymentIntentId);
+        $access->setGrantedAt(new \DateTime('now')); 
+
+        $this->entityManager->persist($access);
+        $this->entityManager->flush();
+
+        $this->logger->info("✅ Accès à vie accordé à l'utilisateur #{$user->getId()}");
     }
 }

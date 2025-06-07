@@ -1,28 +1,48 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-  <div class="container text-center my-5">
-    <h1 class="display-4 mb-4 text-light">{{ "Merci pour votre abonnement"|trans }} !</h1>
+<div class="container text-center my-5">
+  <h1 class="display-4 mb-4 text-light">
+    {% if isLifetime %}
+      {{ "Merci pour votre achat à vie"|trans }} 🏅
+    {% else %}
+      {{ "Merci pour votre abonnement"|trans }} 🔁
+    {% endif %}
+  </h1>
 
-    <div class="card bg-card text-light border border-secondary mx-auto mt-4 shadow-sm" style="max-width: 500px;">
-      {% if product.images is defined and product.images|length > 0 %}
-        <img src="{{ product.images[0] }}" class="card-img-top border-bottom border-secondary" alt="{{ product.name }}">
+  <div class="card bg-card text-light border border-secondary mx-auto mt-4 shadow-sm" style="max-width: 500px;">
+    {% if product.images is defined and product.images|length > 0 %}
+      <img src="{{ product.images[0] }}" class="card-img-top border-bottom border-secondary" alt="{{ product.name }}">
+    {% endif %}
+
+    <div class="card-body">
+      <h5 class="card-title">{{ product.name }}</h5>
+
+      {% if product.description %}
+        <p class="card-text text-muted small">{{ product.description }}</p>
       {% endif %}
-      <div class="card-body">
-        <h5 class="card-title">{{ product.name }}</h5>
-        {% if product.description %}
-          <p class="card-text text-muted small">{{ product.description }}</p>
-        {% endif %}
 
-        <p class="h4 mb-3">
-          {{ (price.unit_amount / 100)|number_format(2, ',', ' ') }} {{ price.currency|upper }}
+      <p class="h4 mb-3">
+        {{ (price.unit_amount / 100)|number_format(2, ',', ' ') }} {{ price.currency|upper }}
+        {% if not isLifetime %}
           <small class="text-muted">/ {{ price.recurring.interval|trans }}</small>
-        </p>
+        {% endif %}
+      </p>
 
-        <a href="{{ path('app_home') }}" class="btn btn-primary">
-          {{ "Retour à l'accueil"|trans }}
-        </a>
-      </div>
+      {% if isLifetime %}
+        <p class="text-success small">
+          {{ "Votre accès à vie est désormais actif !"|trans }}
+        </p>
+      {% else %}
+        <p class="text-muted small">
+          {{ "Votre abonnement est actif jusqu'à son expiration automatique."|trans }}
+        </p>
+      {% endif %}
+
+      <a href="{{ path('app_home') }}" class="btn btn-primary mt-3">
+        {{ "Retour à l'accueil"|trans }}
+      </a>
     </div>
   </div>
+</div>
 {% endblock %}

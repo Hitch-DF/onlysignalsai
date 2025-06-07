@@ -24,11 +24,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	// === INIT DATATABLE ===
 	// Fonction pour initialiser une DataTable avec la config commune
-	function initDataTable(selector) {
+	function initDataTable(selector, defaultOrder = []) {
 		const $table = $(selector);
 		if ($table.length === 0) return;
 
 		$table.DataTable({
+			order: defaultOrder,
 			orderCellsTop: true,
 			fixedHeader: true,
 			pageLength: 20,
@@ -38,7 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
 			}
 		});
 	}
-
 
 
 
@@ -85,8 +85,8 @@ document.addEventListener('DOMContentLoaded', () => {
 		table.draw();
 	});
 
-		// Init pour chaque table
-	initDataTable('#signals-table-history');
+	// Init pour chaque table
+	initDataTable('#signals-table-history', [[0, 'desc']]);
 	initDataTable('#signals-table');
 	initDataTable('#users-table');
 
@@ -94,6 +94,8 @@ document.addEventListener('DOMContentLoaded', () => {
 	const screenshotModal = document.getElementById('screenshotModal');
 	const screenshotImage = document.getElementById('modal-screenshot-image');
 	const placeholder = document.getElementById('modal-screenshot-placeholder');
+
+	const openImageBtn = document.getElementById('open-image-tab');
 
 	screenshotModal.addEventListener('show.bs.modal', (event) => {
 		const button = event.relatedTarget;
@@ -103,16 +105,21 @@ document.addEventListener('DOMContentLoaded', () => {
 		const title = screenshotModal.querySelector('.modal-title');
 		title.innerHTML = `<i class="bi bi-image me-2"></i> Screenshot - ${symbol}`;
 
-		// Set image
 		if (imgUrl) {
 			screenshotImage.src = imgUrl;
 			screenshotImage.classList.remove('d-none');
 			placeholder.classList.add('d-none');
+
+			openImageBtn.href = imgUrl;
+			openImageBtn.classList.remove('d-none');
 		} else {
 			screenshotImage.src = '';
 			screenshotImage.classList.add('d-none');
 			placeholder.classList.remove('d-none');
 			placeholder.innerText = 'Aucun screenshot disponible.';
+
+			openImageBtn.href = '#';
+			openImageBtn.classList.add('d-none');
 		}
 	});
 });

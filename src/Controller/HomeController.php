@@ -26,8 +26,10 @@ final class HomeController extends AbstractController
         $assets = [];
         $categories = [];
 
+        /**@var User $user */
         if ($user) {
-            $hasActive = $this->subscriptionRepository->userHasActiveSubscription($user);
+            $hasActive = $user->hasSignalAccess();
+
             if ($hasActive) {
                 $signals = $this->tradingSignalRepository->findBy(
                     ['status' => true],

@@ -76,12 +76,19 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?\DateTime $createdAt = null;
 
+    /**
+     * @var Collection<int, LifetimeAccess>
+     */
+    #[ORM\OneToMany(targetEntity: LifetimeAccess::class, mappedBy: 'user')]
+    private Collection $lifetimeAccesses;
+
 
     public function __construct()
     {
         $this->createdAt = new \DateTime();
         $this->subscriptions = new ArrayCollection();
         $this->loginHistories = new ArrayCollection();
+        $this->lifetimeAccesses = new ArrayCollection();
     }
 
 
@@ -309,5 +316,46 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->createdAt = $createdAt;
 
         return $this;
+    }
+
+    /**
+     * @return Collection<int, LifetimeAccess>
+     */
+    public function getLifetimeAccesses(): Collection
+    {
+        return $this->lifetimeAccesses;
+    }
+
+    public function addLifetimeAccess(LifetimeAccess $lifetimeAccess): static
+    {
+        if (!$this->lifetimeAccesses->contains($lifetimeAccess)) {
+            $this->lifetimeAccesses->add($lifetimeAccess);
+            $lifetimeAccess->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLifetimeAccess(LifetimeAccess $lifetimeAccess): static
+    {
+        if ($this->lifetimeAccesses->removeElement($lifetimeAccess)) {
+            // set the owning side to null (unless already changed)
+            if ($lifetimeAccess->getUser() === $this) {
+                $lifetimeAccess->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function hasLifetimeAccess(): bool
+    {
+        return !$this->lifetimeAccesses->isEmpty();
+    }
+
+
+    public function hasSignalAccess(): bool
+    {
+        return $this->hasLifetimeAccess() || $this->hasActiveSubscription();
     }
 }

@@ -661,6 +661,22 @@
         <source>Réinitialiser les filtres</source>
         <target>Réinitialiser les filtres</target>
       </trans-unit>
+      <trans-unit id="lOrhK1x" resname="Merci pour votre achat à vie">
+        <source>Merci pour votre achat à vie</source>
+        <target>Merci pour votre achat à vie</target>
+      </trans-unit>
+      <trans-unit id="gswGNQ3" resname="Votre accès à vie est désormais actif !">
+        <source>Votre accès à vie est désormais actif !</source>
+        <target>Votre accès à vie est désormais actif !</target>
+      </trans-unit>
+      <trans-unit id=".1zBqOl" resname="Votre abonnement est actif jusqu'à son expiration automatique.">
+        <source>Votre abonnement est actif jusqu'à son expiration automatique.</source>
+        <target>Votre abonnement est actif jusqu'à son expiration automatique.</target>
+      </trans-unit>
+      <trans-unit id="VSSDqym" resname="Ouvrir dans un onglet">
+        <source>Ouvrir dans un onglet</source>
+        <target>Ouvrir dans un onglet</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
