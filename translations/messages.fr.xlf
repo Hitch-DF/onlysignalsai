@@ -657,6 +657,10 @@
         <source>Chargement</source>
         <target>Chargement</target>
       </trans-unit>
+      <trans-unit id="ss.iHpQ" resname="Réinitialiser les filtres">
+        <source>Réinitialiser les filtres</source>
+        <target>Réinitialiser les filtres</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
