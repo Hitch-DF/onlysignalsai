@@ -52,7 +52,6 @@ final class HomeController extends AbstractController
         $assetsHistory = array_unique(array_map(fn($s) => $s->getSymbol(), $signalsHistory));
         sort($assetsHistory);
 
-        // Catégories uniques
         $categoriesHistory = array_unique(array_map(fn($s) => $s->getCategory(), $signalsHistory));
         sort($categoriesHistory);
 

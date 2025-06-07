@@ -23,15 +23,24 @@ document.addEventListener('DOMContentLoaded', () => {
 	const langFile = lang === 'fr' ? 'fr-FR' : 'en-GB';
 
 	// === INIT DATATABLE ===
-	const table = $signalsHistoryTable.DataTable({
-		orderCellsTop: true,
-		fixedHeader: true,
-		pageLength: 20,
-		lengthChange: false,
-		language: {
-			url: `https://cdn.datatables.net/plug-ins/1.13.4/i18n/${langFile}.json`
-		}
-	});
+	// Fonction pour initialiser une DataTable avec la config commune
+	function initDataTable(selector) {
+		const $table = $(selector);
+		if ($table.length === 0) return;
+
+		$table.DataTable({
+			orderCellsTop: true,
+			fixedHeader: true,
+			pageLength: 20,
+			lengthChange: false,
+			language: {
+				url: `https://cdn.datatables.net/plug-ins/1.13.4/i18n/${langFile}.json`
+			}
+		});
+	}
+
+
+
 
 	// === FILTRE PAR DATE ===
 	$.fn.dataTable.ext.search.push((settings, data) => {
@@ -75,6 +84,11 @@ document.addEventListener('DOMContentLoaded', () => {
 		// Redraw
 		table.draw();
 	});
+
+		// Init pour chaque table
+	initDataTable('#signals-table-history');
+	initDataTable('#signals-table');
+	initDataTable('#users-table');
 
 	// Screenshot modal handler
 	const screenshotModal = document.getElementById('screenshotModal');

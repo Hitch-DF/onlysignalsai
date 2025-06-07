@@ -16,17 +16,22 @@ final class TradingSignalHistoryController extends AbstractController
     #[Route('/trading/signal/history', name: 'app_trading_signal_history')]
     public function index(): Response
     {
-        $signals = $this->tradingSignalRepository->findBy(
+        $signalsHistory = $this->tradingSignalRepository->findBy(
             ['status' => false],
-            ['createdAt' => 'DESC']
+            ['createdAt' => 'DESC'],
         );
 
-        $symbols = array_unique(array_map(fn($s) => $s->getSymbol(), $signals));
-        sort($symbols);
+        $assetsHistory = array_unique(array_map(fn($s) => $s->getSymbol(), $signalsHistory));
+        sort($assetsHistory);
+
+        $categoriesHistory = array_unique(array_map(fn($s) => $s->getCategory(), $signalsHistory));
+        sort($categoriesHistory);
 
         return $this->render('trading_signal_history/index.html.twig', [
-            'signalsHistory' => $signals,
-            'symbols' => $symbols,
+            'signalsHistory' => $signalsHistory,
+            'signalsHistory' => $signalsHistory,
+            'assetsHistory' => $assetsHistory,
+            'categoriesHistory' => $categoriesHistory
         ]);
     }
 }

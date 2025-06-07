@@ -3,98 +3,138 @@
 {% block title %}Trading Signal History{% endblock %}
 
 {% block body %}
-<div class="container my-5">
-    <div class="text-center mb-5">
-        <h2 id="historical-signals-heading" class="h3 fw-bold text-light">{{ 'Historical Performance'|trans }}</h2>
-        <p class="text-muted">{{ 'Review past signals and their outcomes. Filter by asset, type, or date'|trans }}.</p>
+<div class="card bg-card text-light mb-5 shadow-sm border-0">
+  <div class="card-header bg-dark text-center py-4">
+    <h2 class="h4 mb-0">{{"Historical Performance"|trans}}</h2>
+	<p class="text-muted">{{"Review past signals and their outcomes. Filter by asset, type, or date"|trans}}.</p>
+  </div>
+
+  <div class="card-body">
+
+    <div class="d-flex flex-wrap justify-content-between align-items-center mb-4">
+
+      <button id="reset-filters" class="btn btn-outline-secondary mb-3">
+        <i class="bi bi-x-circle me-2"></i> {{"Réinitialiser les filtres"|trans}}
+      </button>
     </div>
 
-    {% if signalsHistory is empty %}
-        <div class="alert alert-info">{{"No active signals found"|trans}}.</div>
-    {% else %}
+    <div class="row g-3 mb-4">
+      <div class="col-md-3">
+        <label class="form-label text-muted">{{"Actif"|trans}}</label>
+        <select class="form-select bg-dark text-light border-secondary column-filter" data-column="2">
+          <option value="">{{"Tous"|trans}}</option>
+          {% for asset in assetsHistory %}
+            <option value="{{ asset }}">{{ asset }}</option>
+          {% endfor %}
+        </select>
+      </div>
 
-        <!-- Filters -->
-        <div class="row g-3 mb-4 align-items-end">
-            <div class="col-md-3">
-                <label for="asset-filter" class="form-label">{{"All Assets"|trans}}</label>
-                <select id="asset-filter" class="form-select column-filter" data-column="0">
-                    <option value="">{{"All"|trans}}</option>
-                    {% for symbol in symbols %}
-                        <option value="{{ symbol }}">{{ symbol }}</option>
-                    {% endfor %}
-                </select>
-            </div>
+      <div class="col-md-3">
+        <label class="form-label text-muted">Type</label>
+        <select class="form-select bg-dark text-light border-secondary column-filter" data-column="3">
+          <option value="">{{"Tous"|trans}}</option>
+          <option value="Buy">{{"Buy"|trans}}</option>
+          <option value="Sell">{{"Sell"|trans}}</option>
+        </select>
+      </div>
 
-            <div class="col-md-3">
-                <label for="type-filter" class="form-label">{{"All Types"|trans}}</label>
-                <select id="type-filter" class="form-select column-filter" data-column="4">
-                    <option value="">{{"All"|trans}}</option>
-                    <option value="Buy">{{"Buy"|trans}}</option>
-                    <option value="Sell">{{"Sell"|trans}}</option>
-                </select>
-            </div>
+		<div class="col-md-3">
+			<label class="form-label text-muted">{{"Date d'entrée min"|trans}}</label>
+			<input type="text" id="min-date" class="form-control bg-dark text-light border-secondary" autocomplete="off">
+		</div>
+		<div class="col-md-3">
+			<label class="form-label text-muted">{{"Date d'entrée max"|trans}}</label>
+			<input type="text" id="max-date" class="form-control bg-dark text-light border-secondary" autocomplete="off">
+		</div>
 
-            <div class="col-md-4">
-                <label for="date-range" class="form-label">{{"Pick a date range"|trans}}</label>
-                <input type="text" id="date-range" class="form-control" placeholder="YYYY-MM-DD - YYYY-MM-DD" autocomplete="off">
-            </div>
-
-            <div class="col-md-2">
-                <button id="reset-filters" class="btn btn-outline-secondary w-100">{{"Reset Filters"|trans}}</button>
-            </div>
-        </div>
-
-        <!-- Signal Table -->
-         <div class="table-responsive shadow-sm rounded border">
-        <table id="signals-table" class="table table-hover table-bordered align-middle mb-0">
-            <thead class="table-light">
-                <tr>
-                    <th>{{ 'Asset'|trans }}</th>
-                    <th>{{ 'Price'|trans }}</th>
-                    <th>{{ 'Date'|trans }}</th>
-                    <th>{{ 'Signal Age'|trans }}</th>
-                    <th>{{ 'Signal Type'|trans }}</th>
-                    <th>{{ 'Category'|trans }}</th>
-                    <th>{{ 'Chart'|trans }}</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for signal in signalsHistory %}
-                    <tr>
-                        <td class="fw-semibold">{{ signal.symbol }}</td>
-                        <td>${{ signal.entryPrice|number_format(2, '.', ',') }}</td>
-                        <td>{{ signal.createdAt|date('Y-m-d') }}</td>
-                        <td>{{ signal.signalAge }}</td>
-                        <td>
-                            {% if signal.signalType == 'Buy' %}
-                                <span class="d-inline-flex align-items-center rounded-pill border border-success bg-success bg-opacity-10 text-success fw-semibold px-3 py-1 text-nowrap small">
-                                    <i class="bi bi-graph-up-arrow me-1"></i>
-                                    {{ 'Buy'|trans }}
-                                </span>
-                            {% else %}
-                                <span class="d-inline-flex align-items-center rounded-pill border border-danger bg-danger bg-opacity-10 text-danger fw-semibold px-3 py-1 text-nowrap small">
-                                    <i class="bi bi-graph-down-arrow me-1"></i>
-                                    {{ 'Sell'|trans }}
-                                </span>
-                            {% endif %}
-                        </td>
-                        <td>
-                            <span class="badge rounded-pill bg-secondary text-light d-inline-flex align-items-center gap-1 px-3 py-1">
-                                <i class="bi bi-tag-fill small"></i>
-                                {{ signal.category }}
-                            </span>
-                        </td>
-                        <td>
-                            <a href="https://www.tradingview.com/chart/?symbol={{ signal.symbol }}" target="_blank" class="btn btn-outline-secondary btn-sm">
-                                {{ 'View'|trans }}
-                                <i class="bi bi-box-arrow-up-right ms-1"></i>
-                            </a>
-                        </td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
     </div>
-    {% endif %}
+
+    <div class="table-responsive shadow-sm rounded border border-secondary">
+      <table id="signals-table-history" class="table table-dark table-bordered table-hover align-middle mb-0">
+        <thead>
+          <tr>
+            <th>{{"Date d'entrée"|trans }}</th>
+            <th>{{"Date de clôture"|trans }}</th>
+            <th>{{"Actif"|trans }}</th>
+            <th>{{"Type"|trans }}</th>
+            <th>{{"TimeFrame"|trans }}</th>
+            <th>{{"Prix d'entrée"|trans }}</th>
+            <th>{{"Prix de sortie"|trans }}</th>
+            <th>{{"Pips"|trans }}</th>
+            <th>{{"Résultat"|trans }}</th>
+            <th>{{"Screenshot"|trans }}</th>
+            <th>{{"Actions"|trans }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for signalHistory in signalsHistory %}
+            <tr>
+              <td>{{ signalHistory.createdAt|date('Y-m-d') }}</td>
+              <td>{{ signalHistory.closedAt|date('Y-m-d') }}</td>
+              <td>{{ signalHistory.symbol }}</td>
+              <td>
+                <span class="badge {{ signalHistory.signalType == 'Buy' ? 'bg-success' : 'bg-danger' }}">{{ signalHistory.signalType }}</span>
+              </td>
+              <td>{{ signalHistory.timeFrame }}</td>
+              <td>{{ signalHistory.entryPrice }}</td>
+              <td>{{ signalHistory.exitPrice }}</td>
+              <td>{{ signalHistory.pips }}</td>
+              <td>{{ signalHistory.result }}</td>
+              <td>
+                {% if signalHistory.screenshot %}
+                  <button
+                    type="button"
+                    class="btn btn-outline-secondary btn-sm"
+                    data-bs-toggle="modal"
+                    data-bs-target="#screenshotModal"
+                    data-img="{{ asset('uploads/screenshots/' ~ signalHistory.screenshot) }}"
+                    data-symbol="{{ signalHistory.symbol }}"
+                  >
+                    <i class="bi bi-eye"></i> Voir
+                  </button>
+
+                {% else %}
+                  <span class="text-muted">-</span>
+                {% endif %}
+              </td>
+              <td>
+                <a href="https://www.tradingview.com/chart/?symbol={{ signalHistory.symbol }}" target="_blank"
+                  class="btn btn-outline-secondary btn-sm d-inline-flex align-items-center gap-1">
+                  {{ 'View'|trans }}
+                  <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+				      </td>
+            </tr>
+          {% else %}
+            <tr><td colspan="13" class="text-center text-muted">{{"Aucun signal historique"|trans}}</td></tr>
+          {% endfor %}
+          <div class="modal fade" id="screenshotModal" tabindex="-1" aria-labelledby="screenshotModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content bg-card border border-secondary">
+      <div class="modal-header">
+        <h5 class="modal-title d-flex align-items-center gap-2" id="screenshotModalLabel">
+          <i class="bi bi-image"></i> {{"Screenshot"|trans}}
+        </h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fermer"></button>
+      </div>
+      <div class="modal-body text-center">
+        <img id="modal-screenshot-image" src="" alt="Screenshot" class="img-fluid rounded shadow d-none">
+        <p id="modal-screenshot-placeholder" class="text-muted">{{"Chargement"|trans}}...</p>
+      </div>
+      <div class="modal-footer border-0 justify-content-end">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{"Fermer"|trans}}</button>
+      </div>
+    </div>
+  </div>
 </div>
+
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
+
+
+
 {% endblock %}
