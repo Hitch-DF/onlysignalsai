@@ -25,6 +25,14 @@ final class TradingSignalController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $screenshot = $form->get('screenshot')->getData();
+            if ($screenshot) {
+                $filename = uniqid() . '.' . $screenshot->guessExtension();
+                $screenshot->move($this->getParameter('upload_directory'), $filename);
+                $tradingSignal->setScreenshot($filename);
+            }
+
             $this->entityManager->flush();
             $this->addFlash('success', 'Signal modifié avec succès.');
             return $this->redirectToRoute('app_dashboard', [], Response::HTTP_SEE_OTHER);

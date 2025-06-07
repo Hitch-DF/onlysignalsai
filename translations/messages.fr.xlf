@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="fr" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="3vY5Qx5" resname="user.form.email">
+        <source>user.form.email</source>
+        <target>Adresse e-mail</target>
+      </trans-unit>
+      <trans-unit id="TfgZum5" resname="user.form.phone">
+        <source>user.form.phone</source>
+        <target>Téléphone</target>
+      </trans-unit>
+      <trans-unit id="dEPk.eu" resname="user.form.locale">
+        <source>user.form.locale</source>
+        <target>Langue</target>
+      </trans-unit>
+      <trans-unit id="ZeK2hhW" resname="user.form.enabled">
+        <source>user.form.enabled</source>
+        <target>Actif</target>
+      </trans-unit>
+      <trans-unit id="ZfoBaV8" resname="user.form.roles">
+        <source>user.form.roles</source>
+        <target>Rôles</target>
+      </trans-unit>
+      <trans-unit id="8MgXOMa" resname="user.form.stripe_customer_id">
+        <source>user.form.stripe_customer_id</source>
+        <target>Identifiant Stripe</target>
+      </trans-unit>
+      <trans-unit id="12njpvH" resname="user.form.username">
+        <source>user.form.username</source>
+        <target>Nom d'utilisateur</target>
+      </trans-unit>
+      <trans-unit id="9f5kA8m" resname="user.role.admin">
+        <source>user.role.admin</source>
+        <target>Administrateur</target>
+      </trans-unit>
+      <trans-unit id="IkBHDBk" resname="user.role.user">
+        <source>user.role.user</source>
+        <target>Utilisateur</target>
+      </trans-unit>
+      <trans-unit id="NJDVAA0" resname="user.actions.edit">
+        <source>user.actions.edit</source>
+        <target>Editer</target>
+      </trans-unit>
+      <trans-unit id="18dtGcR" resname="user.actions.create">
+        <source>user.actions.create</source>
+        <target>Créer</target>
+      </trans-unit>
+      <trans-unit id="mbxTDZ5" resname="user.actions.delete">
+        <source>user.actions.delete</source>
+        <target>Supprimer</target>
+      </trans-unit>
+      <trans-unit id="wgF2npJ" resname="user.actions.management">
+        <source>user.actions.management</source>
+        <target>Gestion</target>
+      </trans-unit>
+      <trans-unit id="luHl1mo" resname="Réinitialisation de votre mot de passe">
+        <source>Réinitialisation de votre mot de passe</source>
+        <target>Réinitialisation de votre mot de passe</target>
+      </trans-unit>
+      <trans-unit id="mAOiTIx" resname="Modifications effectuées avec succès">
+        <source>Modifications effectuées avec succès</source>
+        <target>Modifications effectuées avec succès</target>
+      </trans-unit>
+      <trans-unit id="yXA5aGl" resname="Confirmation de votre souscription à l’abonnement">
+        <source>Confirmation de votre souscription à l’abonnement</source>
+        <target>Confirmation de votre souscription à l’abonnement</target>
+      </trans-unit>
+      <trans-unit id="QxyHast" resname="Bonjour">
+        <source>Bonjour</source>
+        <target>Bonjour</target>
+      </trans-unit>
+      <trans-unit id="GQJmio1" resname="Nous vous remercions pour votre confiance et avons le plaisir de vous confirmer votre souscription à l’abonnement">
+        <source>Nous vous remercions pour votre confiance et avons le plaisir de vous confirmer votre souscription à l’abonnement</source>
+        <target>Nous vous remercions pour votre confiance et avons le plaisir de vous confirmer votre souscription à l’abonnement</target>
+      </trans-unit>
+      <trans-unit id="tK3tcRf" resname="Voici un récapitulatif de votre abonnement">
+        <source>Voici un récapitulatif de votre abonnement</source>
+        <target>Voici un récapitulatif de votre abonnement</target>
+      </trans-unit>
+      <trans-unit id="0_mcfn9" resname="Nom de l’abonnement">
+        <source>Nom de l’abonnement</source>
+        <target>Nom de l’abonnement</target>
+      </trans-unit>
+      <trans-unit id="Bow3Rz9" resname="Date de début">
+        <source>Date de début</source>
+        <target>Date de début</target>
+      </trans-unit>
+      <trans-unit id="6vbbjKH" resname="Durée">
+        <source>Durée</source>
+        <target>Durée</target>
+      </trans-unit>
+      <trans-unit id="PElGIuO" resname="Renouvellement">
+        <source>Renouvellement</source>
+        <target>Renouvellement</target>
+      </trans-unit>
+      <trans-unit id="11KzULr" resname="Montant">
+        <source>Montant</source>
+        <target>Montant</target>
+      </trans-unit>
+      <trans-unit id="Vrw33xw" resname="période">
+        <source>période</source>
+        <target>période</target>
+      </trans-unit>
+      <trans-unit id="o24tVbb" resname="Si vous avez des questions ou besoin d’assistance, notre équipe reste à votre écoute à l’adresse suivante">
+        <source>Si vous avez des questions ou besoin d’assistance, notre équipe reste à votre écoute à l’adresse suivante</source>
+        <target>Si vous avez des questions ou besoin d’assistance, notre équipe reste à votre écoute à l’adresse suivante</target>
+      </trans-unit>
+      <trans-unit id="3rE5MPQ" resname="Encore merci et bienvenue parmi nos abonnés">
+        <source>Encore merci et bienvenue parmi nos abonnés</source>
+        <target>Encore merci et bienvenue parmi nos abonnés</target>
+      </trans-unit>
+      <trans-unit id="PW7Z9ra" resname="All rights reserved">
+        <source>All rights reserved</source>
+        <target>Tous droits réservés</target>
+      </trans-unit>
+      <trans-unit id="1M7YXjV" resname="Vos Signaux de Trading en Temps Réel">
+        <source>Vos Signaux de Trading en Temps Réel</source>
+        <target>Vos Signaux de Trading en Temps Réel</target>
+      </trans-unit>
+      <trans-unit id="4f3WEva" resname="Login">
+        <source>Login</source>
+        <target>Connexion</target>
+      </trans-unit>
+      <trans-unit id="mkx1qEp" resname="Sign Up">
+        <source>Sign Up</source>
+        <target>Créer un compte</target>
+      </trans-unit>
+      <trans-unit id="s2QsEt_" resname="Vous devez être abonné pour voir les signaux actifs">
+        <source>Vous devez être abonné pour voir les signaux actifs</source>
+        <target>Vous devez être abonné pour voir les signaux actifs</target>
+      </trans-unit>
+      <trans-unit id="shlyffR" resname="Voir les offres">
+        <source>Voir les offres</source>
+        <target>Voir les offres</target>
+      </trans-unit>
+      <trans-unit id="G5Wbx7p" resname="Simulate Signal">
+        <source>Simulate Signal</source>
+        <target>Simulate Signal</target>
+      </trans-unit>
+      <trans-unit id="O2MG7_d" resname="Choisissez votre offre">
+        <source>Choisissez votre offre</source>
+        <target>Choisissez votre offre</target>
+      </trans-unit>
+      <trans-unit id="w3wJ1pO" resname="Pendant">
+        <source>Pendant</source>
+        <target>Pendant</target>
+      </trans-unit>
+      <trans-unit id="_8rSYTS" resname="L'abonnement à ce plan se termine le">
+        <source>L'abonnement à ce plan se termine le</source>
+        <target>L'abonnement à ce plan se termine le</target>
+      </trans-unit>
+      <trans-unit id="3.FDHU_" resname="Déjà abonné">
+        <source>Déjà abonné</source>
+        <target>Déjà abonné</target>
+      </trans-unit>
+      <trans-unit id="408ZAT7" resname="Acheter à vie">
+        <source>Acheter à vie</source>
+        <target>Acheter à vie</target>
+      </trans-unit>
+      <trans-unit id="EIa1mvS" resname="S'abonner">
+        <source>S'abonner</source>
+        <target>S'abonner</target>
+      </trans-unit>
+      <trans-unit id="OaMaqv6" resname="Paiement pour l'abonnement abandonné">
+        <source>Paiement pour l'abonnement abandonné</source>
+        <target>Paiement pour l'abonnement abandonné</target>
+      </trans-unit>
+      <trans-unit id="u65qo9x" resname="Retour à la liste des abonnements">
+        <source>Retour à la liste des abonnements</source>
+        <target>Retour à la liste des abonnements</target>
+      </trans-unit>
+      <trans-unit id="jO6LsFn" resname="Merci pour votre abonnement">
+        <source>Merci pour votre abonnement</source>
+        <target>Merci pour votre abonnement</target>
+      </trans-unit>
+      <trans-unit id="uTDXMLA" resname="Retour à l'accueil">
+        <source>Retour à l'accueil</source>
+        <target>Retour à l'accueil</target>
+      </trans-unit>
+      <trans-unit id="kErt7IC" resname="Authentification">
+        <source>Authentification</source>
+        <target>Authentification</target>
+      </trans-unit>
+      <trans-unit id="ezXhVQv" resname="Bienvenue">
+        <source>Bienvenue</source>
+        <target>Bienvenue</target>
+      </trans-unit>
+      <trans-unit id="r_gJVFX" resname="Connectez-vous pour accéder à vos signaux">
+        <source>Connectez-vous pour accéder à vos signaux</source>
+        <target>Connectez-vous pour accéder à vos signaux</target>
+      </trans-unit>
+      <trans-unit id="uo16Si7" resname="Connecté en tant que">
+        <source>Connecté en tant que</source>
+        <target>Connecté en tant que</target>
+      </trans-unit>
+      <trans-unit id="MXpdhar" resname="Déconnexion">
+        <source>Déconnexion</source>
+        <target>Déconnexion</target>
+      </trans-unit>
+      <trans-unit id="Vw8PF8s" resname="Adresse e-mail">
+        <source>Adresse e-mail</source>
+        <target>Adresse e-mail</target>
+      </trans-unit>
+      <trans-unit id="uhLPWhY" resname="Mot de passe">
+        <source>Mot de passe</source>
+        <target>Mot de passe</target>
+      </trans-unit>
+      <trans-unit id="X3hZGl4" resname="Se connecter">
+        <source>Se connecter</source>
+        <target>Se connecter</target>
+      </trans-unit>
+      <trans-unit id="HW2b7JO" resname="Pas encore de compte">
+        <source>Pas encore de compte</source>
+        <target>Pas encore de compte</target>
+      </trans-unit>
+      <trans-unit id="eOQ7Ld." resname="Créer un compte">
+        <source>Créer un compte</source>
+        <target>Créer un compte</target>
+      </trans-unit>
+      <trans-unit id="GHpL1L3" resname="Mot de passe oublié">
+        <source>Mot de passe oublié</source>
+        <target>Mot de passe oublié</target>
+      </trans-unit>
+      <trans-unit id="e4A7e_l" resname="Tous droits réservés">
+        <source>Tous droits réservés</source>
+        <target>Tous droits réservés</target>
+      </trans-unit>
+      <trans-unit id="k3qJihk" resname="profile">
+        <source>profile</source>
+        <target>Profil</target>
+      </trans-unit>
+      <trans-unit id="LkCAYak" resname="Enregistrer">
+        <source>Enregistrer</source>
+        <target>Enregistrer</target>
+      </trans-unit>
+      <trans-unit id="J6e_Dqj" resname="Créez votre compte pour accéder à OnlySignals">
+        <source>Créez votre compte pour accéder à OnlySignals</source>
+        <target>Créez votre compte pour accéder à OnlySignals</target>
+      </trans-unit>
+      <trans-unit id="EMF4pA5" resname="Vous avez déjà un compte ?">
+        <source>Vous avez déjà un compte ?</source>
+        <target>Vous avez déjà un compte ?</target>
+      </trans-unit>
+      <trans-unit id="7PhR3Ra" resname="Réinitialiser votre mot de passe">
+        <source>Réinitialiser votre mot de passe</source>
+        <target>Réinitialiser votre mot de passe</target>
+      </trans-unit>
+      <trans-unit id="zkaP_gP" resname="Entrez votre adresse email pour recevoir un lien de réinitialisation.">
+        <source>Entrez votre adresse email pour recevoir un lien de réinitialisation.</source>
+        <target>Entrez votre adresse email pour recevoir un lien de réinitialisation.</target>
+      </trans-unit>
+      <trans-unit id=".jakMLK" resname="Vous recevrez un lien par email pour réinitialiser votre mot de passe.">
+        <source>Vous recevrez un lien par email pour réinitialiser votre mot de passe.</source>
+        <target>Vous recevrez un lien par email pour réinitialiser votre mot de passe.</target>
+      </trans-unit>
+      <trans-unit id="6hDCgmE" resname="Envoyer le lien de réinitialisation">
+        <source>Envoyer le lien de réinitialisation</source>
+        <target>Envoyer le lien de réinitialisation</target>
+      </trans-unit>
+      <trans-unit id="QCDXShW" resname="Retour à la connexion">
+        <source>Retour à la connexion</source>
+        <target>Retour à la connexion</target>
+      </trans-unit>
+      <trans-unit id="ucm2Hwr" resname="Réinitialisez votre mot de passe">
+        <source>Réinitialisez votre mot de passe</source>
+        <target>Réinitialisez votre mot de passe</target>
+      </trans-unit>
+      <trans-unit id="rVbIyJ6" resname="Nouveau mot de passe">
+        <source>Nouveau mot de passe</source>
+        <target>Nouveau mot de passe</target>
+      </trans-unit>
+      <trans-unit id="kG5oTpF" resname="Choisissez un nouveau mot de passe pour accéder à votre compte.">
+        <source>Choisissez un nouveau mot de passe pour accéder à votre compte.</source>
+        <target>Choisissez un nouveau mot de passe pour accéder à votre compte.</target>
+      </trans-unit>
+      <trans-unit id="ud7nzUV" resname="Réinitialiser le mot de passe">
+        <source>Réinitialiser le mot de passe</source>
+        <target>Réinitialiser le mot de passe</target>
+      </trans-unit>
+      <trans-unit id="ABnWYV8" resname="Email de réinitialisation envoyé">
+        <source>Email de réinitialisation envoyé</source>
+        <target>Email de réinitialisation envoyé</target>
+      </trans-unit>
+      <trans-unit id="YUfwJtj" resname="Vérifiez votre boîte mail">
+        <source>Vérifiez votre boîte mail</source>
+        <target>Vérifiez votre boîte mail</target>
+      </trans-unit>
+      <trans-unit id="rnAZUQq" resname="Si un compte correspondant existe, un email vient de vous être envoyé avec un lien de réinitialisation.">
+        <source>Si un compte correspondant existe, un email vient de vous être envoyé avec un lien de réinitialisation.</source>
+        <target>Si un compte correspondant existe, un email vient de vous être envoyé avec un lien de réinitialisation.</target>
+      </trans-unit>
+      <trans-unit id="x1eZk_s" resname="Ce lien expirera dans">
+        <source>Ce lien expirera dans</source>
+        <target>Ce lien expirera dans</target>
+      </trans-unit>
+      <trans-unit id="fKKqVtt" resname="Si vous ne recevez pas d'email, vérifiez votre dossier spam ou">
+        <source>Si vous ne recevez pas d'email, vérifiez votre dossier spam ou</source>
+        <target>Si vous ne recevez pas d'email, vérifiez votre dossier spam ou</target>
+      </trans-unit>
+      <trans-unit id="saUw0EN" resname="réessayez">
+        <source>réessayez</source>
+        <target>réessayez</target>
+      </trans-unit>
+      <trans-unit id="S3wFdmR" resname="Abonnement">
+        <source>Abonnement</source>
+        <target>Abonnement</target>
+      </trans-unit>
+      <trans-unit id="NocErjy" resname="A problem or an idea to improve our platform">
+        <source>A problem or an idea to improve our platform</source>
+        <target>Un problème ou une idée pour améliorer notre plateforme</target>
+      </trans-unit>
+      <trans-unit id="A._JmRd" resname="Contact me">
+        <source>Contact me</source>
+        <target>Contactez-moi</target>
+      </trans-unit>
+      <trans-unit id="Do.aE.v" resname="Mon profil">
+        <source>Mon profil</source>
+        <target>Mon profil</target>
+      </trans-unit>
+      <trans-unit id="JKl2Twv" resname="Logout">
+        <source>Logout</source>
+        <target>Déconnexion</target>
+      </trans-unit>
+      <trans-unit id="XdiPJ.F" resname="Not logged in">
+        <source>Not logged in</source>
+        <target>Vous n'êtes pas connecté</target>
+      </trans-unit>
+      <trans-unit id="oy.0c8X" resname="Historical Performance">
+        <source>Historical Performance</source>
+        <target>Performance historique</target>
+      </trans-unit>
+      <trans-unit id="QgmC5Jz" resname="Review past signals and their outcomes. Filter by asset, type, or date">
+        <source>Review past signals and their outcomes. Filter by asset, type, or date</source>
+        <target>Examinez les signaux passés et leurs résultats. Filtrez par actif, type ou date.</target>
+      </trans-unit>
+      <trans-unit id="OnzuCbm" resname="Asset">
+        <source>Asset</source>
+        <target>Asset</target>
+      </trans-unit>
+      <trans-unit id="4CMvZd0" resname="Price">
+        <source>Price</source>
+        <target>Prix</target>
+      </trans-unit>
+      <trans-unit id="1cuPpsS" resname="Date">
+        <source>Date</source>
+        <target>Date</target>
+      </trans-unit>
+      <trans-unit id="Y0ewf6D" resname="Signal Age">
+        <source>Signal Age</source>
+        <target>Signal Age</target>
+      </trans-unit>
+      <trans-unit id="w5w1FE." resname="Signal Type">
+        <source>Signal Type</source>
+        <target>Signal Type</target>
+      </trans-unit>
+      <trans-unit id="tceoGZr" resname="Category">
+        <source>Category</source>
+        <target>Catégorie</target>
+      </trans-unit>
+      <trans-unit id="rVbrB5K" resname="Chart">
+        <source>Chart</source>
+        <target>Chart</target>
+      </trans-unit>
+      <trans-unit id="HASecZe" resname="Buy">
+        <source>Buy</source>
+        <target>Buy</target>
+      </trans-unit>
+      <trans-unit id="fVqrfp6" resname="Sell">
+        <source>Sell</source>
+        <target>Sell</target>
+      </trans-unit>
+      <trans-unit id=".EmYZIu" resname="View">
+        <source>View</source>
+        <target>Voir</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

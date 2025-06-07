@@ -5,87 +5,100 @@ import 'bootstrap';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import 'datatables.net-bs5';
 import 'datatables.net-bs5/css/dataTables.bootstrap5.min.css';
+import 'jquery-ui/themes/base/all.css';
 
-// jQuery + DataTables
+// libs
 import $ from 'jquery';
+import 'jquery-ui/ui/widgets/datepicker';
 import dt from 'datatables.net-bs5';
 
-import 'litepicker';
-import 'litepicker/dist/css/litepicker.css';
-
-
 document.addEventListener('DOMContentLoaded', () => {
-	const $signalsTable = $('#signals-table');
 	const $signalsHistoryTable = $('#signals-table-history');
-	const $usersTable = $('#users-table');
 
-	const dateInput = document.getElementById('date-range');
+	let startDate = null;
+	let endDate = null;
 
-	// Initialize Litepicker
-	if (dateInput) {
-		new Litepicker({
-			element: dateInput,
-			singleMode: false,
-			autoApply: true,
-			lang: 'fr-FR',
-			numberOfMonths: 2,
-			numberOfColumns: 2,
-			format: 'YYYY-MM-DD',
-			dropdowns: {
-				minYear: 2023,
-				maxYear: null,
-				months: true,
-				years: true
-			},
-		});
+	// Langue dynamique selon <html lang="...">
+	const lang = document.documentElement.lang || 'en';
+	const langFile = lang === 'fr' ? 'fr-FR' : 'en-GB';
 
-		$.fn.dataTable.ext.search.push((settings, data) => {
-			const range = dateInput.value;
-			if (!range.includes(' - ')) return true;
-
-			const [start, end] = range.split(' - ').map(d => new Date(d));
-			const rowDate = new Date(data[2]); // Date = index 2, adjust if needed
-
-			return rowDate >= start && rowDate <= end;
-		});
-
-		dateInput.addEventListener('change', () => {
-			$signalsTable.DataTable().draw();
-			$signalsHistoryTable.DataTable().draw();
-		});
-	}
-
-	const initTable = ($table) => {
-		if ($table.length > 0) {
-			const table = $table.DataTable({
-				orderCellsTop: true,
-				fixedHeader: true,
-				pageLength: 10,
-				lengthChange: false,
-				language: {
-					url: 'https://cdn.datatables.net/plug-ins/1.13.4/i18n/fr-FR.json'
-				}
-			});
-
-			document.querySelectorAll('.column-filter').forEach(el => {
-				el.addEventListener('change', () => {
-					const col = el.getAttribute('data-column');
-					table.column(col).search(el.value).draw();
-				});
-			});
-
-			const resetBtn = document.getElementById('reset-filters');
-			if (resetBtn) {
-				resetBtn.addEventListener('click', () => {
-					document.querySelectorAll('.column-filter').forEach(el => el.value = '');
-					if (dateInput) dateInput.value = '';
-					table.search('').columns().search('').draw();
-				});
-			}
+	// === INIT DATATABLE ===
+	const table = $signalsHistoryTable.DataTable({
+		orderCellsTop: true,
+		fixedHeader: true,
+		pageLength: 20,
+		lengthChange: false,
+		language: {
+			url: `https://cdn.datatables.net/plug-ins/1.13.4/i18n/${langFile}.json`
 		}
-	};
+	});
 
-	initTable($signalsTable);
-	initTable($signalsHistoryTable);
-	initTable($usersTable);
+	// === FILTRE PAR DATE ===
+	$.fn.dataTable.ext.search.push((settings, data) => {
+		const createdAt = new Date(data[0]); // Colonne 0 = Date d'entrée
+		if (!startDate && !endDate) return true;
+		if (startDate && !endDate) return createdAt >= startDate;
+		if (!startDate && endDate) return createdAt <= endDate;
+		return createdAt >= startDate && createdAt <= endDate;
+	});
+
+	$('#min-date, #max-date').datepicker({
+		dateFormat: 'yy-mm-dd',
+		onSelect: function () {
+			startDate = $('#min-date').datepicker('getDate');
+			endDate = $('#max-date').datepicker('getDate');
+			table.draw();
+		}
+	});
+
+	// === FILTRE PAR COLONNE (selects avec .column-filter) ===
+	$('.column-filter').on('change', function () {
+		const columnIndex = $(this).data('column');
+		const value = $(this).val();
+		table.column(columnIndex).search(value).draw();
+	});
+
+	// === RESET DES FILTRES ===
+	$('#reset-filters').on('click', () => {
+		// Réinitialiser les dates
+		startDate = null;
+		endDate = null;
+		$('#min-date, #max-date').val('');
+
+		// Réinitialiser les selects
+		$('.column-filter').each(function () {
+			$(this).val('');
+			const columnIndex = $(this).data('column');
+			table.column(columnIndex).search('');
+		});
+
+		// Redraw
+		table.draw();
+	});
+
+	// Screenshot modal handler
+	const screenshotModal = document.getElementById('screenshotModal');
+	const screenshotImage = document.getElementById('modal-screenshot-image');
+	const placeholder = document.getElementById('modal-screenshot-placeholder');
+
+	screenshotModal.addEventListener('show.bs.modal', (event) => {
+		const button = event.relatedTarget;
+		const imgUrl = button.getAttribute('data-img');
+		const symbol = button.getAttribute('data-symbol');
+
+		const title = screenshotModal.querySelector('.modal-title');
+		title.innerHTML = `<i class="bi bi-image me-2"></i> Screenshot - ${symbol}`;
+
+		// Set image
+		if (imgUrl) {
+			screenshotImage.src = imgUrl;
+			screenshotImage.classList.remove('d-none');
+			placeholder.classList.add('d-none');
+		} else {
+			screenshotImage.src = '';
+			screenshotImage.classList.add('d-none');
+			placeholder.classList.remove('d-none');
+			placeholder.innerText = 'Aucun screenshot disponible.';
+		}
+	});
 });

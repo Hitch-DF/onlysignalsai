@@ -46,7 +46,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $phone = null;
 
     #[ORM\Column(length: 2, nullable: true)]
-    private ?string $locale = 'fr';
+    private ?string $locale = 'en';
 
     #[ORM\Column]
     private ?bool $enabled = true;

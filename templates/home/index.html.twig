@@ -9,13 +9,25 @@
 {% block body %}
 	<div class="d-flex">
 		<main class="flex-grow-1">
-			<header class="border-bottom py-3 px-4 d-flex justify-content-between align-items-center bg-card">
-				<h1 class="h4 mb-0 text-light">OnlySignals</h1>
+		<header class="border-bottom py-3 px-4 d-flex justify-content-between align-items-center bg-card">
+			<h1 class="h4 mb-0 text-light">OnlySignals</h1>
+
+			<div class="d-flex align-items-center gap-3">
+				<form method="post" action="{{ path('switch_locale') }}">
+					<select id="lang-switcher" name="locale" class="form-select form-select-sm bg-dark text-light border-secondary">
+						<option value="fr" {{ app.request.locale == 'fr' ? 'selected' : '' }}>🇫🇷 FR</option>
+						<option value="en" {{ app.request.locale == 'en' ? 'selected' : '' }}>🇬🇧 EN</option>
+					</select>
+				</form>
+
 				<a href="{{ path('app_login') }}" class="btn btn-primary d-inline-flex align-items-center">
 					<i class="bi bi-person-circle me-2"></i>
 					{{ 'Login'|trans }} / {{ 'Sign Up'|trans }}
 				</a>
-			</header>
+			</div>
+		</header>
+
+
 
 			{% include '_partial/connected_ai.html.twig' %}
 
@@ -80,29 +92,17 @@
 
 			<div class="container py-4">
 				<div class="row g-3 mb-4">
-					<div class="text-center mb-5">
-						<h2 id="historical-signals-heading" class="h3 fw-bold text-light">{{ 'Historical Performance'|trans }}</h2>
-						<p class="text-muted">{{ 'Review past signals and their outcomes. Filter by asset, type, or date'|trans }}.</p>
-					</div>
 					<div class="d-flex justify-content-between align-items-center mb-4">
 						<div class="d-flex gap-2">
 							<a href="{{ path('simulate_signal') }}" class="btn btn-outline-secondary d-none d-sm-inline-flex">
 								<i class="bi bi-plus-square me-2"></i>
 								{{ 'Simulate Signal'|trans }}
 							</a>
-							<button class="btn btn-primary">
-								<i class="bi bi-arrow-repeat me-2"></i>
-								{{ 'Refresh'|trans }}
-							</button>
 						</div>
 					</div>
 					{% include "signal/history.html.twig" %}
 				</div>
 			</div>
-
-			<footer class="text-center py-4 border-top text-light">
-				&copy; {{ "now"|date("Y") }} OnlySignals. {{ 'All rights reserved'|trans }}.
-			</footer>
 		</main>
 	</div>
 {% endblock %}

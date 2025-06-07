@@ -13,6 +13,8 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\NotCompromisedPassword;
+use Symfony\Component\Validator\Constraints\PasswordStrength;
 
 class RegistrationForm extends AbstractType
 {
@@ -38,11 +40,24 @@ class RegistrationForm extends AbstractType
                 'mapped' => false,
                 'attr' => ['autocomplete' => 'new-password'],
                 'first_options' => [
-                    'label' => 'form.profile.password'
+                    'constraints' => [
+                        new NotBlank([
+                            'message' => 'Please enter a password',
+                        ]),
+                        new Length([
+                            'min' => 12,
+                            'minMessage' => 'Your password should be at least {{ limit }} characters',
+                            'max' => 4096,
+                        ]),
+                        new PasswordStrength(),
+                        new NotCompromisedPassword(),
+                    ],
+                    'label' => 'New password',
                 ],
                 'second_options' => [
-                    'label' => 'form.profile.confirm_password'
+                    'label' => 'Repeat Password',
                 ],
+                'invalid_message' => 'The password fields must match.',
                 'constraints' => [
                     new NotBlank([
                         'message' => 'form.registration.password_required',
@@ -61,7 +76,7 @@ class RegistrationForm extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => User::class,
-            'translation_domain' => 'forms',
+            'translation_domain' => 'messages',
         ]);
     }
 }
