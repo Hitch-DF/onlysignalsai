@@ -15,11 +15,10 @@
 			<div class="d-flex align-items-center gap-3">
 				<form action="{{ path('switch_locale') }}" method="post" class="d-inline">
 					<select name="locale" onchange="this.form.submit()" class="form-select form-select-sm">
-						<option value="en" {% if app.request.locale == 'en' %}selected{% endif %}>🇬🇧</option>
-						<option value="fr" {% if app.request.locale == 'fr' %}selected{% endif %}>🇫🇷</option>
+						<option value="en" {% if app.request.locale == 'en' %}selected{% endif %}>ENG</option>
+						<option value="fr" {% if app.request.locale == 'fr' %}selected{% endif %}>FR</option>
 					</select>
 				</form>
-
 
 				<a href="{{ path('app_login') }}" class="btn btn-secondary d-inline-flex align-items-center">
 					{{ 'Login'|trans }}
@@ -35,12 +34,62 @@
 			{% include '_partial/connected_ai.html.twig' %}
 
 			{% if signals is empty %}
-				<div class="container py-5 text-center">
-					<i class="bi bi-lock-fill fs-1 mb-3 text-muted"></i>
-					<p class="lead text-muted">{{ 'Vous devez être abonné pour voir les signaux actifs'|trans }}.</p>
-					<a href="{{ path('subscription_plans') }}" class="btn btn-primary">{{ 'Voir les offres'|trans }}</a>
+				<div class="position-relative mb-5" style="min-height: 400px;">
+					{# MESSAGE VERROUILLÉ PAR DESSUS #}
+					<div class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center text-center bg-dark bg-opacity-75" style="z-index: 2; pointer-events: auto;">
+						<i class="bi bi-lock-fill fs-1 mb-3 text-muted"></i>
+						<p class="lead text-muted">{{ 'Vous devez être abonné pour voir les signaux actifs'|trans }}.</p>
+						<a href="{{ path('subscription_plans') }}" class="btn btn-primary">{{ 'Voir les offres'|trans }}</a>
+					</div>
+
+					{# CONTENU DES SIGNAUX EN FOND FLOU #}
+					<div class="container py-5 blur-sm opacity-25 pointer-events-none" style="z-index: 1;">
+						<div class="row m-0 py-3">
+							{% for signal in fakeSignal %}
+							<div class="col-md-4 mb-4">
+								<div class="card border bg-card text-light shadow-sm h-100">
+									<div class="card-body pb-2">
+										<div class="d-flex justify-content-between align-items-center mb-2">
+											<h5 class="fw-bold mb-0">{{ signal.symbol }}</h5>
+											<div class="badge rounded-pill text-white px-2 py-1 {{ signal.signalType == 'Buy' ? 'bg-success' : 'bg-danger' }}">
+												<i class="bi {{ signal.signalType == 'Buy' ? 'bi-graph-up-arrow' : 'bi-graph-down-arrow' }} me-1"></i>
+												{{ signal.signalType }}
+											</div>
+										</div>
+										<div class="text-muted small mb-3">
+											<i class="bi bi-clock me-1"></i>
+											{{ signal.createdAt|date('d/m/Y H:i') }} • {{ signal.timeFrame|default('N/A') }}
+										</div>
+										<ul class="list-unstyled small mb-0">
+											<li class="d-flex justify-content-between">
+												<span class="text-muted">{{ "Entry Price"|trans }}:</span>
+												<span class="fw-semibold">${{ signal.entryPrice|number_format(2, '.', ',') }}</span>
+											</li>
+											<li class="d-flex justify-content-between">
+												<span class="text-muted">{{ "Category"|trans }}:</span>
+												<span class="badge bg-secondary text-light">{{ signal.category }}</span>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							{% if loop.index is divisible by(3) %}</div><div class="row m-0 py-3">{% endif %}
+							{% endfor %}
+						</div>
+					</div>
 				</div>
+
 			{% else %}
+			{% if app.environment == 'dev' %}
+						<div class="d-flex justify-content-between align-items-center mb-4">
+							<div class="d-flex gap-2">
+								<a href="{{ path('simulate_signal') }}" class="btn btn-outline-secondary d-none d-sm-inline-flex">
+									<i class="bi bi-plus-square me-2"></i>
+									{{ 'Simulate Signal'|trans }}
+								</a>
+							</div>
+						</div>
+					{% endif %}
 				<div class="row m-0 py-3">
 					{% for signal in signals %}
 						<div class="col-md-4 mb-4">
@@ -95,14 +144,6 @@
 
 			<div class="container py-4">
 				<div class="row g-3 mb-4">
-					<div class="d-flex justify-content-between align-items-center mb-4">
-						<div class="d-flex gap-2">
-							<a href="{{ path('simulate_signal') }}" class="btn btn-outline-secondary d-none d-sm-inline-flex">
-								<i class="bi bi-plus-square me-2"></i>
-								{{ 'Simulate Signal'|trans }}
-							</a>
-						</div>
-					</div>
 					{% include "signal/history.html.twig" %}
 				</div>
 			</div>

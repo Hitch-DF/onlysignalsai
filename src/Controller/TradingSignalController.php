@@ -6,6 +6,7 @@ use App\Entity\TradingSignal;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\Routing\Attribute\Route;
 
 final class TradingSignalController extends AbstractController
@@ -16,6 +17,10 @@ final class TradingSignalController extends AbstractController
     #[Route('/simulate-signal', name: 'simulate_signal')]
     public function simulate(): Response
     {
+        if ($_ENV['APP_ENV'] !== 'dev') {
+            throw new AccessDeniedHttpException('Cette action est réservée à l’environnement de développement.');
+        }
+
         $assets = ['BTCUSDT', 'ETHUSDT', 'SOLUSDT'];
         $categories = ['Crypto', 'Forex'];
         $timeFrame = ['H1', 'M15', 'M30'];

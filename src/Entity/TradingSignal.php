@@ -53,6 +53,9 @@ class TradingSignal
     #[ORM\Column(nullable: true)]
     private ?float $pips = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?bool $fake = false;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -217,6 +220,18 @@ class TradingSignal
     public function setPips(?float $pips): static
     {
         $this->pips = $pips;
+
+        return $this;
+    }
+
+    public function isFake(): ?bool
+    {
+        return $this->fake;
+    }
+
+    public function setFake(?bool $fake): static
+    {
+        $this->fake = $fake;
 
         return $this;
     }

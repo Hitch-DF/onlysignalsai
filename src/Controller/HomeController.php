@@ -57,6 +57,12 @@ final class HomeController extends AbstractController
         $categoriesHistory = array_unique(array_map(fn($s) => $s->getCategory(), $signalsHistory));
         sort($categoriesHistory);
 
+        $fakeSignal = $this->tradingSignalRepository->findBy(
+            ['fake' => true],
+            ['createdAt' => 'DESC'],
+            3
+        );
+
         return $this->render('home/index.html.twig', [
             'signals' => $signals,
             'hasActive' => $hasActive,
@@ -64,7 +70,8 @@ final class HomeController extends AbstractController
             'categories' => $categories,
             'signalsHistory' => $signalsHistory,
             'assetsHistory' => $assetsHistory,
-            'categoriesHistory' => $categoriesHistory
+            'categoriesHistory' => $categoriesHistory,
+            'fakeSignal' => $fakeSignal
         ]);
     }
 }

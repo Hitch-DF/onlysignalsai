@@ -336,3 +336,11 @@ a {
     --bs-btn-disabled-bg: #7c3aed;
     --bs-btn-disabled-border-color: #7c3aed;
 }
+
+.blur-sm {
+  filter: blur(2px);
+}
+
+.opacity-25 {
+  opacity: 0.25;
+}
