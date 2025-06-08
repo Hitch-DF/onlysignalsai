@@ -59,8 +59,13 @@ class StripeService
             'expand' => ['data.product'],
         ]);
 
-        return $result->data;
+        $filtered = array_filter($result->data, function ($price) {
+            return isset($price->product->active) && $price->product->active === true;
+        });
+
+        return array_values($filtered);
     }
+
 
     /**
      * Crée une session Checkout pour abonnement
