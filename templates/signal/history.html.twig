@@ -60,7 +60,6 @@
             <th>{{ "Pips"|trans }}</th>
             <th>{{ "Résultat"|trans }}</th>
             <th>{{ "Screenshot"|trans }}</th>
-            <th>{{ "Actions"|trans }}</th>
           </tr>
         </thead>
         <tbody>
@@ -92,14 +91,6 @@
                 {% else %}
                   <span class="text-muted">-</span>
                 {% endif %}
-              </td>
-              <td>
-                <a href="https://www.tradingview.com/chart/?symbol={{ signalHistory.symbol }}"
-                   target="_blank"
-                   class="btn btn-outline-secondary btn-sm d-inline-flex align-items-center gap-1">
-                  {{ 'View'|trans }}
-                  <i class="bi bi-box-arrow-up-right"></i>
-                </a>
               </td>
             </tr>
           {% endfor %}
