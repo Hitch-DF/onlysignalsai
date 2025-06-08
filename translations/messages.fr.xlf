@@ -689,6 +689,22 @@
         <source>Acheter à vie, votre abonnement sera automatiquement annulé et vous ne serez plus débité</source>
         <target>Acheter à vie, votre abonnement sera automatiquement annulé et vous ne serez plus débité</target>
       </trans-unit>
+      <trans-unit id="AfcrILi" resname="Aucun signal actif pour le moment.">
+        <source>Aucun signal actif pour le moment.</source>
+        <target>Aucun signal actif pour le moment.</target>
+      </trans-unit>
+      <trans-unit id="iTEVDJx" resname="Cet utilisateur a un abonnement actif.">
+        <source>Cet utilisateur a un abonnement actif.</source>
+        <target>Cet utilisateur a un abonnement actif.</target>
+      </trans-unit>
+      <trans-unit id="FrTKWXV" resname="Confirmer l’annulation de l’abonnement ?">
+        <source>Confirmer l’annulation de l’abonnement ?</source>
+        <target>Confirmer l’annulation de l’abonnement ?</target>
+      </trans-unit>
+      <trans-unit id="gv77rqr" resname="Annuler l’abonnement Stripe">
+        <source>Annuler l’abonnement Stripe</source>
+        <target>Annuler l’abonnement Stripe</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

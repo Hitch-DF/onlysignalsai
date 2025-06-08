@@ -27,8 +27,8 @@ final class AdminController extends AbstractController
     public function dashboard(Request $request): Response
     {
         // Récupération des signaux
-        $signals = $this->tradingSignalRepository->findBy(['status' => true], ['createdAt' => 'DESC']);
-        $signalsHistory = $this->tradingSignalRepository->findBy(['status' => false], ['createdAt' => 'DESC']);
+        $signals = $this->tradingSignalRepository->findActiveSignals();
+        $signalsHistory = $this->tradingSignalRepository->findHistoricalSignals();
         $users = $this->userRepository->findAll();
 
         // Nouveau signal historique

@@ -59,7 +59,7 @@
         <hr>
         {% if app.user %}
         <div class="d-flex align-items-center mb-2">
-          <img src="https://picsum.photos/id/237/200/200" class="rounded-circle me-2 border" height="40" width="40" alt="User Avatar">
+          <img src="{{ asset('build/images/logo.png') }}" class="rounded-circle me-2 border" height="40" width="40" alt="User Avatar">
           <div>
             <strong class="text-light small d-block">{{ app.user.username }}</strong>
             <a href="{{ path('app_profile') }}" class="text-light small text-decoration-none">

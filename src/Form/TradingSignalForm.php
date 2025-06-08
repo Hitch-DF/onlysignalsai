@@ -48,9 +48,14 @@ class TradingSignalForm extends AbstractType
                 'required' => false,
                 'scale' => 2,
             ])
-            ->add('result', TextType::class, [
-                'label' => 'Result',
-                'required' => false,
+            ->add('result', ChoiceType::class, [
+                'label' => 'Résultat',
+                'choices' => [
+                    'Win' => 'Win',
+                    'Loss' => 'Loss',
+                    'Break Even' => 'Break Even',
+                ],
+                'required' => true,
             ])
             ->add('createdAt', DateTimeType::class, [
                 'label' => 'Created At',

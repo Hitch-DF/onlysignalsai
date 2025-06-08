@@ -7,3 +7,9 @@
 .vscode
 /.vscode
 /.env
+/.env.prod
+/.env.local.php
+/config/secrets/prod/prod.decrypt.private.php
+/public_html
+deploy.sh
+/deploy.sh

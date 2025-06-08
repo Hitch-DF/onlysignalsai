@@ -670,7 +670,7 @@
         <target>Open in a tab</target>
       </trans-unit>
       <trans-unit id="XkF7vJb" resname="A vie">
-        <source>A vie</source>
+        <source>A vie</source>
         <target>For life</target>
       </trans-unit>
       <trans-unit id="7FX7uD3" resname="Vous avez déjà accès à vie à ce plan.">
@@ -680,6 +680,22 @@
       <trans-unit id="bpsnTvJ" resname="Acheter à vie, votre abonnement sera automatiquement annulé et vous ne serez plus débité">
         <source>Acheter à vie, votre abonnement sera automatiquement annulé et vous ne serez plus débité</source>
         <target>Buy for life, your subscription will be automatically canceled and you will no longer be charged</target>
+      </trans-unit>
+      <trans-unit id="AfcrILi" resname="Aucun signal actif pour le moment.">
+        <source>Aucun signal actif pour le moment.</source>
+        <target>No active signal at the moment.</target>
+      </trans-unit>
+      <trans-unit id="iTEVDJx" resname="Cet utilisateur a un abonnement actif.">
+        <source>Cet utilisateur a un abonnement actif.</source>
+        <target>This user has an active subscription.</target>
+      </trans-unit>
+      <trans-unit id="FrTKWXV" resname="Confirmer l’annulation de l’abonnement ?">
+        <source>Confirmer l’annulation de l’abonnement ?</source>
+        <target>Confirm subscription cancellation ?</target>
+      </trans-unit>
+      <trans-unit id="gv77rqr" resname="Annuler l’abonnement Stripe">
+        <source>Annuler l’abonnement Stripe</source>
+        <target>Cancel Stripe subscription</target>
       </trans-unit>
     </body>
   </file>
