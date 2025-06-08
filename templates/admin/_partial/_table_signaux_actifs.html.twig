@@ -3,18 +3,24 @@
     <i class="bi bi-graph-up text-purple fs-2 mb-3 d-block"></i>
     <h2 class="h4 mb-0">Gestion des Signaux Actifs</h2>
   </div>
+
   <div class="card-body">
+
+    {% if signals is empty %}
+      <div class="alert alert-warning text-center">{{ "Aucun signal actif"|trans }}</div>
+    {% endif %}
+
     <div class="table-responsive">
       <table id="signals-table" class="datatable table table-dark table-bordered table-hover align-middle mb-0">
         <thead>
           <tr>
             <th>ID</th>
-            <th>{{'Actif'|trans}}</th>
-            <th>{{"Type"|trans}}</th>
-            <th>{{"Timeframe"|trans}}</th>
-            <th>{{"Entrée"|trans}}</th>
-            <th>{{"Créé le"|trans}}</th>
-            <th>{{"Actions"|trans}}</th>
+            <th>{{ 'Actif'|trans }}</th>
+            <th>{{ "Type"|trans }}</th>
+            <th>{{ "Timeframe"|trans }}</th>
+            <th>{{ "Entrée"|trans }}</th>
+            <th>{{ "Créé le"|trans }}</th>
+            <th>{{ "Actions"|trans }}</th>
           </tr>
         </thead>
         <tbody>
@@ -31,13 +37,9 @@
               <td class="text-end">
                 <button class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#closeModal-{{ signal.id }}">
                   <i class="bi bi-x-circle"></i>
-                  {{"Fermer"|trans}}
+                  {{ "Fermer"|trans }}
                 </button>
               </td>
-            </tr>
-          {% else %}
-            <tr>
-              <td colspan="7" class="text-center text-muted">{{"Aucun signal actif"|trans}}</td>
             </tr>
           {% endfor %}
         </tbody>

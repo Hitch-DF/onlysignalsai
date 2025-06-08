@@ -697,6 +697,14 @@
         <source>Annuler l’abonnement Stripe</source>
         <target>Cancel Stripe subscription</target>
       </trans-unit>
+      <trans-unit id="GRaqc.o" resname="À vie">
+        <source>À vie</source>
+        <target>For life</target>
+      </trans-unit>
+      <trans-unit id="xh07.rW" resname="Gérer">
+        <source>Gérer</source>
+        <target>Manage</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
