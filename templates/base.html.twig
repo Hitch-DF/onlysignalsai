@@ -1,36 +1,42 @@
+{# templates/base.html.twig #}
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block title %}OnlySignals AI{% endblock %}</title>
-
-  <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('logo.png') }}">
-  <link rel="shortcut icon" href="{{ asset('logo.png') }}">
-
+  <link rel="icon" type="image/png" href="{{ asset('logo.png') }}">
   {% block stylesheets %}
     {{ encore_entry_link_tags('app') }}
   {% endblock %}
-
 </head>
 <body class="bg-background text-foreground">
 
-<div class="container-fluid">
-  <div class="row">
-  {% include "_partial/sidebar.html.twig" %}
-    <div class="col ps-md-4 pt-4">
+  <!-- Mobile Header -->
+  <header class="d-md-none bg-dark text-light d-flex justify-content-between align-items-center px-3 py-2 border-bottom">
+    <button class="btn btn-outline-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar" aria-controls="mobileSidebar">
+      <i class="bi bi-list fs-4"></i>
+    </button>
+    <span class="fw-bold">OnlySignals</span>
+  </header>
+
+  <!-- Layout -->
+  <div class="d-flex flex-column flex-md-row">
+    {% include '_partial/sidebar.html.twig' %}
+    
+    <main class="flex-grow-1 px-3 pt-4" style="min-height: 100vh;">
       {% block body %}{% endblock %}
+      
       {% block footer %}
-        <footer class="text-center py-4 text-muted small border-top border-secondary">
+        <footer class="text-center py-4 text-muted small border-top border-secondary mt-5">
           © {{ "now"|date("Y") }} OnlySignals. {{ 'Tous droits réservés'|trans }}.
         </footer>
       {% endblock %}
-    </div>
+    </main>
   </div>
-</div>
 
-{% block javascripts %}
-  {{ encore_entry_script_tags('app') }}
-{% endblock %}
+  {% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+  {% endblock %}
 </body>
 </html>

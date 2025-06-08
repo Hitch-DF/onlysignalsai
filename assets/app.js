@@ -33,10 +33,12 @@ document.addEventListener('DOMContentLoaded', () => {
 		fixedHeader: true,
 		pageLength: 20,
 		lengthChange: false,
+		scrollX: true,
 		language: {
 			url: `https://cdn.datatables.net/plug-ins/1.13.4/i18n/${langFile}.json`
 		}
 	});
+	
 
 	// === FILTRE PAR DATE ===
 	let startDate = null;
