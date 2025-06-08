@@ -82,20 +82,23 @@
               <td>{{ signalHistory.exitPrice }}</td>
               <td>{{ signalHistory.pips }}</td>
               <td>{{ signalHistory.result }}</td>
-              <td>
+              <td class="text-center">
                 {% if signalHistory.screenshot %}
-                  <button type="button"
-                          class="btn btn-outline-secondary btn-sm"
-                          data-bs-toggle="modal"
-                          data-bs-target="#screenshotModal"
-                          data-img="{{ asset('uploads/screenshots/' ~ signalHistory.screenshot) }}"
-                          data-symbol="{{ signalHistory.symbol }}">
+                  <button
+                    type="button"
+                    class="btn btn-outline-secondary btn-sm"
+                    data-bs-toggle="modal"
+                    data-bs-target="#screenshotModal"
+                    data-img="{{ asset('uploads/screenshots/' ~ signalHistory.screenshot) }}"
+                    data-symbol="{{ signalHistory.symbol }}"
+                  >
                     <i class="bi bi-eye"></i> Voir
                   </button>
                 {% else %}
                   <span class="text-muted">-</span>
                 {% endif %}
               </td>
+
               <td>
                 <a href="https://www.tradingview.com/chart/?symbol={{ signalHistory.symbol }}"
                    target="_blank"
@@ -114,7 +117,7 @@
 
 <!-- Screenshot Modal -->
 <div class="modal fade" id="screenshotModal" tabindex="-1" aria-labelledby="screenshotModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-centered">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
     <div class="modal-content bg-card border border-secondary">
       <div class="modal-header">
         <h5 class="modal-title d-flex align-items-center gap-2" id="screenshotModalLabel">
@@ -127,10 +130,14 @@
         <p id="modal-screenshot-placeholder" class="text-muted">{{ "Chargement"|trans }}...</p>
       </div>
       <div class="modal-footer border-0 justify-content-end">
+        <a id="open-image-tab" href="#" target="_blank" class="btn btn-outline-light d-none">
+          <i class="bi bi-box-arrow-up-right me-1"></i> {{ "Ouvrir dans un onglet"|trans }}
+        </a>
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ "Fermer"|trans }}</button>
       </div>
     </div>
   </div>
 </div>
+
 
 {% endblock %}
