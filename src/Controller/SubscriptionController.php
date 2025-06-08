@@ -36,26 +36,35 @@ class SubscriptionController extends AbstractController
     #[Route('/plans', name: 'subscription_plans', methods: ['GET'])]
     public function showPlans(): Response
     {
+        // Récupère les plans actifs depuis Stripe
         $plans = $this->stripe->getActivePlans();
+
+        // Données par défaut si utilisateur non connecté
+        $subscriptionPriceIds = [];
+        $subscriptionEndDates = [];
+        $isLifetime = false;
+
         $user = $this->getUser();
+
         if ($user) {
+            // Abonnements actifs
             $subData = $this->stripe->getUserActiveSubscriptionData($user);
             $subscriptionPriceIds = $subData['priceIds'];
             $subscriptionEndDates = $subData['endDates'];
-        } else {
-            $subscriptionPriceIds = [];
-            $subscriptionEndDates = [];
+
+            // Vérifie existence d’un accès à vie en base
+            $lifetimeAccess = $this->lifetimeAccessRepository->findOneBy(['user' => $user]);
+            $isLifetime = $lifetimeAccess !== null;
         }
 
-        $isLifetime = $this->lifetimeAccessRepository->findOneBy(['user' => $user]);
-
         return $this->render('plans/index.html.twig', [
-            'plans'                => $plans,
+            'plans'                 => $plans,
             'subscriptionPriceIds' => $subscriptionPriceIds,
             'subscriptionEndDates' => $subscriptionEndDates,
-            'isLifetime' => $isLifetime
+            'isLifetime'           => $isLifetime,
         ]);
     }
+
 
 
     #[Route('/create-subscription-session', name: 'create_subscription_session', methods: ['POST'])]

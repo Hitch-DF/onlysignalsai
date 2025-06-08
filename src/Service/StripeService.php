@@ -529,7 +529,7 @@ class StripeService
 
         $this->entityManager->persist($access);
 
-        $subscription = $this->subscriptionRepository->findOneBy(['user' => $user, 'active' => true]);
+        $subscription = $this->subscriptionRepository->findActiveByUser($user);
 
         if ($subscription && $subscription->getStripeSubscriptionId()) {
             try {
