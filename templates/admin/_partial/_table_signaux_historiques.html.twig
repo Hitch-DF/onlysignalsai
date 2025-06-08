@@ -1,62 +1,94 @@
 <div class="card bg-card text-light mb-5 shadow-sm border-0">
   <div class="card-header bg-dark text-center py-4">
     <i class="bi bi-clock-history text-purple fs-2 mb-3 d-block"></i>
-    <h2 class="h4 mb-0">{{ "Gestion de l'historique des signaux"|trans }}</h2>
+    <h2 class="h4 mb-0">{{"Gestion de l'historique des signaux"|trans}}</h2>
   </div>
-
   <div class="card-body">
     <button class="btn btn-primary d-inline-flex align-items-center mb-3" data-bs-toggle="modal" data-bs-target="#modalAddSignal">
-      <i class="bi bi-plus-circle me-2"></i> {{ "Ajouter un Signal Historique"|trans }}
+      <i class="bi bi-plus-circle me-2"></i> {{"Ajouter un Signal Historique"|trans}}
     </button>
-
-    {% if signals is empty %}
-      <div class="alert alert-warning text-center">{{ "Aucun signal historique"|trans }}</div>
-    {% endif %}
 
     <div class="table-responsive">
       <table id="signals-table-history" class="datatable table table-dark table-bordered table-hover align-middle mb-0">
         <thead>
           <tr>
             <th>ID</th>
-            <th>{{ "Date d'entrée"|trans }}</th>
-            <th>{{ "Date de clôture"|trans }}</th>
-            <th>{{ "Actif"|trans }}</th>
-            <th>{{ "Type"|trans }}</th>
-            <th>{{ "Timeframe"|trans }}</th>
-            <th>{{ "Prix d'entrée"|trans }}</th>
-            <th>{{ "Prix de sortie"|trans }}</th>
-            <th>{{ "Pips"|trans }}</th>
-            <th>{{ "Résultat"|trans }}</th>
-            <th>{{ "Screenshot"|trans }}</th>
-            <th>{{ "Actions"|trans }}</th>
+            <th>{{"Date d'entrée"|trans}}</th>
+            <th>{{"Date de clôture"|trans}}</th>
+            <th>{{"Actif"|trans}}</th>
+            <th>{{"Type"|trans}}</th>
+            <th>{{"Timeframe"|trans}}</th>
+            <th>{{"Prix d'ntrée"|trans}}</th>
+            <th>{{"Prix de sortie"|trans}}</th>
+            <th>{{"Pips"|trans}}</th>
+            <th>{{"Résultat"|trans}}</th>
+            <th>{{"Screenshot"|trans}}</th>
+            <th>{{"Actions"|trans}}</th>
           </tr>
         </thead>
         <tbody>
-          {% for signal in signals %}
+          {% for signalHistory in signalsHistory %}
             <tr>
-              <td>{{ signal.id }}</td>
-              <td>{{ signal.createdAt|date('d/m/Y H:i') }}</td>
-              <td>{{ signal.closedAt|date('d/m/Y H:i') }}</td>
-              <td>{{ signal.symbol }}</td>
-              <td><span class="badge {{ signal.signalType == 'Buy' ? 'bg-success' : 'bg-danger' }}">{{ signal.signalType }}</span></td>
-              <td>{{ signal.timeFrame }}</td>
-              <td>{{ signal.entryPrice }}</td>
-              <td>{{ signal.exitPrice }}</td>
-              <td>{{ signal.pips }}</td>
-              <td>{{ signal.result }}</td>
-              <td>{{ signal.screenshot }}</td>
+              <td>{{ signalHistory.id }}</td>
+              <td>{{ signalHistory.createdAt|date('d/m/Y H:i') }}</td>
+              <td>{{ signalHistory.closedAt|date('d/m/Y H:i') }}</td>
+              <td>{{ signalHistory.symbol }}</td>
+              <td><span class="badge {{ signalHistory.signalType == 'Buy' ? 'bg-success' : 'bg-danger' }}">{{ signalHistory.signalType }}</span></td>
+              <td>{{ signalHistory.timeFrame }}</td>
+              <td>{{ signalHistory.entryPrice }}</td>
+              <td>{{ signalHistory.exitPrice }}</td>
+              <td>{{ signalHistory.pips }}</td>
+              <td>{{ signalHistory.result }}</td>
+              <td>
+              {% if signalHistory.screenshot %}
+                <button
+                  type="button"
+                  class="btn btn-outline-secondary btn-sm"
+                  data-bs-toggle="modal"
+                  data-bs-target="#screenshotModal"
+                  data-img="{{ asset('uploads/screenshots/' ~ signalHistory.screenshot) }}"
+                  data-symbol="{{ signalHistory.symbol }}"
+                >
+                  <i class="bi bi-eye"></i> Voir
+                </button>
+              {% else %}
+                <span class="text-muted">-</span>
+              {% endif %}
+              </td>
               <td class="text-end">
-                <button class="btn btn-outline-secondary btn-sm me-1" data-bs-toggle="modal" data-bs-target="#editModal-{{ signal.id }}">
+                <button class="btn btn-outline-secondary btn-sm me-1" data-bs-toggle="modal" data-bs-target="#editModal-{{ signalHistory.id }}">
                   <i class="bi bi-pencil-square"></i>
                 </button>
-                <button class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal-{{ signal.id }}">
+                <button class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal-{{ signalHistory.id }}">
                   <i class="bi bi-trash3"></i>
                 </button>
               </td>
             </tr>
+          {% else %}
+            <tr><td colspan="12" class="text-center text-muted">{{"Aucun signal historique"|trans}}</td></tr>
           {% endfor %}
         </tbody>
       </table>
+    </div>
+  </div>
+</div>
+<!-- Screenshot Modal -->
+<div class="modal fade" id="screenshotModal" tabindex="-1" aria-labelledby="screenshotModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content bg-card border border-secondary">
+      <div class="modal-header">
+        <h5 class="modal-title d-flex align-items-center gap-2" id="screenshotModalLabel">
+          <i class="bi bi-image"></i> {{ "Screenshot"|trans }}
+        </h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fermer"></button>
+      </div>
+      <div class="modal-body text-center">
+        <img id="modal-screenshot-image" src="" alt="Screenshot" class="img-fluid rounded shadow d-none">
+        <p id="modal-screenshot-placeholder" class="text-muted">{{ "Chargement"|trans }}...</p>
+      </div>
+      <div class="modal-footer border-0 justify-content-end">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ "Fermer"|trans }}</button>
+      </div>
     </div>
   </div>
 </div>

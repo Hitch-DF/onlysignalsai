@@ -29,6 +29,7 @@ final class TradingSignalController extends AbstractController
             $screenshot = $form->get('screenshot')->getData();
             if ($screenshot) {
                 $filename = uniqid() . '.' . $screenshot->guessExtension();
+
                 $screenshot->move($this->getParameter('upload_directory'), $filename);
                 $tradingSignal->setScreenshot($filename);
             }
