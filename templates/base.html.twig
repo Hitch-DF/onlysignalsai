@@ -14,47 +14,30 @@
   {% block stylesheets %}
     {{ encore_entry_link_tags('app') }}
   {% endblock %}
-
 </head>
+
 <body class="bg-background text-foreground">
 
-<!-- Toggle Button -->
-<button id="toggleSidebar" class="btn btn-outline-secondary toggle-sidebar-btn">
-  <i class="bi bi-list"></i>
-</button>
+  {# Responsive Navbar partial (burger toggle handled inside) #}
+  {% include "_partial/navbar.html.twig" %}
 
-<div class="container-fluid">
-  <div class="row">
-  {% include "_partial/sidebar.html.twig" %}
-    <div class="col ps-md-4 pt-4">
+  <main class="py-4">
+    <div class="container">
       {% block body %}{% endblock %}
-      {% block footer %}
-        <footer class="text-center py-4 text-muted small border-top border-secondary">
-          © {{ "now"|date("Y") }} OnlySignals. {{ 'Tous droits réservés'|trans }}.
-        </footer>
-      {% endblock %}
     </div>
-  </div>
-</div>
+  </main>
 
-<!-- Scripts -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-  const toggleBtn = document.getElementById('toggleSidebar');
-  const sidebar = document.getElementById('sidebar');
+  {% block footer %}
+    <footer class="text-center py-4 text-muted small border-top border-secondary mt-5">
+      © {{ "now"|date("Y") }} OnlySignals. {{ 'Tous droits réservés'|trans }}.
+    </footer>
+  {% endblock %}
 
-  toggleBtn.addEventListener('click', () => {
-    if (window.innerWidth < 768) {
-      sidebar.classList.toggle('show');
-      document.body.classList.toggle('overflow-hidden');
-    } else {
-      sidebar.classList.toggle('collapsed');
-    }
-  });
-</script>
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-{% block javascripts %}
-  {{ encore_entry_script_tags('app') }}
-{% endblock %}
+  {% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+  {% endblock %}
 </body>
 </html>
