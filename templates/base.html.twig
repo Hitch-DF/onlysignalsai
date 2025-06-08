@@ -11,28 +11,26 @@
   {% block stylesheets %}
     {{ encore_entry_link_tags('app') }}
   {% endblock %}
-</head>
 
+</head>
 <body class="bg-background text-foreground">
 
-  {# Responsive Navbar partial (burger toggle handled inside) #}
-  {% include "_partial/navbar.html.twig" %}
-
-  <main class="py-4">
-    <div class="container">
+<div class="container-fluid">
+  <div class="row">
+  {% include "_partial/sidebar.html.twig" %}
+    <div class="col ps-md-4 pt-4">
       {% block body %}{% endblock %}
+      {% block footer %}
+        <footer class="text-center py-4 text-muted small border-top border-secondary">
+          © {{ "now"|date("Y") }} OnlySignals. {{ 'Tous droits réservés'|trans }}.
+        </footer>
+      {% endblock %}
     </div>
-  </main>
+  </div>
+</div>
 
-  {% block footer %}
-    <footer class="text-center py-4 text-muted small border-top border-secondary mt-5">
-      © {{ "now"|date("Y") }} OnlySignals. {{ 'Tous droits réservés'|trans }}.
-    </footer>
-  {% endblock %}
-
-
-  {% block javascripts %}
-    {{ encore_entry_script_tags('app') }}
-  {% endblock %}
+{% block javascripts %}
+  {{ encore_entry_script_tags('app') }}
+{% endblock %}
 </body>
 </html>
