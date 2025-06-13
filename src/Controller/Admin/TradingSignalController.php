@@ -18,6 +18,35 @@ final class TradingSignalController extends AbstractController
 
     public function __construct(private EntityManagerInterface $entityManager) {}
 
+    #[Route('/new', name: 'app_admin_trading_signal_new', methods: ['GET', 'POST'])]
+    public function new(Request $request): Response
+    {
+        $tradingSignal = new TradingSignal();
+        $form = $this->createForm(TradingSignalForm::class, $tradingSignal);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $screenshot = $form->get('screenshot')->getData();
+            if ($screenshot) {
+                $filename = uniqid() . '.' . $screenshot->guessExtension();
+                $screenshot->move($this->getParameter('upload_directory'), $filename);
+                $tradingSignal->setScreenshot($filename);
+            }
+
+            $this->entityManager->persist($tradingSignal);
+            $this->entityManager->flush();
+
+            $this->addFlash('success', 'Signal créé avec succès.');
+            return $this->redirectToRoute('app_dashboard', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->render('admin/trading_signal/new.html.twig', [
+            'form' => $form,
+        ]);
+    }
+
+
     #[Route('/{id}/edit', name: 'app_admin_trading_signal_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, TradingSignal $tradingSignal): Response
     {
@@ -70,7 +99,7 @@ final class TradingSignalController extends AbstractController
                 $screenshot->move($this->getParameter('upload_directory'), $filename);
                 $signal->setScreenshot($filename);
             }
-            
+
             $signal->setStatus(false);
             $this->entityManager->flush();
 
